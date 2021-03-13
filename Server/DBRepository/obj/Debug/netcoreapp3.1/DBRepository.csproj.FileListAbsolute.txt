@@ -1,0 +1,15 @@
+D:\Diplom\DBRepository\bin\Debug\netcoreapp3.1\Models.dll
+D:\Diplom\DBRepository\obj\Debug\netcoreapp3.1\DBRepository.csprojAssemblyReference.cache
+D:\Diplom\DBRepository\obj\Debug\netcoreapp3.1\DBRepository.AssemblyInfoInputs.cache
+D:\Diplom\DBRepository\obj\Debug\netcoreapp3.1\DBRepository.AssemblyInfo.cs
+D:\Diplom\DBRepository\bin\Debug\netcoreapp3.1\DBRepository.deps.json
+D:\Diplom\DBRepository\bin\Debug\netcoreapp3.1\DBRepository.dll
+D:\Diplom\DBRepository\bin\Debug\netcoreapp3.1\DBRepository.pdb
+D:\Diplom\DBRepository\bin\Debug\netcoreapp3.1\Models.pdb
+D:\Diplom\DBRepository\obj\Debug\netcoreapp3.1\DBRepository.csproj.CoreCompileInputs.cache
+D:\Diplom\DBRepository\obj\Debug\netcoreapp3.1\DBRepository.csproj.CopyComplete
+D:\Diplom\DBRepository\obj\Debug\netcoreapp3.1\DBRepository.dll
+D:\Diplom\DBRepository\obj\Debug\netcoreapp3.1\DBRepository.pdb
+D:\Diplom\DBRepository\bin\Debug\netcoreapp3.1\DBRepository.runtimeconfig.json
+D:\Diplom\DBRepository\bin\Debug\netcoreapp3.1\DBRepository.runtimeconfig.dev.json
+D:\Diplom\DBRepository\obj\Debug\netcoreapp3.1\DBRepository.genruntimeconfig.cache
