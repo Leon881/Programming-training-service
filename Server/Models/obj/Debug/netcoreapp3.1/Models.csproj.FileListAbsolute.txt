@@ -7,3 +7,12 @@ D:\Diplom\Models\obj\Debug\netcoreapp3.1\Models.AssemblyInfo.cs
 D:\Diplom\Models\obj\Debug\netcoreapp3.1\Models.csproj.CoreCompileInputs.cache
 D:\Diplom\Models\obj\Debug\netcoreapp3.1\Models.dll
 D:\Diplom\Models\obj\Debug\netcoreapp3.1\Models.pdb
+D:\Programming-training-service\Server\Models\bin\Debug\netcoreapp3.1\Models.deps.json
+D:\Programming-training-service\Server\Models\bin\Debug\netcoreapp3.1\Models.dll
+D:\Programming-training-service\Server\Models\bin\Debug\netcoreapp3.1\Models.pdb
+D:\Programming-training-service\Server\Models\obj\Debug\netcoreapp3.1\Models.csprojAssemblyReference.cache
+D:\Programming-training-service\Server\Models\obj\Debug\netcoreapp3.1\Models.AssemblyInfoInputs.cache
+D:\Programming-training-service\Server\Models\obj\Debug\netcoreapp3.1\Models.AssemblyInfo.cs
+D:\Programming-training-service\Server\Models\obj\Debug\netcoreapp3.1\Models.csproj.CoreCompileInputs.cache
+D:\Programming-training-service\Server\Models\obj\Debug\netcoreapp3.1\Models.dll
+D:\Programming-training-service\Server\Models\obj\Debug\netcoreapp3.1\Models.pdb
