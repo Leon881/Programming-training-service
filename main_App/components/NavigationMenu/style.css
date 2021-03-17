@@ -1,0 +1,24 @@
+.menu-container {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content:space-around;
+   height: 100%;
+}
+
+.block-menu {
+    height: 200px;
+    width: 200px;
+    border-style: solid;
+    margin:  10px;
+    background-color: wheat;
+    text-align: center;
+} 
+
+.menu-text{
+    font-size: 30px;
+}
+
+.text-link{
+    text-decoration: none
+}
