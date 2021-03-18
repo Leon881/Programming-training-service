@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
+using System.Text;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
-namespace AddPicturesToDB.Models
+namespace Models
 {
     public class Lesson
-    {
-        public int Id { get; set; }
-        [MaxLength(50)]
-        public string Name { get; set; }
-        public string Content { get; set; }
-        public List<LessonPicture> LessonPictures { get; set; }
+    { 
+            public int Id { get; set; }
+            [MaxLength(50)]
+            public string Name { get; set; }
+            public string Content { get; set; }
+            public List<LessonPicture> LessonPictures { get; set; }
     }
 
     public class LessonPicture

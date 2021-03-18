@@ -5,15 +5,15 @@
 <form asp-action="Create" asp-controller="Home" method="post" enctype="multipart/form-data">
 	<p>
 		<label>Описание</label>
-		<input name="title" class="form-control" />
+		<input name="Title" class="form-control" />
 	</p>
 	<p>
 		<label>Позиция</label>
-		<input name="position" class="form-control" />
+		<input name="Position" class="form-control" />
 	</p>
 	<p>
 		<label>Картинка</label>
-		<input name="picture" type="file" accept=".jpg" class="form-control" />
+		<input name="Picture" type="file" accept=".png" class="form-control" />
 	</p>
 	<p>
 		<input type="submit" value="Добавить" />
@@ -22,11 +22,11 @@
 <h3>Все картинки</h3>
 @foreach (var p in Model)
 {
-	<div>
-		<h4>@p.title</h4>
-		@if (p.picture != null)
-		{
-			<img style="width:80px; height:60px;" src="data:image/jpeg;base64,@(Convert.ToBase64String(p.picture))" />
-		}
-	</div>
+<div>
+	<h4>@p.Title</h4>
+	@if (p.Picture != null)
+	{		
+		<img src="data:image/png;base64,@(Convert.ToBase64String(p.Picture))" />
+	}
+</div>
 }

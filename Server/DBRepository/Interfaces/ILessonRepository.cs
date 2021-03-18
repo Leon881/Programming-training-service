@@ -6,10 +6,11 @@ using Models;
 
 namespace DBRepository.Interfaces
 {
-    public interface IArticleRepository
+    public interface ILessonRepository
     {
 		//Task AddArticle(int ArticleId);
-		Article GetArticle(int ArticleId);
+		Lesson GetLesson(int LessonId);
+		List<LessonPicture> GetPictures();
 		//Task DeleteArticle(int ArticleId);
 	}
 }

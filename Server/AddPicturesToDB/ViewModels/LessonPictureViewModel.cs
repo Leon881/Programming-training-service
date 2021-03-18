@@ -8,9 +8,9 @@ namespace AddPicturesToDB.ViewModels
 {
     public class LessonPictureViewModel
     {
-        public string title { get; set; }
+        public string Title { get; set; }
 
-        public int position { get; set; }
-        public IFormFile picture { get; set; }
+        public int Position { get; set; }
+        public IFormFile Picture { get; set; }
     }
 }

@@ -28,7 +28,7 @@ namespace TrainingService
             //Система на место объектов интерфейса IRepositoryContextFactory будет передавать экземпляры класса RepositoryContextFactory.
             services.AddScoped<IRepositoryContextFactory, RepositoryContextFactory>(); // 1
             //(ideas) Нужно чтоб получить реализацию IRepositoryContextFactory через provider(абстрагирование)                                                                            // 
-            services.AddScoped<IArticleRepository>(provider => new ArticleRepository(
+            services.AddScoped<ILessonRepository>(provider => new LessonRepository(
                 Configuration.GetConnectionString("DefaultConnection"),
                 provider.GetService<IRepositoryContextFactory>())); // 2
         }

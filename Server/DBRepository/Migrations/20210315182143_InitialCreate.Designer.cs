@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DBRepository.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20210314225352_AddLessonsPicturesTable")]
-    partial class AddLessonsPicturesTable
+    [Migration("20210315182143_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,9 +21,9 @@ namespace DBRepository.Migrations
                 .HasAnnotation("ProductVersion", "5.0.4")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Models.Article", b =>
+            modelBuilder.Entity("Models.Lesson", b =>
                 {
-                    b.Property<int>("ArticleId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -32,30 +32,48 @@ namespace DBRepository.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("ArticleId");
+                    b.HasKey("Id");
 
-                    b.ToTable("Articles");
+                    b.ToTable("Lessons");
                 });
 
             modelBuilder.Entity("Models.LessonPicture", b =>
                 {
-                    b.Property<int>("lessonId")
+                    b.Property<int>("LessonId")
                         .HasColumnType("int");
 
-                    b.Property<string>("position")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Position")
+                        .HasColumnType("int");
 
-                    b.Property<byte[]>("picture")
+                    b.Property<byte[]>("Picture")
                         .HasColumnType("varbinary(max)");
 
-                    b.Property<string>("title")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("Title")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
-                    b.HasKey("lessonId", "position");
+                    b.HasKey("LessonId", "Position");
 
                     b.ToTable("LessonsPictures");
+                });
+
+            modelBuilder.Entity("Models.LessonPicture", b =>
+                {
+                    b.HasOne("Models.Lesson", "Lesson")
+                        .WithMany("LessonPictures")
+                        .HasForeignKey("LessonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Lesson");
+                });
+
+            modelBuilder.Entity("Models.Lesson", b =>
+                {
+                    b.Navigation("LessonPictures");
                 });
 #pragma warning restore 612, 618
         }

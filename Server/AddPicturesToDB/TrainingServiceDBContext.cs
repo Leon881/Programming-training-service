@@ -9,15 +9,18 @@ namespace AddPicturesToDB
 {
     public class TrainingServiceDBContext : DbContext
     {
-        public DbSet<LessonPicture> LessonsPictures { get; set; }
         public TrainingServiceDBContext(DbContextOptions<TrainingServiceDBContext> options)
             : base(options)
         {
         }
 
+        public DbSet<Lesson> Lessons { get; set; }
+        public DbSet<LessonPicture> LessonsPictures { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<LessonPicture>().HasKey(u => new { u.lessonId, u.position });
+            modelBuilder.Entity<Lesson>().HasKey(u => new { u.Id });
+            modelBuilder.Entity<LessonPicture>().HasKey(u => new { u.LessonId, u.Position });
         }
     }
 }
