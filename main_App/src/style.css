@@ -8,9 +8,11 @@ body {
     margin: 0;
 }
 
-
+#app {
+    min-height: inherit;
+}
 .wrapper {
-    min-height: 100%;
+    min-height: inherit;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
