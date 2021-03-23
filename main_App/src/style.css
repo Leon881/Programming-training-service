@@ -11,20 +11,26 @@ body {
 #app {
     min-height: inherit;
 }
-.wrapper {
+.page {
     min-height: inherit;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
   }
 
 header {
     background-color:lightskyblue;
+    flex-shrink: 0;
+    height: 100px;
 }
 
+.content {
+    flex-grow: 1;
+}
 
 footer {
     background-color:lightskyblue;
+    flex-shrink: 0;
+    height: 100px;
 }
 
 .product-logo {

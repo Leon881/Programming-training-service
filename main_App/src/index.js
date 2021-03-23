@@ -35,7 +35,7 @@ class App extends React.Component {
     render(){
         return (
            <Provider store={store}>
-        <div className='wrapper'> 
+        <div className='page'> 
           <header id='header'>
             <div className="product-logo flex-block">
                 <span className="product-logo-text">
