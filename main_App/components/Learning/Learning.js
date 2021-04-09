@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './style.css';
 import ReturnButton from "../../containers/ReturnButton";
 
-export default function StudySharp (){
+export default function Learning (){
     return (
         <div className='sharp-container'>
           <div className='menu'>
@@ -29,5 +29,5 @@ export default function StudySharp (){
     )
 }
 
-StudySharp.propTypes={
+Learning.propTypes={
 };

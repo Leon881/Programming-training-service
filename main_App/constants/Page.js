@@ -3,7 +3,7 @@ const Page = {
     articles: 'articles',
     flashCards: 'flashCards',
     notes: 'notes',
-    studySharp: 'sharp',
+    learning: 'learning',
     tests: 'tests',
 };
 

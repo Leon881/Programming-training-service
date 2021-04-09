@@ -10,7 +10,7 @@ import NavigationMenu from '../containers/NavigationMenu'
 import Articles from '../containers/Articles';
 import Notes from '../containers/Notes';
 import Tests from '../containers/Tests';
-import StudySharp from '../containers/StudySharp';
+import Learning from '../containers/Learning';
 import FlashCardsDecks from '../containers/FlashCardsDecks';
 import './style.css'
 import {setInformation} from '../actionCreators/index'
@@ -50,7 +50,7 @@ class App extends React.Component {
                   <Route exact path='/flashcards' component={FlashCardsPage} />
                   <Route exact path='/notes' component={NotesPage} />
                   <Route exact path='/tests' component={TestsPage} />
-                  <Route exact path='/study/sharp' component={StudySharpPage} />
+                  <Route exact path='/learning' component={LearningPage} />
                   <Route component={NotFound} />
                 </Switch>
                  </main>
@@ -118,11 +118,11 @@ class TestsPage extends React.Component {
         )
     }
 }
-class StudySharpPage extends React.Component {
+class LearningPage extends React.Component {
     render(){
         return (
            <Provider store={store}>
-           <StudySharp/>
+           <Learning/>
             </Provider>
         )
     }

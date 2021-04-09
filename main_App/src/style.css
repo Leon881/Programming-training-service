@@ -1,6 +1,6 @@
 *{
     font-style: initial;
-    color: black;
+    color: #fff;
     font-family: 'Russo One', sans-serif;
 }
 body {
@@ -18,19 +18,42 @@ body {
   }
 
 header {
+    display: flex;
+    align-items: center;
     background-color:lightskyblue;
     flex-shrink: 0;
-    height: 100px;
+    height: 80px;
+    border-bottom: #fff solid ;
+    background-image: radial-gradient(circle at center, #899Dc4, #495D84);
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    background: radial-gradient(ellipse at bottom, #1b2735, #090a0f);
+    text-shadow: 0 0 5px rgba(100, 100, 255, .6)
 }
 
 .content {
     flex-grow: 1;
+    background-image: radial-gradient(circle at center, #899Dc4, #495D84);
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(ellipse at bottom, #1b2735, #090a0f);
 }
 
 footer {
     background-color:lightskyblue;
     flex-shrink: 0;
-    height: 100px;
+    height: 90px;
+    border-top: #fff solid ;
+    background-image: radial-gradient(circle at center, #899Dc4, #495D84);
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    background: radial-gradient(ellipse at bottom, #1b2735, #090a0f);
+    text-shadow: 0 0 5px rgba(100, 100, 255, .6);
 }
 
 .product-logo {
