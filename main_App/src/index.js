@@ -36,7 +36,7 @@ class App extends React.Component {
         return (
            <Provider store={store}>
         <div className='page'> 
-          <header id='header'>
+          <header id='header' className="header">
             <div className="product-logo flex-block">
                 <span className="product-logo-text">
                   Programming-training service
@@ -54,7 +54,7 @@ class App extends React.Component {
                   <Route component={NotFound} />
                 </Switch>
                  </main>
-               <footer id="footer">
+               <footer id="footer" className="footer">
                     <div className="flex-block copiryght-info container-info">
                         <p className='copiryght-info-text'>Powered By</p>
                         <div className="company-logo">
