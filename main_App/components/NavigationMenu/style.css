@@ -35,7 +35,7 @@
     border: 1px solid #fff;
     box-shadow: 0 0 20px 5px rgba(100, 100, 255, .4);
     opacity: 0;
-    transition: all .3s ease;
+    transition: all .3ms ease;
     transition-delay: 1s;
     position: relative;
     background-position: center center;
@@ -61,31 +61,32 @@
     position: absolute;
     will-change: transform;
     color: #fff;
-    text-shadow: 0 0 5px rgba(100, 100, 255, .6)
+    text-shadow: 0 0 5px rgba(100, 100, 255, .6);
+    font-size: 20px;
   }
   .lefter {
     transform: translateX(-60px) translateZ(-50px) rotateY(-10deg);
-    background-image: url(https://cdn2.iconfinder.com/data/icons/essential-web-4/50/content-form-contract-article-paper-512.png);
+    background-image: url(/src/img/articles.png);
   }
   .left {
     transform: translateX(-30px) translateZ(-25px) rotateY(-5deg);
-    background-image: url(https://cdn2.iconfinder.com/data/icons/picol-vector/32/notes-512.png);
+    background-image: url(/src/img/notes.png);
   }
   .center {
     opacity: 1;
-    background-image: url(https://cdn0.iconfinder.com/data/icons/education-340/100/Tilda_Icons_1ed_book-512.png);
+    background-image: url(/src/img/learning.png);
   }
   .right {
     transform: translateX(30px) translateZ(-25px) rotateY(5deg);
-    background-image: url(https://cdn4.iconfinder.com/data/icons/education-and-school-10/800/exam-512.png);
+    background-image: url(/src/img/test.png);
   }
   .righter {
     transform: translateX(60px) translateZ(-50px) rotateY(10deg);
-    background-image: url(https://cdn3.iconfinder.com/data/icons/other-icons/48/search-512.png);
+    background-image: url(/src/img/cards.png);
   }
  .explainer {
     font-weight: 300;
-    font-size: 2rem;
+    font-size: 3rem;
     color: #fff;
     transition: all .6s ease;
     width: 100%;

@@ -55,8 +55,13 @@ class App extends React.Component {
                 </Switch>
                  </main>
                <footer id="footer">
-                    <div className="flex-block copiryght-info">
+                    <div className="flex-block copiryght-info container-info">
                         <p className='copiryght-info-text'>Powered By</p>
+                        <div className="company-logo">
+                            <a href="#header">
+                                <img src="src/img/vamLogo.jpg" alt="CompanyLogo"/>
+                            </a>
+                        </div>
                     </div>
                 </footer>
             </div>

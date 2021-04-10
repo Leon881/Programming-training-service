@@ -29,7 +29,7 @@ header {
     background-repeat: no-repeat;
     overflow: hidden;
     background: radial-gradient(ellipse at bottom, #1b2735, #090a0f);
-    text-shadow: 0 0 5px rgba(100, 100, 255, .6)
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.6)
 }
 
 .content {
@@ -53,7 +53,7 @@ footer {
     background-repeat: no-repeat;
     overflow: hidden;
     background: radial-gradient(ellipse at bottom, #1b2735, #090a0f);
-    text-shadow: 0 0 5px rgba(100, 100, 255, .6);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
 }
 
 .product-logo {
@@ -66,11 +66,41 @@ footer {
 }
 
 .copiryght-info {
-    justify-content: space-evenly;
+    justify-content: center;
     min-width: 300px;
     margin: 0 auto;
     padding: 10px 0;
-}
- .copiryght-info{
     font-size: 20px;
- }
+}
+
+.copiryght-info-text{
+    font-size: 20px;
+    margin-right: 25px;
+}
+ .company-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.container-info {
+    margin: auto;
+    padding: 15px 0;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+@media (min-width: 1280px) {
+    .container-info {
+        width: 1200px;
+    }
+}
+@media (min-width: 769px) and (max-width: 1279px) {
+    .container-info {
+        width: 750px;
+    }
+}
