@@ -1,6 +1,13 @@
 
-.menu-container {
-    margin: auto;
+.main-menu {
+  /*самый простой способ сделать элемент по центру. другие страницы точно не сломаются*/
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.main-menu__inner {
     display: flex;
     perspective: 10px;
     transform: perspective(300px) rotateX(20deg);
@@ -10,19 +17,19 @@
     justify-content: center;
     transform-style: preserve-3d;
   }
-  .menu-container:hover {
+  .main-menu__inner:hover {
     perspective: 1000px;
     transition: all 1.3s ease-in;
     transform: perspective(10000px) rotateX(0deg);
   }
-  .menu-container:hover .menu-text {
+  .main-menu__inner:hover .menu-text {
       opacity: 1;
     }
-  .menu-container:hover > .block-menu {
+  .main-menu__inner:hover > .block-menu {
       opacity: 1;
       transition-delay: 0s;
     }
-  .menu-container:hover .explainer {
+  .main-menu__inner:hover .explainer {
       opacity: 0;
     }
   
@@ -98,4 +105,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    /*Выравниваем текст по центру, т.к. спан растянут на всю ширину блока*/
+    text-align: center;
   }

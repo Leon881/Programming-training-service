@@ -1,106 +1,107 @@
-*{
-    font-style: initial;
-    color: #fff;
-    font-family: 'Russo One', sans-serif;
+* {
+  font-style: initial;
+  color: #fff;
+  font-family: "Russo One", sans-serif;
 }
-body {
-	min-height: 100vh;
+
+html,
+body,
+#app,
+.page {
+    height: 100%;
     margin: 0;
 }
 
-#app {
-    min-height: inherit;
-}
 .page {
-    min-height: inherit;
-    display: flex;
-    flex-direction: column;
-  }
-
-header {
-    display: flex;
-    align-items: center;
-    background-color:lightskyblue;
-    flex-shrink: 0;
-    height: 80px;
-    border-bottom: #fff solid ;
-    background-image: radial-gradient(circle at center, #899Dc4, #495D84);
-    background-size: cover;
-    background-repeat: no-repeat;
-    overflow: hidden;
-    background: radial-gradient(ellipse at bottom, #1b2735, #090a0f);
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.6)
+  display: flex;
+  flex-direction: column;
 }
 
-.content {
-    flex-grow: 1;
-    background-image: radial-gradient(circle at center, #899Dc4, #495D84);
-    background-size: cover;
-    background-repeat: no-repeat;
-    overflow: hidden;
-    justify-content: center;
-    align-items: center;
-    background: radial-gradient(ellipse at bottom, #1b2735, #090a0f);
+.header,
+.content,
+.footer {
+    padding: 20px;
 }
 
-footer {
-    background-color:lightskyblue;
-    flex-shrink: 0;
-    height: 90px;
-    border-top: #fff solid ;
-    background-image: radial-gradient(circle at center, #899Dc4, #495D84);
-    background-size: cover;
-    background-repeat: no-repeat;
-    overflow: hidden;
-    background: radial-gradient(ellipse at bottom, #1b2735, #090a0f);
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+.header::after,
+.footer::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  left: 0;
+  background-color: white;
+  box-shadow: 0 0 20px 5px rgb(100 100 255 / 40%);
+  z-index: 1;
 }
 
-.product-logo {
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: lightskyblue;
+  flex-shrink: 0;
+  background-image: radial-gradient(circle at center, #899dc4, #495d84);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background: radial-gradient(ellipse at bottom, #1b2735, #090a0f);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+}
+
+.header::after {
+  bottom: 0;
+}
+
+.header__logo {
     font-size: 40px;
 }
 
-.flex-block {
-    display: flex;
-    align-items: center;
+.content {
+  position: relative;
+  flex-grow: 1;
+  background-image: radial-gradient(circle at center, #899dc4, #495d84);
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  background: radial-gradient(ellipse at bottom, #1b2735, #090a0f);
 }
 
-.copiryght-info {
-    justify-content: center;
-    min-width: 300px;
-    margin: 0 auto;
-    padding: 10px 0;
-    font-size: 20px;
+.footer {
+  position: relative;
+  flex-shrink: 0;
+  background-image: radial-gradient(circle at center, #899dc4, #495d84);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background: radial-gradient(ellipse at bottom, #1b2735, #090a0f);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
 }
 
-.copiryght-info-text{
+.footer::before {
+  top: 0;
+}
+
+.copyright-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+
+.copyright-info::before {
+    content: "Powered by";
     font-size: 20px;
     margin-right: 25px;
 }
- .company-logo {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    overflow: hidden;
-}
 
-.container-info {
-    margin: auto;
-    padding: 15px 0;
+.copyright-info__logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 img {
-    width: 100%;
-    height: auto;
-}
-
-@media (min-width: 1280px) {
-    .container-info {
-        width: 1200px;
-    }
-}
-@media (min-width: 769px) and (max-width: 1279px) {
-    .container-info {
-        width: 750px;
-    }
+  width: 100%;
+  height: auto;
 }
