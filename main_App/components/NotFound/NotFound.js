@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./style.css";
 import Page from "../../constants/Page";
+import Loader from "../../components/Loader/Loader";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 export default function NotFound({ onNavigateToPage }) {
