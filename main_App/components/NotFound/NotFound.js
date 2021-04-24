@@ -9,7 +9,12 @@ export default function NotFound({ onNavigateToPage }) {
         <div className='main-error'>
             <div className='error-name'>Ошибка 404</div>
             <div className='error-inf'>Запрашиваемая страница не существует или была удалена</div>
-            <Link  className='error-return' to ='/'>Вернуться в главное меню </Link>
-            </div>
+            <Link onClick= {()=>onNavigateToPage(Page.mainMenu)} className='error-return' to ='/'>Вернуться в главное меню </Link>
+        </div>
     )
 }
+
+NotFound.propTypes = {
+    onNavigateToPage: PropTypes.func.isRequired,
+  };
+  

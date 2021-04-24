@@ -12,7 +12,7 @@ import Notes from "../containers/Notes";
 import Tests from "../containers/Tests";
 import LearningNavigation from "../containers/LearningNavigation";
 import FlashCardsDecks from "../containers/FlashCardsDecks";
-import NotFound from "../components/NotFound/NotFound.js";
+import NotFound from "../containers/NotFound";
 import "./style.css";
 import { setInformation } from "../actionCreators/index";
 
@@ -26,6 +26,7 @@ class App extends React.Component {
   async componentDidMount() {
   
   }
+  
   render() {
     return (
       <Provider store={store}>

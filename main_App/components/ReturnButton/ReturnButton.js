@@ -5,7 +5,7 @@ import Page from '../../constants/Page';
 
 export default function ReturnButton ({onNavigateToPage}){
     return (
-        <Link to ='/'><button onClick= {()=>onNavigateToPage(Page.main)} >Назад</button> </Link>
+        <Link to ='/'><button onClick= {()=>onNavigateToPage(Page.mainMenu)} >Назад</button> </Link>
     )
 }
 
