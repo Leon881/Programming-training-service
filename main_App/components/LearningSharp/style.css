@@ -2,24 +2,29 @@
     margin-top: 5px;
     display: flex;
     flex-direction: row;
+    z-index: 1; /* Оставайтесь с верху */
+    left: 0;
+    position: fixed;
 }
 
 .menu{
     width: 300px;
     border-radius: 6px;
     overflow: hidden;
-    background: burlywood;
+    background: #58d;
+    box-shadow: 0 0 10px 3px rgba(100, 100, 255, .3);
 }
 
 .element{
-    border-top: 1px solid burlywood;
+    border-top: 1px solid #58d;
     overflow: hidden;
 }
 
 .elem-title{
     display: block;
     padding: 16px 20px;
-    background: skyblue;
+    background: #303050;
+    background-image: radial-gradient(ellipse at center top, #cce, #33a);
     position: relative;
     color: white;
     text-decoration: none;
@@ -28,18 +33,26 @@
 .elem-title::before{
     content: '';
     position: absolute;
-    background: burlywood;
+    background: #58d;
     width: 14px;
     height: 14px;
     bottom: -7px;
     transform: rotate(45deg);
 }
 
+.elem-title:hover {
+	text-shadow: 0px 0px 10px #fff;
+}
+
 .sub-menu{
-    background: burlywood;
+    background: #58d;
     overflow: hidden;
     transition: 0.3s;
     max-height: 0;
+}
+
+.sub-menu a:hover{
+    text-shadow: 0px 0px 10px #fff;
 }
 
 .sub-menu a{
@@ -63,8 +76,9 @@
     opacity: 0;
 }
 
+
 .sub-menu a:hover::before{
-    opacity: 1;
+    opacity: 1;   
 }
 
 .open-sub-menu{
@@ -73,4 +87,8 @@
 
 .working-field{
     margin: 5px;
+}
+
+.sharp-container a{
+    cursor: pointer;
 }

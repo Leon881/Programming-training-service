@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import './style.css';
 import ReturnButton from "../../containers/ReturnButton";
 
-export default function Learning (){
+export default function LearningSharp (){
     return (
         <div className='sharp-container'>
           <div className='menu'>
-          <ReturnButton/>
             <div className='element' onClick={()=>{let bv= document.getElementById('test'); bv.classList.toggle('open-sub-menu') }}>
               <a  className='elem-title'>Начальный уровень</a>
               <div className='sub-menu' id='test'>
@@ -24,10 +23,9 @@ export default function Learning (){
               </div>
               </div>
           </div>
-          <div className='working-field'>Рабочее поле</div>
         </div>
     )
 }
 
-Learning.propTypes={
+LearningSharp.propTypes={
 };
