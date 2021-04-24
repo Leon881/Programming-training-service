@@ -1,6 +1,6 @@
 import * as actionTypes from '../actionTypes';
 
-export const navigateTo = page => ({
+export const navigateToPage = page => ({
     type: actionTypes.NAVIGATE_TO_PAGE,
     page
 });

@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
 import Page from '../../constants/Page';
 
-export default function ReturnButton ({onNavigate}){
+export default function ReturnButton ({onNavigateToPage}){
     return (
-        <Link to ='/'><button onClick= {()=>onNavigate(Page.main)} >Назад</button> </Link>
+        <Link to ='/'><button onClick= {()=>onNavigateToPage(Page.main)} >Назад</button> </Link>
     )
 }
 
 ReturnButton.propTypes={
-    onNavigate: PropTypes.func.isRequired,
+    onNavigateToPage: PropTypes.func.isRequired,
 };

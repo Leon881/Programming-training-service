@@ -1,10 +1,13 @@
 const Page = {
-    main: 'main',
+    mainMenu: 'mainMenu',
     articles: 'articles',
     flashCards: 'flashCards',
     notes: 'notes',
-    learning: 'learning',
+    learningMenu: 'learningMenu',
     tests: 'tests',
+    learningSharp:'learningSharp',
+    learningJS: 'learningJS',
+    learningSQL: 'learningSQL',
 };
 
 export default Page;
