@@ -4,6 +4,7 @@ import Articles from '../components/Articles/Articles';
 
 export default connect(
     (state, props) => ({
+        text:state.text
     }),
     (dispatch, props) => ({
     })

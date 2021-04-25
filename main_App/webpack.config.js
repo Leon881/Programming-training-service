@@ -23,5 +23,22 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: "./src/index.html"
         })
-    ]
+    ],
+
+    devServer: {
+        port: 8080,
+        historyApiFallback: true,
+        proxy: {
+            '/api': {
+            target: 'https://localhost:44385',
+            secure: false              
+            },
+            '/Files': {
+                target: 'https://localhost:44385',
+                secure: false              
+                },
+        }
+    },
+    //debug: true,
+    devtool: 'source-map'
 };

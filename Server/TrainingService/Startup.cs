@@ -25,6 +25,8 @@ namespace TrainingService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc(option => option.EnableEndpointRouting = false);
+            services.AddControllersWithViews();
+            services.AddControllers();
             //Система на место объектов интерфейса IRepositoryContextFactory будет передавать экземпляры класса RepositoryContextFactory.
             services.AddScoped<IRepositoryContextFactory, RepositoryContextFactory>(); // 1
             //(ideas) Нужно чтоб получить реализацию IRepositoryContextFactory через provider(абстрагирование)                                                                            // 
@@ -40,17 +42,20 @@ namespace TrainingService
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseStaticFiles();     
+            //app.UseDefaultFiles();
+            app.UseStaticFiles();
+
+            //app.UseRouting();
+
+            app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-                routes.MapRoute(
-                    name: "DefaultApi",
-                    template: "api/{controller}/{action}");
+                    template: "{controller=Home}/{action=Index}");
                 routes.MapSpaFallbackRoute("spa-fallback", new { controller = "Home", action = "Index" });
-            });
+            });           
         }
     }
 }

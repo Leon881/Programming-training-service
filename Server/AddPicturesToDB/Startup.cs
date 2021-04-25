@@ -34,7 +34,7 @@ namespace AddPicturesToDB
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseStaticFiles();
             app.UseRouting();
 
             app.UseMvc(routes =>

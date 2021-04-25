@@ -4,13 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PersonalPortal.Controllers
+namespace TrainingService.Controllers
 {
-    //[Route("api/[controller]")]
+
     public class HomeController : Controller
     {
-        //[Route("index")]
-        //[HttpGet]
+        [HttpGet]
         public IActionResult Index()
         {
             return View();

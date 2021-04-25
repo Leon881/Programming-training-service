@@ -9,8 +9,12 @@ namespace DBRepository.Interfaces
     public interface ILessonRepository
     {
 		//Task AddArticle(int ArticleId);
-		Lesson GetLesson(int LessonId);
-		List<LessonPicture> GetPictures();
+		Lesson GetLesson( int LessonId);
+		void AddLesson(Lesson newLesson);
+		int GetLastLessonId();
+
+		public List<ResponseLesson> GetLessonsList();
+		//LessonPicture GetPicture(int lessonId, int imagePosition);
 		//Task DeleteArticle(int ArticleId);
 	}
 }
