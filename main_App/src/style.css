@@ -58,12 +58,10 @@ body,
 }
 
 .content {
-  position: relative;
   flex-grow: 1;
   background-image: radial-gradient(circle at center, #899dc4, #495d84);
   background-size: cover;
   background-repeat: no-repeat;
-  overflow: hidden;
   background: radial-gradient(ellipse at bottom, #1b2735, #090a0f);
 }
 
