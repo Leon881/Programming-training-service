@@ -5,6 +5,7 @@ import ReturnButton from "../../containers/ReturnButton";
 
 export default function LearningSharp (){
     return (
+      <div className='main-sharp-container'>
         <div className='sharp-container'>
           <div className='menu'>
             <div className='element' onClick={()=>{document.getElementById('test').classList.toggle('open-sub-menu') }}>
@@ -31,6 +32,8 @@ export default function LearningSharp (){
               </div>
               </div>
           </div>
+        </div>
+        <div className='text-area'></div>
         </div>
     )
 }

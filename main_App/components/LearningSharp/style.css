@@ -1,8 +1,12 @@
+.main-sharp-container{
+    display: flex;
+    width: 100%;
+}
 .sharp-container{
     margin-top: 5px;
     display: flex;
     flex-direction: row;
-    z-index: 1; /* Оставайтесь с верху */
+    z-index: 1; 
     position: relative;
 }
 
@@ -75,7 +79,6 @@
     opacity: 0;
 }
 
-
 .sharp-container .sub-menu a:hover::before{
     opacity: 1;   
 }
@@ -85,7 +88,14 @@
     max-height: 10em;
 }
 
-
 .sharp-container a{
     cursor: pointer;
+}
+
+.text-area {
+    display: flex;
+    align-self: center;
+    height: 50px;
+    width: 50px;
+    background-color: #fff;
 }
