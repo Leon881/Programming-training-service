@@ -33,6 +33,7 @@ body,
 .header {
   position: relative;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   background-color: lightskyblue;
   flex-shrink: 0;
@@ -99,4 +100,35 @@ body,
 img {
   width: 100%;
   height: auto;
+}
+
+.profile {
+  justify-content: space-between;
+}
+
+.link a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    padding: 7px;
+    min-width: 140px;
+}
+.auth a, .regist a {
+  background-image: radial-gradient(ellipse at center top, #cce, #33a);
+  box-shadow: 0 0 20px 5px rgba(100, 100, 255, .3);
+}
+
+.auth a:hover, .regist a:hover {
+    box-shadow: 0 0 20px 5px rgba(100, 100, 255, .7);
+}
+
+
+.regist {
+  margin-left: 10px;
+}
+
+.flex-block {
+  display: flex;
+  align-items: center;
 }

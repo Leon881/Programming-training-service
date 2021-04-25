@@ -1,12 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
 import './style.css';
-import ReturnButton from "../../containers/ReturnButton";
+import Page from "../../constants/Page";
 
-export default function LearningJS (){
+export default function LearningJS ({ onNavigateToPage }){
     return (
         <div className='js-container'>
           <div className='menu'>
+          <Link className='back-ref' to ='/learning'>
+          <div onClick= {()=>onNavigateToPage(Page.learningMenu)} className='button-back'>&lArr; Вернуться</div>
+          </Link>
             <div className='element' onClick={()=>{document.getElementById('test').classList.toggle('open-sub-menu') }}>
               <a  className='elem-title'>Начальный уровень</a>
               <div className='sub-menu' id='test'>
@@ -36,4 +40,5 @@ export default function LearningJS (){
 }
 
 LearningJS.propTypes={
+  onNavigateToPage: PropTypes.func.isRequired,
 };

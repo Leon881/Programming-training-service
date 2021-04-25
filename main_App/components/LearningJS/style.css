@@ -88,3 +88,18 @@
 .js-container a{
     cursor: pointer;
 }
+
+.js-container .button-back{
+    font-size: 20px;
+    background: radial-gradient(ellipse at bottom, #1b2735, #090a0f);
+    padding-left: 18px;
+    text-shadow: 0 0 5px rgb(255 255 255 / 60%);
+}
+
+.js-container .button-back:hover{
+    background: radial-gradient(ellipse at center top, #cce, #33a);
+}
+
+.js-container .back-ref {
+    text-decoration: none;
+}

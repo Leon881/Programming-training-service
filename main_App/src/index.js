@@ -36,6 +36,14 @@ class App extends React.Component {
         <div className="page">
           <header id="header" className="header">
             <div className="header__logo">Programming-training service</div>
+            <div className="profile flex-block">
+              <div className="link auth">
+                  <a href="/account/login">Вход</a>
+              </div>
+              <div className="link regist">
+                 <a href="/account/register">Регистрация</a>
+             </div>
+             </div>
           </header>
           <main className="content">
             <Switch>
