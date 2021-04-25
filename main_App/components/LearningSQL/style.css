@@ -1,4 +1,4 @@
-.sharp-container{
+.sql-container{
     margin-top: 5px;
     display: flex;
     flex-direction: row;
@@ -6,7 +6,7 @@
     position: relative;
 }
 
-.sharp-container .menu{
+.sql-container .menu{
     width: 250px;
     border-radius: 6px;
     overflow: hidden;
@@ -14,12 +14,12 @@
     box-shadow: 0 0 10px 3px rgba(100, 100, 255, .3);
 }
 
-.sharp-container .element{
+.sql-container .element{
     border-top: 1px solid #58d;
     overflow: hidden;
 }
 
-.sharp-container .elem-title{
+.sql-container .elem-title{
     display: block;
     padding: 16px 20px;
     background: #303050;
@@ -29,7 +29,7 @@
     text-decoration: none;
 }
 
-.sharp-container .elem-title::before{
+.sql-container .elem-title::before{
     content: '';
     position: absolute;
     background: #58d;
@@ -39,22 +39,22 @@
     transform: rotate(45deg);
 }
 
-.sharp-container .elem-title:hover {
+.sql-container .elem-title:hover {
 	text-shadow: 0px 0px 10px #fff;
 }
 
-.sharp-container .sub-menu{
+.sql-container .sub-menu{
     background: #58d;
     overflow: hidden;
     transition: 0.3s;
     max-height: 0;
 }
 
-.sharp-container .sub-menu a:hover{
+.sql-container .sub-menu a:hover{
     text-shadow: 0px 0px 10px #fff;
 }
 
-.sharp-container .sub-menu a{
+.sql-container .sub-menu a{
     display: block;
     color: white;
     padding: 16px 26px;
@@ -63,7 +63,7 @@
     position: relative;
 }
 
-.sharp-container .sub-menu a::before{
+.sql-container .sub-menu a::before{
     content: '';
     position: absolute;
     background: white;
@@ -75,17 +75,15 @@
     opacity: 0;
 }
 
-
-.sharp-container .sub-menu a:hover::before{
+.sql-container .sub-menu a:hover::before{
     opacity: 1;   
 }
 
-.sharp-container .open-sub-menu{
+.sql-container .open-sub-menu{
     /*Размер раскрывающегося меню*/
     max-height: 10em;
 }
 
-
-.sharp-container a{
+.sql-container a{
     cursor: pointer;
 }

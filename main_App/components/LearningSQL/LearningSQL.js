@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import './style.css';
 import ReturnButton from "../../containers/ReturnButton";
 
-export default function LearningSharp (){
+export default function LearningSQL (){
     return (
-        <div className='sharp-container'>
+        <div className='sql-container'>
           <div className='menu'>
             <div className='element' onClick={()=>{document.getElementById('test').classList.toggle('open-sub-menu') }}>
               <a  className='elem-title'>Начальный уровень</a>
@@ -35,5 +35,5 @@ export default function LearningSharp (){
     )
 }
 
-LearningSharp.propTypes={
+LearningSQL.propTypes={
 };

@@ -17,12 +17,6 @@ body,
   flex-direction: column;
 }
 
-.header,
-.content,
-.footer {
-    padding: 20px;
-}
-
 .header::after,
 .footer::before {
   content: "";
@@ -47,6 +41,7 @@ body,
   background-repeat: no-repeat;
   background: radial-gradient(ellipse at bottom, #1b2735, #090a0f);
   text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+  padding: 20px;
 }
 
 .header::after {
@@ -65,6 +60,7 @@ body,
   background-repeat: no-repeat;
   overflow: hidden;
   background: radial-gradient(ellipse at bottom, #1b2735, #090a0f);
+  padding: 20px, 20px,20px,0;
 }
 
 .footer {
@@ -75,6 +71,7 @@ body,
   background-repeat: no-repeat;
   background: radial-gradient(ellipse at bottom, #1b2735, #090a0f);
   text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+  padding: 20px;
 }
 
 .footer::before {

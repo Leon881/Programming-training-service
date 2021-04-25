@@ -11,6 +11,9 @@ import Articles from "../containers/Articles";
 import Notes from "../containers/Notes";
 import Tests from "../containers/Tests";
 import LearningNavigation from "../containers/LearningNavigation";
+import LearningSharp from "../containers/LearningSharp";
+import LearningJS from "../containers/LearningJS";
+import LearningSQL from "../containers/LearningSQL";
 import FlashCardsDecks from "../containers/FlashCardsDecks";
 import NotFound from "../containers/NotFound";
 import "./style.css";
@@ -42,6 +45,9 @@ class App extends React.Component {
               <Route exact path="/notes" component={NotesPage} />
               <Route exact path="/tests" component={TestsPage} />
               <Route exact path="/learning" component={LearningPage} />
+              <Route exact path="/learning/sharp" component={LearningSharpPage} />
+              <Route exact path="/learning/js" component={LearningJSPage} />
+              <Route exact path="/learning/sql" component={LearningSQLPage} />
               <Route component={NotFoundPage} />
             </Switch>
           </main>
@@ -114,6 +120,36 @@ class LearningPage extends React.Component {
     return (
       <Provider store={store}>
         <LearningNavigation />
+      </Provider>
+    );
+  }
+}
+
+class LearningSharpPage extends React.Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <LearningSharp/>
+      </Provider>
+    );
+  }
+}
+
+class LearningJSPage extends React.Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <LearningJS/>
+      </Provider>
+    );
+  }
+}
+
+class LearningSQLPage extends React.Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <LearningSQL/>
       </Provider>
     );
   }
