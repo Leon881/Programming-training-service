@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Learning from '../components/Learning/Learning';
+import NotFound from '../components/NotFound/NotFound';
 import { navigateToPage } from '../actionCreators';
 
 export default connect(
@@ -8,5 +8,6 @@ export default connect(
 
     }),
     (dispatch,props) =>({
+        onNavigateToPage: value => dispatch(navigateToPage(value))
     })
-)(Learning)
+)(NotFound)

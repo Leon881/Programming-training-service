@@ -1,0 +1,31 @@
+.learning-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.learning-menu-list{
+    list-style-type: none;
+}
+.learning-menu-list__item {
+    padding: 6px 0;
+}
+.learning-ref{
+    --fill-color: #58d;
+    position: relative;
+    display: block;
+    padding: 4px 0;
+    font: 1000 3.5rem Raleway, sans-serif;
+    text-decoration: none;
+    text-transform: uppercase;
+    -webkit-text-stroke: 2px var(--fill-color);
+    background: linear-gradient(var(--fill-color) 0 100%) left / 0 no-repeat;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    transition: 0.5s linear;
+}
+
+.learning-ref:hover{
+    background-size: 100%;
+}
