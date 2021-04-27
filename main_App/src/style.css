@@ -132,3 +132,8 @@ img {
   display: flex;
   align-items: center;
 }
+
+.title-ref{
+  text-decoration: none;
+  cursor: pointer;
+}

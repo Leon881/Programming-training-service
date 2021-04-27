@@ -6,6 +6,7 @@ import { rootReducer } from "../reducers";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import logger from "redux-logger";
 import { Provider } from "react-redux";
+import Page from "../constants/Page";
 import NavigationMenu from "../containers/NavigationMenu";
 import Articles from "../containers/Articles";
 import Notes from "../containers/Notes";
@@ -17,7 +18,7 @@ import LearningSQL from "../containers/LearningSQL";
 import FlashCardsDecks from "../containers/FlashCardsDecks";
 import NotFound from "../containers/NotFound";
 import "./style.css";
-import { setInformation } from "../actionCreators/index";
+import { navigateToPage } from "../actionCreators/index";
 
 const store = createStore(rootReducer, applyMiddleware(logger));
 
@@ -35,7 +36,7 @@ class App extends React.Component {
       <Provider store={store}>
         <div className="page">
           <header id="header" className="header">
-            <div className="header__logo">Programming-training service</div>
+            <Link className='title-ref' to ='/'><div onClick= {()=>store.dispatch(navigateToPage(Page.mainMenu))} className="header__logo">Programming-training service</div></Link>
             <div className="profile flex-block">
               <div className="link auth">
                   <a href="/account/login">Вход</a>

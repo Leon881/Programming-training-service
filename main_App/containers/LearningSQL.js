@@ -8,6 +8,5 @@ export default connect(
 
     }),
     (dispatch,props) =>({
-        onNavigateToPage: value => dispatch(navigateToPage(value))
     })
 )(LearningSQL)
