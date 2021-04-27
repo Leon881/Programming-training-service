@@ -5,12 +5,12 @@ import Page from "../../constants/Page";
 import AccordionMenu from "../../containers/AccordionMenu";
 import './style.css';
 
-export default function LearningSharp (){
+export default function Learning (){
     return (
       <AccordionMenu/>
     )
 }
 
-LearningSharp.propTypes={
+Learning.propTypes={
   
 };

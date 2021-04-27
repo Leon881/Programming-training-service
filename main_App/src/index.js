@@ -12,9 +12,7 @@ import Articles from "../containers/Articles";
 import Notes from "../containers/Notes";
 import Tests from "../containers/Tests";
 import LearningNavigation from "../containers/LearningNavigation";
-import LearningSharp from "../containers/LearningSharp";
-import LearningJS from "../containers/LearningJS";
-import LearningSQL from "../containers/LearningSQL";
+import Learning from "../containers/Learning";
 import FlashCardsDecks from "../containers/FlashCardsDecks";
 import NotFound from "../containers/NotFound";
 import "./style.css";
@@ -53,10 +51,10 @@ class App extends React.Component {
               <Route exact path="/flashcards" component={FlashCardsPage} />
               <Route exact path="/notes" component={NotesPage} />
               <Route exact path="/tests" component={TestsPage} />
-              <Route exact path="/learning" component={LearningPage} />
-              <Route exact path="/learning/sharp" component={LearningSharpPage} />
-              <Route exact path="/learning/js" component={LearningJSPage} />
-              <Route exact path="/learning/sql" component={LearningSQLPage} />
+              <Route exact path="/learning" component={LearningMenuPage} />
+              <Route exact path="/learning/sharp" component={LearningPage} />
+              <Route exact path="/learning/js" component={LearningPage} />
+              <Route exact path="/learning/sql" component={LearningPage} />
               <Route component={NotFoundPage} />
             </Switch>
           </main>
@@ -124,7 +122,7 @@ class TestsPage extends React.Component {
     );
   }
 }
-class LearningPage extends React.Component {
+class LearningMenuPage extends React.Component {
   render() {
     return (
       <Provider store={store}>
@@ -134,35 +132,16 @@ class LearningPage extends React.Component {
   }
 }
 
-class LearningSharpPage extends React.Component {
+class LearningPage extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <LearningSharp/>
+        <Learning/>
       </Provider>
     );
   }
 }
 
-class LearningJSPage extends React.Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <LearningJS/>
-      </Provider>
-    );
-  }
-}
-
-class LearningSQLPage extends React.Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <LearningSQL/>
-      </Provider>
-    );
-  }
-}
 
 class NotFoundPage extends React.Component {
   render() {

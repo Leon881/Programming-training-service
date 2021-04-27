@@ -5,7 +5,20 @@ export const navigateToPage = page => ({
     page
 });
 
-export const setInformation = value=> ({
-    type: actionTypes.SET_INFORMATION,
+export const setAccordionMenuInf = value => ({
+    type: actionTypes.LOAD_ACCORDION_MENU_INF_SUCCESS,
     value
+});
+
+export const requestAccordionMenuInf = () => ({
+    type: actionTypes.LOAD_ACCORDION_MENU_INF_REQUEST
+});
+
+export const setLearningText = text => ({
+    type: actionTypes.LOAD_LEARNING_TEXT_SUCCESS,
+    text
+});
+
+export const requestLearningText = () => ({
+    type: actionTypes.LOAD_LEARNING_TEXT_REQUEST
 });

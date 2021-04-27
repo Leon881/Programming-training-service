@@ -104,7 +104,7 @@
     text-decoration: none;
 }
 
-.learning-content {
+.main-learning-container .learning-content {
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
@@ -113,14 +113,19 @@
     margin: 5px;
   }
 
-  .learning-text {
+  .main-learning-container  .learning-text {
     width: 85%;
+    max-width: 85%;
+
     min-height: 350px;
     border-radius: 10px;
     background: whitesmoke;
-    color: black;
-    font-size: 20px;
     text-align: center;
     padding: 10px;
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+  }
+
+  .main-learning-container .text {
+    color: black;
+    font-size: 15px;
   }

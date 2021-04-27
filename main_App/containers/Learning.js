@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import LearningSharp from '../components/LearningSharp/LearningSharp';
+import Learning from '../components/Learning/Learning';
 import { navigateToPage } from '../actionCreators';
 
 export default connect(
@@ -9,4 +9,4 @@ export default connect(
     }),
     (dispatch,props) =>({
     })
-)(LearningSharp)
+)(Learning)
