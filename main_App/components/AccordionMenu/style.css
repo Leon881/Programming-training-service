@@ -107,7 +107,7 @@
 .main-learning-container .learning-content {
     flex: 1 1 auto;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     margin: 5px;
@@ -116,7 +116,7 @@
   .main-learning-container  .learning-text {
     width: 85%;
     max-width: 85%;
-
+    position: relative;
     min-height: 350px;
     border-radius: 10px;
     background: whitesmoke;
@@ -127,5 +127,27 @@
 
   .main-learning-container .text {
     color: black;
+    overflow-x:hidden;
     font-size: 15px;
+    width: auto;
+  }
+  .main-learning-container .button-note {
+    display: block;
+    position: absolute;
+    right: 0;
+    top:0;
+    width: 40px;
+    height: 40px;
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: #58d;
+    background-image: url(/src/img/addNote.png);
+    box-shadow: 0 0 20px 5px rgba(100, 100, 255, .4);
+    cursor: pointer;
+    background-blend-mode: color-burn;
+  }
+  .main-learning-container .button-note:hover{
+    box-shadow: 0 0 30px 10px rgba(100, 100, 255, .6);
+    background-color: #ccf;
   }

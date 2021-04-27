@@ -1,13 +1,16 @@
 const Page = {
-    mainMenu: 'mainMenu',
-    articles: 'articles',
-    flashCards: 'flashCards',
-    notes: 'notes',
-    learningMenu: 'learningMenu',
-    tests: 'tests',
-    learningSharp:'learningSharp',
-    learningJS: 'learningJS',
-    learningSQL: 'learningSQL',
+    mainMenu: {text: 'mainMenu', route: '/'},
+    articles: {text: 'articles', route: '/articles'},
+    flashCards: {text: 'flashCards', route: '/flashcards'},
+    notes: {text: 'notes', route: '/notes'},
+    learningMenu: {text: 'learningMenu', route: '/learning'},
+    testsMenu: {text: 'testsMenu', route: '/tests'},
+    learningSharp: {text: 'learningSharp', route: '/learning/sharp'},
+    learningJS: {text: 'learningJS', route: '/learning/js'},
+    learningSQL: {text: 'learningSQL', route: '/learning/sql'},
+    testsSharp: {text: 'testsSharp', route: '/tests/sharp'},
+    testsJS: {text: 'testsJS', route: '/tests/js'},
+    testsSQL: {text: 'testsSQL', route: '/tests/sql'},
 };
 
 export default Page;

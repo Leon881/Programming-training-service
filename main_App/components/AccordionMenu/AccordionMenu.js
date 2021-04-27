@@ -6,11 +6,29 @@ import Status from '../../constants/Status';
 import Loader from "../../containers/Loader"
 import './style.css';
 
-export default function AccordionMenu ({ onNavigateToPage, accordionMenu, learningArea, setLearningText, requestLearningText }){
+export default function AccordionMenu ({ onNavigateToPage, accordionMenu, learningArea, setLearningText, requestLearningText, page }){
   if (accordionMenu.status === Status.loading) return <Loader fontColor='#fff'/>
   const loadText= async (event)=>{
     event.stopPropagation()
+    const ids=event.target.id.split(',');
     await requestLearningText();
+    let route;
+    switch (page){
+   case Page.learningSharp.text: 
+       route='sharp';
+       break;
+   case Page.learningJS.text:
+       route='js';
+       break;
+   case Page.learningSQL.text:
+        route='sql';
+        break;
+   default:
+        break;
+   }
+    const text =await (await fetch(`/api/lessons/${route}?sectionId=${ids[0]}&lessonId=${ids[1]}`)).json();
+    await setLearningText(text);
+
   };
   const menu=[];
   for (let el of accordionMenu.inf){
@@ -18,7 +36,7 @@ export default function AccordionMenu ({ onNavigateToPage, accordionMenu, learni
     <a  className='elem-title'>{el.sectionName}</a>
     <div className='sub-menu' id={el.sectionName}>
       {el.articles.map(function (obj,i){
-        return <a key={obj.id} onClick={loadText}>{obj.name}</a>
+        return <a key={obj.id} id={obj.sectionId + ',' + obj.id} onClick={loadText}>{obj.name}</a>
       }) }
     </div>
     </div>) 
@@ -27,14 +45,16 @@ export default function AccordionMenu ({ onNavigateToPage, accordionMenu, learni
       <div className='main-learning-container'>
         <div className='learning-container'>
           <div className='menu'>
-            <Link className='back-ref' to ='/learning'>
-          <div onClick= {()=>onNavigateToPage(Page.learningMenu)} className='button-back'>&lArr; Вернуться</div>
+            <Link className='back-ref' to ={Page.learningMenu.route}>
+          <div onClick= {()=>onNavigateToPage(Page.learningMenu.text)} className='button-back'>&lArr; Вернуться</div>
           </Link>
             {menu}
           </div>
         </div>
         <div className='learning-content'>
-          <div className='learning-text'>{learningArea.status===Status.loading ? <Loader fontColor='black'/>: <div className='text'>Статья</div>}</div> 
+          <div className='learning-text'>    <button title='Добавить заметку' className='button-note'></button> 
+          {learningArea.status===Status.loading ? <Loader fontColor='black'/>:
+           <div className='text'>Статья </div>}</div> 
         </div>
         </div>
     )
@@ -45,6 +65,7 @@ AccordionMenu.propTypes={
     accordionMenu: PropTypes.object.isRequired,
     learningArea: PropTypes.object.isRequired,
     requestLearningText: PropTypes.func.isRequired,
-    setLearningText: PropTypes.func.isRequired
+    setLearningText: PropTypes.func.isRequired,
+    page: PropTypes.string.isRequired
 
   };

@@ -10,8 +10,7 @@ import Page from "../constants/Page";
 import NavigationMenu from "../containers/NavigationMenu";
 import Articles from "../containers/Articles";
 import Notes from "../containers/Notes";
-import Tests from "../containers/Tests";
-import LearningNavigation from "../containers/LearningNavigation";
+import LanguageNavigation from "../containers/LanguageNavigation";
 import Learning from "../containers/Learning";
 import FlashCardsDecks from "../containers/FlashCardsDecks";
 import NotFound from "../containers/NotFound";
@@ -34,7 +33,7 @@ class App extends React.Component {
       <Provider store={store}>
         <div className="page">
           <header id="header" className="header">
-            <Link className='title-ref' to ='/'><div onClick= {()=>store.dispatch(navigateToPage(Page.mainMenu))} className="header__logo">Programming-training service</div></Link>
+            <Link className='title-ref' to ='/'><div onClick= {()=>store.dispatch(navigateToPage(Page.mainMenu.text))} className="header__logo">Programming-training service</div></Link>
             <div className="profile flex-block">
               <div className="link auth">
                   <a href="/account/login">Вход</a>
@@ -46,15 +45,15 @@ class App extends React.Component {
           </header>
           <main className="content">
             <Switch>
-              <Route exact path="/" component={NavigationMenuPage} />
-              <Route exact path="/articles" component={ArticlesPage} />
-              <Route exact path="/flashcards" component={FlashCardsPage} />
-              <Route exact path="/notes" component={NotesPage} />
-              <Route exact path="/tests" component={TestsPage} />
-              <Route exact path="/learning" component={LearningMenuPage} />
-              <Route exact path="/learning/sharp" component={LearningPage} />
-              <Route exact path="/learning/js" component={LearningPage} />
-              <Route exact path="/learning/sql" component={LearningPage} />
+              <Route exact path={Page.mainMenu.route} component={NavigationMenuPage} />
+              <Route exact path={Page.articles.route} component={ArticlesPage} />
+              <Route exact path={Page.flashCards.route} component={FlashCardsPage} />
+              <Route exact path={Page.notes.route} component={NotesPage} />
+              <Route exact path={Page.testsMenu.route} component={LanguageNavigationPage} />
+              <Route exact path={Page.learningMenu.route} component={LanguageNavigationPage} />
+              <Route exact path={Page.learningSharp.route} component={LearningPage} />
+              <Route exact path={Page.learningJS.route} component={LearningPage} />
+              <Route exact path={Page.learningSQL.route} component={LearningPage} />
               <Route component={NotFoundPage} />
             </Switch>
           </main>
@@ -76,9 +75,7 @@ App.propTypes = {};
 class NavigationMenuPage extends React.Component {
   render() {
     return (
-      <Provider store={store}>
         <NavigationMenu />
-      </Provider>
     );
   }
 }
@@ -86,9 +83,7 @@ class NavigationMenuPage extends React.Component {
 class ArticlesPage extends React.Component {
   render() {
     return (
-      <Provider store={store}>
         <Articles />
-      </Provider>
     );
   }
 }
@@ -96,9 +91,7 @@ class ArticlesPage extends React.Component {
 class FlashCardsPage extends React.Component {
   render() {
     return (
-      <Provider store={store}>
         <FlashCardsDecks />
-      </Provider>
     );
   }
 }
@@ -106,28 +99,15 @@ class FlashCardsPage extends React.Component {
 class NotesPage extends React.Component {
   render() {
     return (
-      <Provider store={store}>
         <Notes />
-      </Provider>
     );
   }
 }
 
-class TestsPage extends React.Component {
+class LanguageNavigationPage extends React.Component {
   render() {
     return (
-      <Provider store={store}>
-        <Tests />
-      </Provider>
-    );
-  }
-}
-class LearningMenuPage extends React.Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <LearningNavigation />
-      </Provider>
+        <LanguageNavigation />
     );
   }
 }
@@ -135,9 +115,7 @@ class LearningMenuPage extends React.Component {
 class LearningPage extends React.Component {
   render() {
     return (
-      <Provider store={store}>
         <Learning/>
-      </Provider>
     );
   }
 }
@@ -146,9 +124,7 @@ class LearningPage extends React.Component {
 class NotFoundPage extends React.Component {
   render() {
     return (
-      <Provider store={store}>
       <NotFound />
-    </Provider>
     );
   }
 }

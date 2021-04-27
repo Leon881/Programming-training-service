@@ -5,7 +5,7 @@ import Status from '../constants/Status';
 import * as actionTypes from '../actionTypes';
 
 
-const pageReducer=createReducer(Page.mainMenu,{[actionTypes.NAVIGATE_TO_PAGE]:(state,action)=>action.page});
+const pageReducer=createReducer(Page.mainMenu.text,{[actionTypes.NAVIGATE_TO_PAGE]:(state,action)=>action.page});
 const accordionMenuReducer=createReducer({inf:[], status: Status.empty},
      {[actionTypes.LOAD_ACCORDION_MENU_INF_SUCCESS]:(state,action)=>({...state, inf:action.value, status: Status.loaded}),
      [actionTypes.LOAD_ACCORDION_MENU_INF_REQUEST]:(state,action)=>({...state, status: Status.loading})});
