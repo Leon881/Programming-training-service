@@ -22,3 +22,12 @@ export const setLearningText = text => ({
 export const requestLearningText = () => ({
     type: actionTypes.LOAD_LEARNING_TEXT_REQUEST
 });
+
+export const setArticles = articles => ({
+    type: actionTypes.LOAD_ARTICLES_SUCCESS,
+    articles
+});
+
+export const requestArticles = () => ({
+    type: actionTypes.LOAD_ARTICLES_REQUEST
+});

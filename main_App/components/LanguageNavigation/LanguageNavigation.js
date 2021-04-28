@@ -2,11 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./style.css";
 import Page from "../../constants/Page";
-import testAccordionMenu from "../../forTests/index"
+import testAccordionMenu from "../../forTests/testAccordionMenu"
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import LearningNavigationText from '../../constants/LearningNavigationText'
 import TestingNavigationText from '../../constants/TestingNavigationText'
-import { requestAccordionMenuInf } from "../../actionCreators";
 
 export default function LanguageNavigation ({ onNavigateToPage, setAccordionMenu, requestAccordionMenu, page}){
     const start= async (event)=>{
@@ -30,15 +29,15 @@ export default function LanguageNavigation ({ onNavigateToPage, setAccordionMenu
        await setAccordionMenu(menu);
     };
     const text= (page===Page.learningMenu.text) ? LearningNavigationText : TestingNavigationText;
-    let menuForm=[];
+    const menuForm=[];
     for (let el of text){
-        menuForm.push(<li key={el.key} className='learning-menu-list__item'>
-        <Link id={el.page.text} onClick={start} className='learning-ref' to={el.page.route}>{el.text}</Link>
+        menuForm.push(<li key={el.key} className='language-menu-list__item'>
+        <Link id={el.page.text} onClick={start} className='language-ref' to={el.page.route}>{el.text}</Link>
     </li>)
     }
  return (
-     <div  className='learning-menu'>
-        <ul className='learning-menu-list' onClick={(event) => onNavigateToPage(event.target.id)}>
+     <div  className='language-menu'>
+        <ul className='language-menu-list' onClick={(event) => onNavigateToPage(event.target.id)}>
            {menuForm}
          </ul>
      </div>
