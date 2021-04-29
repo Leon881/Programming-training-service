@@ -35,7 +35,7 @@ export default function AccordionMenu ({ onNavigateToPage, accordionMenu, learni
     menu.push(<div key={el.id} className='element' onClick={()=>{document.getElementById(el.sectionName).classList.toggle('open-sub-menu') }}>
     <a  className='elem-title'>{el.sectionName}</a>
     <div className='sub-menu' id={el.sectionName}>
-      {el.articles.map(function (obj,i){
+      {el.lessons.map(function (obj,i){
         return <a key={obj.id} id={obj.sectionId + ',' + obj.id} onClick={loadText}>{obj.name}</a>
       }) }
     </div>

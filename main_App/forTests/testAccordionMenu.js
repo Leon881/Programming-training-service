@@ -1,7 +1,7 @@
 const testAccordionMenu= [{
     id:1,
     sectionName: 'Введение',
-    articles: [
+    lessons: [
         {
             id:1,
             sectionId:1,
