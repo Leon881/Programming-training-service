@@ -26,7 +26,7 @@ export default function AccordionMenu ({ onNavigateToPage, accordionMenu, learni
    default:
         break;
    }
-    const text =await (await fetch(`/api/lessons/${route}?sectionId=${ids[0]}&lessonId=${ids[1]}`)).json();
+    const text =await (await fetch(`/api/lessons/${route}/${ids[0]}/${ids[1]}`)).text();
     await setLearningText(text);
 
   };
@@ -35,7 +35,7 @@ export default function AccordionMenu ({ onNavigateToPage, accordionMenu, learni
     menu.push(<div key={el.id} className='element' onClick={()=>{document.getElementById(el.sectionName).classList.toggle('open-sub-menu') }}>
     <a  className='elem-title'>{el.sectionName}</a>
     <div className='sub-menu' id={el.sectionName}>
-      {el.articles.map(function (obj,i){
+      {el.lessons.map(function (obj,i){
         return <a key={obj.id} id={obj.sectionId + ',' + obj.id} onClick={loadText}>{obj.name}</a>
       }) }
     </div>
@@ -54,7 +54,7 @@ export default function AccordionMenu ({ onNavigateToPage, accordionMenu, learni
         <div className='learning-content'>
           <div className='learning-text'>    <button title='Добавить заметку' className='button-note'></button> 
           {learningArea.status===Status.loading ? <Loader fontColor='black'/>:
-           <div className='text'>Статья </div>}</div> 
+           <div className='text' dangerouslySetInnerHTML={{__html:learningArea.text}} ></div>}</div> 
         </div>
         </div>
     )

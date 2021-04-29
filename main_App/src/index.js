@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import logger from "redux-logger";
 import { Provider } from "react-redux";
 import Page from "../constants/Page";
+import testArticle from "../forTests/testArticle"
 import NavigationMenu from "../containers/NavigationMenu";
 import Articles from "../containers/Articles";
 import Notes from "../containers/Notes";
@@ -15,7 +16,7 @@ import Learning from "../containers/Learning";
 import FlashCardsDecks from "../containers/FlashCardsDecks";
 import NotFound from "../containers/NotFound";
 import "./style.css";
-import { navigateToPage } from "../actionCreators/index";
+import { navigateToPage, setArticles, requestArticles } from "../actionCreators/index";
 
 const store = createStore(rootReducer, applyMiddleware(logger));
 
@@ -27,7 +28,6 @@ class App extends React.Component {
   async componentDidMount() {
   
   }
-  
   render() {
     return (
       <Provider store={store}>
@@ -47,6 +47,7 @@ class App extends React.Component {
             <Switch>
               <Route exact path={Page.mainMenu.route} component={NavigationMenuPage} />
               <Route exact path={Page.articles.route} component={ArticlesPage} />
+              <Route  path={`${Page.articles.route}/:id`} component={NotFoundPage} />
               <Route exact path={Page.flashCards.route} component={FlashCardsPage} />
               <Route exact path={Page.notes.route} component={NotesPage} />
               <Route exact path={Page.testsMenu.route} component={LanguageNavigationPage} />
@@ -81,6 +82,12 @@ class NavigationMenuPage extends React.Component {
 }
 
 class ArticlesPage extends React.Component {
+  async componentDidMount() {
+     store.dispatch(requestArticles());
+     //this.articles=await (await fetch('/api/articles')).json();
+     //store.dispatch(setArticles(this.articles));
+     store.dispatch(setArticles(testArticle));
+  }
   render() {
     return (
         <Articles />

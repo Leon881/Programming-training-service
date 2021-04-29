@@ -14,8 +14,14 @@ const accordionMenuReducer=createReducer({inf:[], status: Status.empty},
      {[actionTypes.LOAD_LEARNING_TEXT_SUCCESS]:(state,action)=>({...state, text:action.text, status: Status.loaded}),
      [actionTypes.LOAD_LEARNING_TEXT_REQUEST]:(state,action)=>({...state, status: Status.loading})});
 
+     
+ const ArticlesListReducer=createReducer({articles:[], status: Status.empty},
+    {[actionTypes.LOAD_ARTICLES_SUCCESS]:(state,action)=>({...state, articles:action.articles, status: Status.loaded}),
+    [actionTypes.LOAD_ARTICLES_REQUEST]:(state,action)=>({...state, status: Status.loading})});
+
 export const rootReducer = combineReducers({
     page: pageReducer,
     accordionMenu: accordionMenuReducer,
     learningArea: learningAreaReducer,
+    articlesList: ArticlesListReducer,
 });

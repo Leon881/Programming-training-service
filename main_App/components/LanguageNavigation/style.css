@@ -1,16 +1,16 @@
-.learning-menu {
+.language-menu {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
 }
-.learning-menu-list{
+.language-menu-list{
     list-style-type: none;
 }
-.learning-menu-list__item {
+.language-menu-list__item {
     padding: 6px 0;
 }
-.learning-ref{
+.language-ref{
     --fill-color: #58d;
     position: relative;
     display: block;
@@ -26,6 +26,6 @@
     transition: 0.5s linear;
 }
 
-.learning-ref:hover{
+.language-ref:hover{
     background-size: 100%;
 }
