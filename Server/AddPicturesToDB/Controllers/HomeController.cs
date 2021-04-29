@@ -19,24 +19,25 @@ namespace AddPicturesToDB.Controllers
         }
         public IActionResult Index()
         {
-            return View(_context.LessonsPictures.ToList());
+            var result = _context.LessonsPictures.ToList();
+            return View(result);
         }
 
         [HttpPost]
         public IActionResult Create(LessonPictureViewModel pvm)
         {
             //if ((Int32.TryParse(pvm.position, out int intPosition) == false)
-            LessonPicture newPicture = new LessonPicture { lessonId=1, position=pvm.position,title=pvm.title};
-            if (pvm.picture != null)
+            LessonPicture newPicture = new LessonPicture { LessonId=1, Position=pvm.Position,Title=pvm.Title};
+            if (pvm.Picture != null)
             {
                 byte[] imageData = null;
                 // считываем переданный файл в массив байтов
-                using (var binaryReader = new BinaryReader(pvm.picture.OpenReadStream()))
+                using (var binaryReader = new BinaryReader(pvm.Picture.OpenReadStream()))
                 {
-                    imageData = binaryReader.ReadBytes((int)pvm.picture.Length);
+                    imageData = binaryReader.ReadBytes((int)pvm.Picture.Length);
                 }
                 // установка массива байтов
-                newPicture.picture = imageData;
+                newPicture.Picture = imageData;
             }
             _context.LessonsPictures.Add(newPicture);
             _context.SaveChanges();
