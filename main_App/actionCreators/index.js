@@ -9,3 +9,8 @@ export const setInformation = value=> ({
     type: actionTypes.SET_INFORMATION,
     value
 });
+
+export const setArticlesList = value=> ({
+    type: actionTypes.SET_ARTICLES_LIST,
+    value
+});

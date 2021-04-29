@@ -8,12 +8,14 @@ import logger from 'redux-logger';
 import {Provider} from 'react-redux';
 import NavigationMenu from '../containers/NavigationMenu'
 import Articles from '../containers/Articles';
+import ArticlesList from '../containers/ArticlesList';
 import Notes from '../containers/Notes';
 import Tests from '../containers/Tests';
 import StudySharp from '../containers/StudySharp';
 import FlashCardsDecks from '../containers/FlashCardsDecks';
 import './style.css'
-import {setInformation} from '../actionCreators/index'
+import {setArticlesList, setInformation} from '../actionCreators/index'
+import { SET_ARTICLES_LIST } from "../actionTypes";
 
 const store = createStore(rootReducer, applyMiddleware(logger));
 
@@ -25,8 +27,11 @@ class App extends React.Component {
 
     async componentDidMount() {
        debugger;
-       this.text = await (await fetch('api/lessons/getlesson?id=1')).text();
+       this.text = await (await fetch('api/lessons/1')).text();
+       this.articlesList = await (await fetch('api/lessons')).json();
+       debugger;
        store.dispatch(setInformation(this.text));
+       store.dispatch(setArticlesList(this.articlesList));
     }
     render(){
         return (
@@ -42,7 +47,8 @@ class App extends React.Component {
                 <main className='content'> 
                 <Switch>
                   <Route exact path='/' component={NavigationMenuPage} />
-                  <Route exact path='/articles' component={ArticlesPage} />
+                  <Route exact path='/articles' component={ArticlesListPage} />
+                  <Route exact path='/article' component={ArticlesPage} />
                   <Route exact path='/flashcards' component={FlashCardsPage} />
                   <Route exact path='/notes' component={NotesPage} />
                   <Route exact path='/tests' component={TestsPage} />
@@ -70,6 +76,15 @@ class NavigationMenuPage extends React.Component {
         return (
            <Provider store={store}>
            <NavigationMenu/>
+            </Provider>
+        )
+    }
+}
+class ArticlesListPage extends React.Component {
+    render(){
+        return (
+           <Provider store={store}>
+            <ArticlesList/>
             </Provider>
         )
     }

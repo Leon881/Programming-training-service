@@ -12,17 +12,30 @@ namespace Models
             [MaxLength(50)]
             public string Name { get; set; }
             public string Path { get; set; }
-            //public List<LessonPicture> LessonPictures { get; set; }
+
+            public int SectionId { get; set; }
+            public int SectionTopicId { get; set; }
+            public Section Section { get; set; }
+                       
     }
 
-    //public class LessonPicture
-    //{
-    //    public int LessonId { get; set; }
-    //    [ForeignKey("LessonId")]
-    //    public Lesson Lesson { get; set; }
-    //    public int Position { get; set; }
-    //    [MaxLength(30)]
-    //    public string Title { get; set; }
-    //    public byte[] Picture { get; set; }
-    //}
+    public class Section
+    {
+        public int Id { get; set; }
+        [MaxLength(50)]
+        public int TopicId { get; set; }
+        public Topic Topic { get; set; }
+        public string Name { get; set; }       
+        public List<Lesson> Lessons { get; set; }
+    }
+
+    public class Topic
+    {
+        public int Id { get; set; }
+        [MaxLength(50)]
+        public string Name { get; set; }
+
+        public List<Section> Sections { get; set; }
+    }
+
 }

@@ -11,8 +11,6 @@ namespace DBRepository.Repositories
 {
     public class LessonRepository : BaseRepository, ILessonRepository
     {
-
-
 		public LessonRepository(string connectionString, IRepositoryContextFactory contextFactory) : base(connectionString, contextFactory) { }
 
 		public Lesson GetLesson(int lessonId)
@@ -27,11 +25,11 @@ namespace DBRepository.Repositories
 			}
 		}
 
-		public List<ResponseLesson> GetLessonsList()
+		public List<ResponseSection> GetLessonsList( int topicId)
 		{
 			using (var context = ContextFactory.CreateDbContext(ConnectionString))
 			{
-				return context.Lessons.Select(c => new ResponseLesson { Id = c.Id, Name = c.Name }).ToList();
+				return context.Sections.Select(c => new ResponseSection { TopicId = c.TopicId, Id=c.Id, Name = c.Name, Lessons=c.Lessons}).ToList();
 				
 			}
 		}

@@ -13,7 +13,7 @@ namespace DBRepository.Interfaces
 		void AddLesson(Lesson newLesson);
 		int GetLastLessonId();
 
-		public List<ResponseLesson> GetLessonsList();
+		public List<ResponseSection> GetLessonsList(int topicId);
 		//LessonPicture GetPicture(int lessonId, int imagePosition);
 		//Task DeleteArticle(int ArticleId);
 	}
