@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import StudySharp from '../components/StudySharp/Sharp';
+import Learning from '../components/Learning/Learning';
+import { navigateToPage } from '../actionCreators';
 
 export default connect(
     (state,props) => ({
@@ -8,4 +9,4 @@ export default connect(
     }),
     (dispatch,props) =>({
     })
-)(StudySharp)
+)(Learning)

@@ -1,17 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
-import ReturnButton from "../../containers/ReturnButton";
+import {BrowserRouter as Router, Switch, Route, Link, useRouteMatch} from 'react-router-dom'
+import Status from '../../constants/Status';
+import Page from "../../constants/Page";
+import Loader from "../../containers/Loader"
+import './style.css';
 
-export default function Articles ({text}) {
+export default function Articles ({articlesList, onNavigateToPage}) {
+  if (articlesList.status === Status.loading) return <Loader fontColor='#fff'/>
+  const articlesForm=[];
+  for (let el of articlesList.articles){
+    articlesForm.push( <Link className='article-ref'  key={el.id} to={`${Page.articles.route}/${el.id}`} ><article  className='article-item'> 
+    <div className='image' id={el.id} style={{'backgroundImage':`url(${el.image})`}}></div>
+    <div id={el.id} className='article-data'>
+      <div className='title' id={el.id}>{el.title}</div>
+      <div id={el.id} className className='description'>{el.description}</div>
+       <div id={el.id} className='info'>{el.date} / {el.author}</div>
+       </div></article></Link>)
+
+  }
     return (
-        <div>
-        <ReturnButton/>
-      <p>Статьи</p>\
-      <div dangerouslySetInnerHTML={{__html:text}}></div>
+    <div className='articles-menu'>
+      <div className='articles-menu-list' onClick={(event) => onNavigateToPage('Статья № '+ event.target.id)}>
+        {articlesForm}
       </div>
+   </div>
+      
     )
 }
 
 Articles.propTypes = {
+  articlesList: PropTypes.object.isRequired,
+  onNavigateToPage: PropTypes.func.isRequired,
 }
