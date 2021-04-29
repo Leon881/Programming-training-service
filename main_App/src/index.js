@@ -85,6 +85,7 @@ class ArticlesPage extends React.Component {
   async componentDidMount() {
      store.dispatch(requestArticles());
      //this.articles=await (await fetch('/api/articles')).json();
+     //store.dispatch(setArticles(this.articles));
      store.dispatch(setArticles(testArticle));
   }
   render() {

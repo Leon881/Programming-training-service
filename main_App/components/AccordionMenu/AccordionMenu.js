@@ -26,7 +26,7 @@ export default function AccordionMenu ({ onNavigateToPage, accordionMenu, learni
    default:
         break;
    }
-    const text =await (await fetch(`/api/lessons/${route}?sectionId=${ids[0]}&lessonId=${ids[1]}`)).json();
+    const text =await (await fetch(`/api/lessons/${route}/${ids[0]}/${ids[1]}`)).text();
     await setLearningText(text);
 
   };
@@ -54,7 +54,7 @@ export default function AccordionMenu ({ onNavigateToPage, accordionMenu, learni
         <div className='learning-content'>
           <div className='learning-text'>    <button title='Добавить заметку' className='button-note'></button> 
           {learningArea.status===Status.loading ? <Loader fontColor='black'/>:
-           <div className='text'>Статья </div>}</div> 
+           <div className='text' dangerouslySetInnerHTML={{__html:learningArea.text}} ></div>}</div> 
         </div>
         </div>
     )

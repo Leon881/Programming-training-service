@@ -24,8 +24,8 @@ export default function LanguageNavigation ({ onNavigateToPage, setAccordionMenu
              break;
         }
         await requestAccordionMenu();
-       // const menu=await (await fetch(`/api/lessons/${route}`)).json();
-        const menu=testAccordionMenu; 
+       const menu=await (await fetch(`/api/lessons/${route}`)).json();
+        //const menu=testAccordionMenu; 
        await setAccordionMenu(menu);
     };
     const text= (page===Page.learningMenu.text) ? LearningNavigationText : TestingNavigationText;
