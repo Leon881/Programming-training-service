@@ -14,7 +14,7 @@ namespace Models
     public class ResponseSection
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string SectionName { get; set; }
 
         public int TopicId { get; set; }
 

@@ -32,7 +32,7 @@ namespace TrainingService.Controllers
             List<ResponseSection> result = null; ;
             switch (topicString)
             {
-                case "csharp":
+                case "sharp":
                     result=_lessonRepository.GetLessonsList(1);
                     break;
                 case "js":
@@ -45,14 +45,23 @@ namespace TrainingService.Controllers
             return new JsonResult(result);
         }
 
-        [Route("{lessonId:int}")]
+        [Route("{topicString:maxlength(10)}/{sectionId:int}/{lessonId:int}")]
         [HttpGet]
-        public VirtualFileResult GetLesson(int lessonId)
+        public VirtualFileResult GetLesson(string topicString, int sectionId, int lessonId)
         {
-            //if ((Int32.TryParse(id, out int lessonId) == false) || (lessonId < 1)) return null;
-            Lesson result = _lessonRepository.GetLesson(lessonId);
-            //string file_path = Path.Combine(_appEnvironment.WebRootPath, result.Path);
-            // Тип файла - content-type
+            Lesson result = null;
+            switch (topicString)
+            {
+                case "sharp":
+                    result = _lessonRepository.GetLesson(1, sectionId, lessonId);
+                    break;
+                case "js":
+                    result = _lessonRepository.GetLesson(2, sectionId, lessonId);
+                    break;
+                case "sql":
+                    result = _lessonRepository.GetLesson(3, sectionId, lessonId);
+                    break;
+            }          
             string file_type = "text/html";
             return File(result.Path, file_type);
             //return Redirect(result.Path);
@@ -73,7 +82,7 @@ namespace TrainingService.Controllers
         {
             if (uploadedNewLessonHTML != null)
             {
-                //string newId = (_lessonRepository.GetLastLessonId() + 1).ToString();
+                int newId = _lessonRepository.GetLastLessonId(topicId, sectionId) + 1;
                 ////формируем путь к папке с уроками
                 string newLessonFolderPath = _appEnvironment.WebRootPath + "/Files/Lessons";
                 ////создаем папку с id нового урока
@@ -86,7 +95,7 @@ namespace TrainingService.Controllers
                     await uploadedNewLessonHTML.CopyToAsync(fileStream);
                 }
 
-                Lesson newLesson = new Lesson { Name = newLessonName, Path = "/Files/Lessons/" + uploadedNewLessonHTML.FileName,SectionId=sectionId,SectionTopicId=topicId };
+                Lesson newLesson = new Lesson { Id=newId, Name = newLessonName, Path = "/Files/Lessons/" + uploadedNewLessonHTML.FileName,SectionId=sectionId,SectionTopicId=topicId };
                 _lessonRepository.AddLesson(newLesson);
             }
 

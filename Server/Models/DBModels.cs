@@ -15,7 +15,6 @@ namespace Models
 
             public int SectionId { get; set; }
             public int SectionTopicId { get; set; }
-            public Section Section { get; set; }
                        
     }
 

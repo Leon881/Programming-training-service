@@ -13,14 +13,13 @@ namespace DBRepository.Repositories
     {
 		public LessonRepository(string connectionString, IRepositoryContextFactory contextFactory) : base(connectionString, contextFactory) { }
 
-		public Lesson GetLesson(int lessonId)
+		public Lesson GetLesson(int topicId, int sectionId, int lessonId)
 		{
 			var result = new Lesson();
 
 			using (var context = ContextFactory.CreateDbContext(ConnectionString))
 			{
-				result = context.Lessons.Where(Lesson => Lesson.Id == lessonId).ToList()[0];
-				//result.LessonPictures = context.LessonsPictures.Where(Picture => (Picture.LessonId == lessonId)).ToList();
+				result = context.Lessons.Where(Lesson => Lesson.Id == lessonId && Lesson.SectionId == sectionId && Lesson.SectionTopicId == topicId).ToList()[0];
 				return result;
 			}
 		}
@@ -29,17 +28,17 @@ namespace DBRepository.Repositories
 		{
 			using (var context = ContextFactory.CreateDbContext(ConnectionString))
 			{
-				return context.Sections.Select(c => new ResponseSection { TopicId = c.TopicId, Id=c.Id, Name = c.Name, Lessons=c.Lessons}).ToList();
+				return context.Sections.Select(c => new ResponseSection { TopicId = c.TopicId, Id=c.Id, SectionName = c.Name, Lessons=c.Lessons}).ToList();
 				
 			}
 		}
 
-		public int GetLastLessonId()
+		public int GetLastLessonId(int topicId, int sectionId)
 		{			
 			using (var context = ContextFactory.CreateDbContext(ConnectionString))
 			{
-				var articlesList = context.Lessons.ToList();
-				return (articlesList.Count()==0) ?  0 : articlesList.Last().Id;
+				var lessonsList = context.Lessons.Where(Lesson => Lesson.SectionId == sectionId && Lesson.SectionTopicId == topicId).ToList();
+				return (lessonsList.Count()==0) ?  0 : lessonsList.Last().Id;
 			}
 		}
 
