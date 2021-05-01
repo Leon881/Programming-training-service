@@ -8,7 +8,7 @@ import LearningNavigationText from '../../constants/LearningNavigationText'
 import TestingNavigationText from '../../constants/TestingNavigationText'
 
 export default function LanguageNavigation ({ onNavigateToPage, setAccordionMenu, requestAccordionMenu, page}){
-    const start= async (event)=>{
+    const openMenu= async (event)=>{
         let route;
          switch (event.target.id){
         case Page.learningSharp.text: 
@@ -24,15 +24,15 @@ export default function LanguageNavigation ({ onNavigateToPage, setAccordionMenu
              break;
         }
         await requestAccordionMenu();
-       const menu=await (await fetch(`/api/lessons/${route}`)).json();
-        //const menu=testAccordionMenu; 
+       //const menu=await (await fetch(`/api/lessons/${route}`)).json();
+         const menu=testAccordionMenu; 
        await setAccordionMenu(menu);
     };
     const text= (page===Page.learningMenu.text) ? LearningNavigationText : TestingNavigationText;
     const menuForm=[];
     for (let el of text){
         menuForm.push(<li key={el.key} className='language-menu-list__item'>
-        <Link id={el.page.text} onClick={start} className='language-ref' to={el.page.route}>{el.text}</Link>
+        <Link id={el.page.text} onClick={openMenu} className='language-ref' to={el.page.route}>{el.text}</Link>
     </li>)
     }
  return (

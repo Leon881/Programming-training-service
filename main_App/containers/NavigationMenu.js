@@ -5,6 +5,7 @@ import { navigateToPage } from '../actionCreators';
 
 export default connect(
     (state,props) => ({
+        auth: JSON.stringify(state.userInformation) === '{}'
 
     }),
     (dispatch,props) =>({
