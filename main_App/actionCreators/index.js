@@ -23,6 +23,10 @@ export const requestLearningText = () => ({
     type: actionTypes.LOAD_LEARNING_TEXT_REQUEST
 });
 
+export const setLearningTextDefault = () => ({
+    type: actionTypes.SET_LEARNING_TEXT_DEFAULT
+});
+
 export const setArticles = articles => ({
     type: actionTypes.LOAD_ARTICLES_SUCCESS,
     articles
@@ -30,4 +34,9 @@ export const setArticles = articles => ({
 
 export const requestArticles = () => ({
     type: actionTypes.LOAD_ARTICLES_REQUEST
+});
+
+export const setUserInformation = (data) => ({
+    type: actionTypes.SET_USER_INFORMATION,
+    data
 });

@@ -6,22 +6,27 @@ import * as actionTypes from '../actionTypes';
 
 
 const pageReducer=createReducer(Page.mainMenu.text,{[actionTypes.NAVIGATE_TO_PAGE]:(state,action)=>action.page});
+
 const accordionMenuReducer=createReducer({inf:[], status: Status.empty},
      {[actionTypes.LOAD_ACCORDION_MENU_INF_SUCCESS]:(state,action)=>({...state, inf:action.value, status: Status.loaded}),
      [actionTypes.LOAD_ACCORDION_MENU_INF_REQUEST]:(state,action)=>({...state, status: Status.loading})});
 
  const learningAreaReducer=createReducer({text:[], status: Status.empty},
      {[actionTypes.LOAD_LEARNING_TEXT_SUCCESS]:(state,action)=>({...state, text:action.text, status: Status.loaded}),
-     [actionTypes.LOAD_LEARNING_TEXT_REQUEST]:(state,action)=>({...state, status: Status.loading})});
+     [actionTypes.LOAD_LEARNING_TEXT_REQUEST]:(state,action)=>({...state, status: Status.loading}),
+    [actionTypes.SET_LEARNING_TEXT_DEFAULT]:(state,action)=>({text:[], status: Status.empty})});
 
      
- const ArticlesListReducer=createReducer({articles:[], status: Status.empty},
+ const articlesListReducer=createReducer({articles:[], status: Status.empty},
     {[actionTypes.LOAD_ARTICLES_SUCCESS]:(state,action)=>({...state, articles:action.articles, status: Status.loaded}),
     [actionTypes.LOAD_ARTICLES_REQUEST]:(state,action)=>({...state, status: Status.loading})});
+
+const userInformationReducer = createReducer({},{[actionTypes.SET_USER_INFORMATION]:(state,action)=>action.data});
 
 export const rootReducer = combineReducers({
     page: pageReducer,
     accordionMenu: accordionMenuReducer,
     learningArea: learningAreaReducer,
-    articlesList: ArticlesListReducer,
+    articlesList: articlesListReducer,
+    userInformation: userInformationReducer
 });

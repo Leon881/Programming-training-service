@@ -22,7 +22,7 @@ const testAccordionMenu= [{
 {
     id:2,
     sectionName: 'ООП',
-    articles: [
+    lessons: [
         {
             id:1,
             sectionId:2,

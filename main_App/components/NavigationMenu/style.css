@@ -77,7 +77,6 @@
   }
   .left {
     transform: translateX(-30px) translateZ(-25px) rotateY(-5deg);
-    background-image: url(/src/img/notes.png);
   }
   .center {
     opacity: 1;
@@ -85,11 +84,9 @@
   }
   .right {
     transform: translateX(30px) translateZ(-25px) rotateY(5deg);
-    background-image: url(/src/img/test.png);
   }
   .righter {
     transform: translateX(60px) translateZ(-50px) rotateY(10deg);
-    background-image: url(/src/img/cards.png);
   }
  .explainer {
     font-weight: 300;

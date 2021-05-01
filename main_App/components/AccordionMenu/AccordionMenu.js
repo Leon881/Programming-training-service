@@ -5,8 +5,9 @@ import Page from "../../constants/Page";
 import Status from '../../constants/Status';
 import Loader from "../../containers/Loader"
 import './style.css';
+import LearningArea from '../../containers/LearningArea';
 
-export default function AccordionMenu ({ onNavigateToPage, accordionMenu, learningArea, setLearningText, requestLearningText, page }){
+export default function AccordionMenu ({ onNavigateToPage, accordionMenu, setLearningText, requestLearningText, setLearningTextDefault, page }){
   if (accordionMenu.status === Status.loading) return <Loader fontColor='#fff'/>
   const loadText= async (event)=>{
     event.stopPropagation()
@@ -26,7 +27,8 @@ export default function AccordionMenu ({ onNavigateToPage, accordionMenu, learni
    default:
         break;
    }
-    const text =await (await fetch(`/api/lessons/${route}/${ids[0]}/${ids[1]}`)).text();
+    //const text =await (await fetch(`/api/lessons/${route}/${ids[0]}/${ids[1]}`)).text();
+    const text='dsfd';
     await setLearningText(text);
 
   };
@@ -46,16 +48,12 @@ export default function AccordionMenu ({ onNavigateToPage, accordionMenu, learni
         <div className='learning-container'>
           <div className='menu'>
             <Link className='back-ref' to ={Page.learningMenu.route}>
-          <div onClick= {()=>onNavigateToPage(Page.learningMenu.text)} className='button-back'>&lArr; Вернуться</div>
+          <div onClick= {()=>{onNavigateToPage(Page.learningMenu.text); setLearningTextDefault()}} className='button-back'>&lArr; Вернуться</div>
           </Link>
             {menu}
           </div>
         </div>
-        <div className='learning-content'>
-          <div className='learning-text'>    <button title='Добавить заметку' className='button-note'></button> 
-          {learningArea.status===Status.loading ? <Loader fontColor='black'/>:
-           <div className='text' dangerouslySetInnerHTML={{__html:learningArea.text}} ></div>}</div> 
-        </div>
+        <LearningArea pageIndication={true} />
         </div>
     )
 }
@@ -63,9 +61,9 @@ export default function AccordionMenu ({ onNavigateToPage, accordionMenu, learni
 AccordionMenu.propTypes={
     onNavigateToPage: PropTypes.func.isRequired,
     accordionMenu: PropTypes.object.isRequired,
-    learningArea: PropTypes.object.isRequired,
     requestLearningText: PropTypes.func.isRequired,
     setLearningText: PropTypes.func.isRequired,
-    page: PropTypes.string.isRequired
+    page: PropTypes.string.isRequired,
+    setLearningTextDefault: PropTypes.func.isRequired
 
   };
