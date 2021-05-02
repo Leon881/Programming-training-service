@@ -12,7 +12,8 @@ export default function NavigationMenu({ onNavigateToPage, auth }) {
         <Link id={Page.articles.text} className="block-menu lefter" to={Page.articles.route}>
           <span className="menu-text">Статьи</span>
         </Link>
-        <Link id={Page.notes.text} style={auth ? {'backgroundImage':'url(/src/img/lock.png)', 'pointerEvents': 'none'}: {'backgroundImage':'url(/src/img/notes.png)'}} 
+        <Link id={Page.notes.text} style={auth ? {'backgroundImage':'url(/src/img/lock.png)', 'backgroundColor': 'rgb(25, 50, 90)',
+         'pointerEvents': 'none'}: {'backgroundImage':'url(/src/img/notes.png)'}} 
         className="block-menu left" to={Page.notes.route}>
           <span className="menu-text">Заметки</span>
         </Link>
@@ -22,11 +23,13 @@ export default function NavigationMenu({ onNavigateToPage, auth }) {
           </div>
           <span className="menu-text">Обучение</span>
         </Link>
-        <Link id={Page.testsMenu.text} style={auth ? {'backgroundImage':'url(/src/img/lock.png)', 'pointerEvents': 'none'}: {'backgroundImage':'url(/src/img/test.png)'}}
+        <Link id={Page.testsMenu.text} style={auth ? {'backgroundImage':'url(/src/img/lock.png)', 'backgroundColor': 'rgb(25, 50, 90)',
+        'pointerEvents': 'none'}: {'backgroundImage':'url(/src/img/test.png)'}}
          className="block-menu right " to={Page.testsMenu.route}>
           <span className="menu-text">Тесты</span>
         </Link>
-        <Link id={Page.flashCards.text} style={auth ? {'backgroundImage':'url(/src/img/lock.png)', 'pointerEvents': 'none'}: {'backgroundImage':'url(/src/img/cards.png)'}}
+        <Link id={Page.flashCards.text} style={auth ? {'backgroundImage':'url(/src/img/lock.png)', 'backgroundColor': 'rgb(25, 50, 90)',
+         'pointerEvents': 'none'}: {'backgroundImage':'url(/src/img/cards.png)'}}
         className="block-menu righter" to={Page.flashCards.route}>
           <span className="menu-text">Флешкарты</span>
         </Link>

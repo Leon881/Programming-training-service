@@ -17,7 +17,8 @@ import Learning from "../containers/Learning";
 import FlashCardsDecks from "../containers/FlashCardsDecks";
 import NotFound from "../containers/NotFound";
 import "./style.css";
-import { navigateToPage, setArticles, requestArticles, setUserInformation } from "../actionCreators/index";
+import { navigateToPage, setArticles, requestArticles, setLearningTextDefault, setUserInformation } from "../actionCreators/index";
+
 
 const store = createStore(rootReducer, applyMiddleware(logger));
 
@@ -35,7 +36,8 @@ class App extends React.Component {
       <Provider store={store}>
         <div className="page">
           <header id="header" className="header">
-            <Link className='title-ref' to ='/'><div onClick= {()=>store.dispatch(navigateToPage(Page.mainMenu.text))} className="header__logo">Programming-training service</div></Link>
+            <Link className='title-ref' to ='/'><div onClick= {()=>{store.dispatch(navigateToPage(Page.mainMenu.text)); store.dispatch(setLearningTextDefault()); }}
+             className="header__logo">Programming-training service</div></Link>
             <div className="profile flex-block">
               <div className="link auth">
                   <a href="/account/login">Вход</a>
