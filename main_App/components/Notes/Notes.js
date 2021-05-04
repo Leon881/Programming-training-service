@@ -13,8 +13,12 @@ export default function Notes ({notesList}){
         <div className='note-text'>{note.text}</div></div>)
     }
     return (
+        <div className='main-notes-field'>
+        <div className='nav'><div className='back-ref'>&lArr; Вернуться</div>
+        <div title='Создать новую заметку' className='create-ref'>&#10010; Создать</div></div>
         <div className='notes-field'>
        {notesForm}
+        </div>
         </div>
 
     )

@@ -9,7 +9,8 @@ import './style.css';
 
 export default function ArticlePage (){
     return (
-        <div><LearningArea pageIndication={false} /></div>
+        <div className='article-field'> <div className='nav'><div className='back-ref'>&lArr; Вернуться</div></div>
+            <LearningArea pageIndication={false} /></div>
     )
 }
 
