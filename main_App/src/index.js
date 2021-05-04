@@ -25,11 +25,14 @@ const store = createStore(rootReducer, applyMiddleware(logger));
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state={auth:false};
   }
 
   async componentDidMount() {
   //this.authorization=await (await fetch('/account/checkout')).json();
-  //await store.dispatch(setUserInformation({name:'Ivan'}));
+  this.authorization={userName:'Ivan'};
+  this.setState({auth: JSON.stringify(this.authorization) !== '{}'})
+  await store.dispatch(setUserInformation(this.authorization));
   }
   render() {
     return (
@@ -39,12 +42,15 @@ class App extends React.Component {
             <Link className='title-ref' to ='/'><div onClick= {()=>{store.dispatch(navigateToPage(Page.mainMenu.text)); store.dispatch(setLearningTextDefault()); }}
              className="header__logo">Programming-training service</div></Link>
             <div className="profile flex-block">
-              <div className="link auth">
+              {this.state.auth || <div className="link auth">
                   <a href="/account/login">Вход</a>
-              </div>
-              <div className="link regist">
+              </div>}
+              {this.state.auth || <div className="link regist">
                  <a href="/account/register">Регистрация</a>
-             </div>
+             </div>}
+             {this.state.auth && <span>{this.authorization.userName}</span>}
+             {this.state.auth && <div className="link logout">
+                     <a href="/account/logout">Выход</a> </div>}
              </div>
           </header>
           <main className="content">
