@@ -5,6 +5,7 @@ import Notes from '../components/Notes/Notes';
 
 export default connect(
     (state,props) => ({
+        notesList: state.notesList
     }),
     (dispatch,props) =>({
 

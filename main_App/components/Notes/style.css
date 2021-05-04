@@ -1,0 +1,51 @@
+.notes-field {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    height: 100%;
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
+
+.note-form{
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    width: 350px;
+    height: 230px;
+    background-color: brown;
+    border: 1px solid #fff;
+    background-color: #303050;
+    background-image: radial-gradient(circle at center top, #cce, #33a);
+    box-shadow: 0 0 20px 5px rgba(100, 100, 255, .3);
+}
+
+.note-form:hover {
+    transform: scale(1.2);
+    margin: 10px;
+    box-shadow: 0 0 30px 10px rgba(100, 100, 255, .4);
+}
+
+.note-form .note-title{
+    margin-top: 5px;
+    background-color: whitesmoke;
+    color: black;
+    text-align: center;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    overflow-x: auto;
+    height: 30px;
+    font-size: 18px;
+}
+
+.note-form .note-text{
+    background-color: whitesmoke;
+    color: black;
+    text-align: center;
+    height: 100%;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    overflow-y: auto;
+    font-size: 15px;
+}

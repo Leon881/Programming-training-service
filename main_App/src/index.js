@@ -17,7 +17,8 @@ import Learning from "../containers/Learning";
 import FlashCardsDecks from "../containers/FlashCardsDecks";
 import NotFound from "../containers/NotFound";
 import "./style.css";
-import { navigateToPage, setArticles, requestArticles, setLearningTextDefault, setUserInformation } from "../actionCreators/index";
+import { navigateToPage, setArticles, requestArticles, setLearningTextDefault, requestNotes, setNotes,
+   setUserInformation } from "../actionCreators/index";
 
 
 const store = createStore(rootReducer, applyMiddleware(logger));
@@ -122,6 +123,14 @@ class FlashCardsPage extends React.Component {
 }
 
 class NotesPage extends React.Component {
+  async componentDidMount() {
+    const notes=[{id:1, title:'Заметка 1', text:'Текст 1'},{id:2, title:'Заметка 2', text:'Текст 2'},
+    {id:3, title:'Заметка 3', text:'Текст 3'}, {id:4, title:'Заметка 4', text:'Текст 4'}];
+    store.dispatch(requestNotes());
+     //this.notes=await (await fetch('/api/notes')).json();
+     //store.dispatch(setArticles(this.notes));
+     store.dispatch(setNotes(notes));
+  }
   render() {
     return (
         <Notes />
