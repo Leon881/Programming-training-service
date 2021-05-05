@@ -8,6 +8,7 @@
     flex-direction: row;
     z-index: 1; 
     position: relative;
+    margin-bottom: 10px;
 }
 
 .learning-container .menu{

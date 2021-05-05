@@ -48,7 +48,7 @@ export default function AccordionMenu ({ onNavigateToPage, accordionMenu, setLea
         <div className='learning-container'>
           <div className='menu'>
             <Link className='back-ref' to ={Page.learningMenu.route}>
-          <div onClick= {()=>{onNavigateToPage(Page.learningMenu.text); setLearningTextDefault()}} className='button-back'>&lArr; Вернуться</div>
+          <div onClick= {()=>{onNavigateToPage(Page.learningMenu.text); setLearningTextDefault()}} className='button-back'>&#11013; Вернуться</div>
           </Link>
             {menu}
           </div>

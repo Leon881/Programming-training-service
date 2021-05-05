@@ -21,6 +21,11 @@
     border-right: 3px solid #fff;
     box-shadow: 0 0 20px 5px rgb(100 100 255 / 40%);
     padding: 5px;
+    cursor: pointer;
+}
+
+.main-notes-field a{
+    text-decoration: none;
 }
 
 .main-notes-field .nav .back-ref:hover, .create-ref:hover{
@@ -99,3 +104,4 @@
     font-size: 15px;
     border-radius: 10px;
 }
+
