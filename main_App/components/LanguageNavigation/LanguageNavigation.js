@@ -36,10 +36,15 @@ export default function LanguageNavigation ({ onNavigateToPage, setAccordionMenu
     </li>)
     }
  return (
+     <div className='main-language-menu'>
+    <div className='nav'>
+      <Link to={Page.mainMenu.route}> <div  onClick= {()=>{onNavigateToPage(Page.mainMenu.text)}}
+        className='back-ref'>&#11013; Вернуться</div></Link></div> 
      <div  className='language-menu'>
         <ul className='language-menu-list' onClick={(event) => onNavigateToPage(event.target.id)}>
            {menuForm}
          </ul>
+     </div>
      </div>
  );
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import AccordionMenu from '../components/AccordionMenu/AccordionMenu';
-import { navigateToPage, setLearningText, requestLearningText, setLearningTextDefault } from '../actionCreators';
+import { navigateToPage, setLearningText, requestLearningText } from '../actionCreators';
 
 export default connect(
     (state, props) => ({
@@ -12,6 +12,5 @@ export default connect(
         onNavigateToPage: value => dispatch(navigateToPage(value)),
         setLearningText: text => dispatch(setLearningText(text)),
         requestLearningText: () => dispatch(requestLearningText()),
-        setLearningTextDefault: ()=> dispatch(setLearningTextDefault()),
     })
 )(AccordionMenu);
