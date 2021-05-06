@@ -26,10 +26,15 @@ export default function Articles ({articlesList, onNavigateToPage, setLearningTe
 
   }
     return (
+      <div class='main-articles-menu'>
+          <div className='nav'>
+           <Link to={Page.mainMenu.route}> <div  onClick= {()=>{onNavigateToPage(Page.mainMenu.text)}}
+            className='back-ref'>&#11013; Вернуться</div></Link></div> 
     <div className='articles-menu'>
       <div className='articles-menu-list' onClick={(event) => onNavigateToPage('Статья № '+ event.target.id)}>
         {articlesForm}
       </div>
+   </div>
    </div>
       
     )

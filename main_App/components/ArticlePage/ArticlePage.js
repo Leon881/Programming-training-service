@@ -7,11 +7,15 @@ import Loader from "../../containers/Loader";
 import LearningArea from "../../containers/LearningArea";
 import './style.css';
 
-export default function ArticlePage (){
+export default function ArticlePage ({onNavigateToPage}){
     return (
-        <div><LearningArea pageIndication={false} /></div>
+        <div className='article-field'> <div className='nav'>
+           <Link to={Page.articles.route}> <div  onClick= {()=>{onNavigateToPage(Page.articles.text)}}
+            className='back-ref'>&#11013; Вернуться</div></Link></div> 
+            <LearningArea pageIndication={false} /></div>
     )
 }
 
 ArticlePage.propTypes={
+    onNavigateToPage: PropTypes.func.isRequired
 };

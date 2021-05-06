@@ -8,6 +8,7 @@
     flex-direction: row;
     z-index: 1; 
     position: relative;
+    margin-bottom: 10px;
 }
 
 .learning-container .menu{
@@ -87,20 +88,5 @@
 
 .learning-container a{
     cursor: pointer;
-}
-
-.learning-container .button-back{
-    font-size: 20px;
-    background: radial-gradient(ellipse at bottom, #1b2735, #090a0f);
-    padding-left: 18px;
-    text-shadow: 0 0 5px rgb(255 255 255 / 60%);
-}
-
-.learning-container .button-back:hover{
-    background: radial-gradient(ellipse at center top, #cce, #33a);
-}
-
-.learning-container .back-ref {
-    text-decoration: none;
 }
 

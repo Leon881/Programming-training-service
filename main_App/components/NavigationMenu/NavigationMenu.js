@@ -5,7 +5,6 @@ import Page from "../../constants/Page";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 export default function NavigationMenu({ onNavigateToPage, auth }) {
-  console.log(auth);
   return (
     <div className="main-menu">
       <div className="main-menu__inner" onClick={(event) => event.target.id!=='' ? onNavigateToPage(event.target.id):null}>

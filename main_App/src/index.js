@@ -13,23 +13,27 @@ import Articles from "../containers/Articles";
 import ArticlePage from "../containers/ArticlePage";
 import Notes from "../containers/Notes";
 import LanguageNavigation from "../containers/LanguageNavigation";
+import TestsNavigation from "../containers/TestsNavigation";
 import Learning from "../containers/Learning";
 import FlashCardsDecks from "../containers/FlashCardsDecks";
 import NotFound from "../containers/NotFound";
 import "./style.css";
-import { navigateToPage, setArticles, requestArticles, setLearningTextDefault, setUserInformation } from "../actionCreators/index";
-
+import { navigateToPage, setArticles, requestArticles, setLearningTextDefault, requestNotes, setNotes,
+   setUserInformation } from "../actionCreators/index";
 
 const store = createStore(rootReducer, applyMiddleware(logger));
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state={auth:false};
   }
 
   async componentDidMount() {
   //this.authorization=await (await fetch('/account/checkout')).json();
-  //await store.dispatch(setUserInformation({name:'Ivan'}));
+  this.authorization={userName:'Ivan'};
+  this.setState({auth: JSON.stringify(this.authorization) !== '{}'})
+  await store.dispatch(setUserInformation(this.authorization));
   }
   render() {
     return (
@@ -39,12 +43,15 @@ class App extends React.Component {
             <Link className='title-ref' to ='/'><div onClick= {()=>{store.dispatch(navigateToPage(Page.mainMenu.text)); store.dispatch(setLearningTextDefault()); }}
              className="header__logo">Programming-training service</div></Link>
             <div className="profile flex-block">
-              <div className="link auth">
+              {this.state.auth || <div className="link auth">
                   <a href="/account/login">Вход</a>
-              </div>
-              <div className="link regist">
+              </div>}
+              {this.state.auth || <div className="link regist">
                  <a href="/account/register">Регистрация</a>
-             </div>
+             </div>}
+             {this.state.auth && <span>{this.authorization.userName}</span>}
+             {this.state.auth && <div className="link logout">
+                     <a href="/account/logout">Выход</a> </div>}
              </div>
           </header>
           <main className="content">
@@ -52,6 +59,9 @@ class App extends React.Component {
               <Route exact path={Page.mainMenu.route} component={NavigationMenuPage} />
               <Route exact path={Page.articles.route} component={ArticlesPage} />
               <Route  path={`${Page.articles.route}/:id`} component={LearningArticlePage } />
+              <Route exact path={Page.testsJS.route} component={TestsNavigationPage}/>
+              <Route exact path={Page.testsSharp.route} component={TestsNavigationPage}/>
+              <Route exact path={Page.testsSQL.route} component={TestsNavigationPage}/>
               <Route exact path={Page.flashCards.route} component={FlashCardsPage} />
               <Route exact path={Page.notes.route} component={NotesPage} />
               <Route exact path={Page.testsMenu.route} component={LanguageNavigationPage} />
@@ -116,6 +126,14 @@ class FlashCardsPage extends React.Component {
 }
 
 class NotesPage extends React.Component {
+  async componentDidMount() {
+    const notes=[{id:1, title:'Заметка 1', text:'Текст 1'},{id:2, title:'Заметка 2', text:'Текст 2'},
+    {id:3, title:'Заметка 3', text:'Текст 3'}, {id:4, title:'Заметка 4', text:'Текст 4'}];
+    store.dispatch(requestNotes());
+     //this.notes=await (await fetch('/api/notes')).json();
+     //store.dispatch(setArticles(this.notes));
+     store.dispatch(setNotes(notes));
+  }
   render() {
     return (
         <Notes />
@@ -127,6 +145,14 @@ class LanguageNavigationPage extends React.Component {
   render() {
     return (
         <LanguageNavigation />
+    );
+  }
+}
+
+class TestsNavigationPage extends React.Component {
+  render() {
+    return (
+        <TestsNavigation />
     );
   }
 }

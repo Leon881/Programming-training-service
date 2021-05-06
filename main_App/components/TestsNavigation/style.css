@@ -1,4 +1,4 @@
-.articles-menu {
+.tests-navigation {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,11 +7,11 @@
     margin-bottom: 20px;
 }
 
-.articles-menu-list{
+.tests-list {
     list-style-type: none;
 }
 
-.article-item{
+.test-item {
     position: relative;
     display: flex;
     width: 100%;
@@ -20,11 +20,11 @@
     margin-bottom: 30px;
 }
 
-.article-item:hover{
+.test-item:hover{
     transform: scale(1.2);
 }
 
-.article-item .image {
+.test-item .image {
     flex: 0 0 auto;
     width: 30%;
     height: 150px;
@@ -37,7 +37,11 @@
     border-radius: 8px;
 }
 
-.article-data{
+.test-ref{
+    text-decoration: none;
+}
+
+.test-inf{
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
@@ -46,37 +50,23 @@
     text-shadow: 0 0 5px rgb(255 255 255 / 40%);
 }
 
-.article-data .title {
+.test-inf .test-title{
     margin-top: auto;
     margin-bottom: 0;
-    font-size: 24px;
+    font-size: 21px;
     line-height: 25px;
     overflow: hidden;
     max-height: 70px;
     text-align: center;
 }
 
-.article-data .info, .description{
-    font-size: 14px;
+.test-inf .test-rating {
+    font-size: 17px;
     text-align: center;
-    
-}
-
-.article-data .info {
-    margin-top: auto;
-    margin-bottom: 0;
-}
-
-.article-data .description {
     margin-top: 10px;
-    margin-bottom: 10px;
 }
 
-.article-ref{
-    text-decoration: none;
-}
-
-.main-articles-menu .nav{
+.main-tests-navigation .nav{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -86,10 +76,10 @@
     margin-bottom: 10px;
 }
 
-.main-articles-menu a{
+.main-tests-navigation a{
     text-decoration: none;
 }
-.main-articles-menu .nav .back-ref{
+.main-tests-navigation .nav .back-ref{
     font-size: 20px;
     background: radial-gradient(ellipse at bottom, #1b2735, #090a0f);
     padding-left: 10px;
@@ -101,6 +91,6 @@
     cursor: pointer;
 }
 
-.main-articles-menu .nav .back-ref:hover{
+.main-tests-navigation .nav .back-ref:hover{
     background: radial-gradient(ellipse at center top, #cce, #33a);
 }
