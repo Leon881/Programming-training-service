@@ -13,13 +13,13 @@ import Articles from "../containers/Articles";
 import ArticlePage from "../containers/ArticlePage";
 import Notes from "../containers/Notes";
 import LanguageNavigation from "../containers/LanguageNavigation";
+import TestsNavigation from "../containers/TestsNavigation";
 import Learning from "../containers/Learning";
 import FlashCardsDecks from "../containers/FlashCardsDecks";
 import NotFound from "../containers/NotFound";
 import "./style.css";
 import { navigateToPage, setArticles, requestArticles, setLearningTextDefault, requestNotes, setNotes,
    setUserInformation } from "../actionCreators/index";
-
 
 const store = createStore(rootReducer, applyMiddleware(logger));
 
@@ -59,6 +59,9 @@ class App extends React.Component {
               <Route exact path={Page.mainMenu.route} component={NavigationMenuPage} />
               <Route exact path={Page.articles.route} component={ArticlesPage} />
               <Route  path={`${Page.articles.route}/:id`} component={LearningArticlePage } />
+              <Route exact path={Page.testsJS.route} component={TestsNavigationPage}/>
+              <Route exact path={Page.testsSharp.route} component={TestsNavigationPage}/>
+              <Route exact path={Page.testsSQL.route} component={TestsNavigationPage}/>
               <Route exact path={Page.flashCards.route} component={FlashCardsPage} />
               <Route exact path={Page.notes.route} component={NotesPage} />
               <Route exact path={Page.testsMenu.route} component={LanguageNavigationPage} />
@@ -142,6 +145,14 @@ class LanguageNavigationPage extends React.Component {
   render() {
     return (
         <LanguageNavigation />
+    );
+  }
+}
+
+class TestsNavigationPage extends React.Component {
+  render() {
+    return (
+        <TestsNavigation />
     );
   }
 }

@@ -7,7 +7,7 @@ import Loader from "../../containers/Loader"
 import './style.css';
 import LearningArea from '../../containers/LearningArea';
 
-export default function AccordionMenu ({ onNavigateToPage, accordionMenu, setLearningText, requestLearningText, setLearningTextDefault, page }){
+export default function AccordionMenu ({ onNavigateToPage, accordionMenu, setLearningText, requestLearningText, page }){
   if (accordionMenu.status === Status.loading) return <Loader fontColor='#fff'/>
   const loadText= async (event)=>{
     event.stopPropagation()
@@ -61,6 +61,5 @@ AccordionMenu.propTypes={
     requestLearningText: PropTypes.func.isRequired,
     setLearningText: PropTypes.func.isRequired,
     page: PropTypes.string.isRequired,
-    setLearningTextDefault: PropTypes.func.isRequired
 
   };

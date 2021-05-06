@@ -27,11 +27,16 @@ const notesReducer=createReducer({notes:[], status: Status.empty},
     {[actionTypes.LOAD_NOTES_SUCCESS]:(state,action)=>({...state, notes:action.notes, status: Status.loaded}),
     [actionTypes.LOAD_NOTES_REQUEST]:(state,action)=>({...state, status: Status.loading})});
 
+const testsReducer=createReducer({tests:[], status: Status.empty},
+     {[actionTypes.LOAD_TESTS_SUCCESS]:(state,action)=>({...state, tests:action.tests, status: Status.loaded}),
+     [actionTypes.LOAD_TESTS_REQUEST]:(state,action)=>({...state, status: Status.loading})});
+
 export const rootReducer = combineReducers({
     page: pageReducer,
     accordionMenu: accordionMenuReducer,
     learningArea: learningAreaReducer,
     articlesList: articlesListReducer,
     userInformation: userInformationReducer,
-    notesList: notesReducer
+    notesList: notesReducer,
+    testsList: testsReducer
 });

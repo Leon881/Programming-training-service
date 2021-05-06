@@ -49,3 +49,12 @@ export const setNotes = notes => ({
 export const requestNotes = () => ({
     type: actionTypes.LOAD_NOTES_REQUEST
 });
+
+export const setTests = tests => ({
+    type: actionTypes.LOAD_TESTS_SUCCESS,
+    tests
+});
+
+export const requestTests = () => ({
+    type: actionTypes.LOAD_TESTS_REQUEST
+});

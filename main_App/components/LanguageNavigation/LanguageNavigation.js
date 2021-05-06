@@ -3,30 +3,43 @@ import PropTypes from "prop-types";
 import "./style.css";
 import Page from "../../constants/Page";
 import testAccordionMenu from "../../forTests/testAccordionMenu"
+import testTests from "../../forTests/testTests";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import LearningNavigationText from '../../constants/LearningNavigationText'
 import TestingNavigationText from '../../constants/TestingNavigationText'
 
-export default function LanguageNavigation ({ onNavigateToPage, setAccordionMenu, requestAccordionMenu, page}){
+export default function LanguageNavigation ({ onNavigateToPage, setAccordionMenu, requestAccordionMenu, page, setTests, requestTests}){
     const openMenu= async (event)=>{
         let route;
          switch (event.target.id){
         case Page.learningSharp.text: 
+        case Page.testsSharp.text:
             route='sharp';
             break;
         case Page.learningJS.text:
+        case Page.testsJS.text:
             route='js';
             break;
         case Page.learningSQL.text:
+        case Page.testsSQL.text:
              route='sql';
              break;
         default:
              break;
         }
+        if (page===Page.learningMenu.text){
         await requestAccordionMenu();
        //const menu=await (await fetch(`/api/lessons/${route}`)).json();
          const menu=testAccordionMenu; 
        await setAccordionMenu(menu);
+        }
+        else {
+          await requestTests();
+          //const test = await (await fetch (`/api/tests/${route}`)).json();
+          const test =testTests;
+          await setTests(test);
+
+        }
     };
     const text= (page===Page.learningMenu.text) ? LearningNavigationText : TestingNavigationText;
     const menuForm=[];
@@ -53,5 +66,7 @@ LanguageNavigation.propTypes = {
     onNavigateToPage: PropTypes.func.isRequired,
     setAccordionMenu: PropTypes.func.isRequired,
     requestAccordionMenu: PropTypes.func.isRequired,
-    page: PropTypes.string.isRequired
+    page: PropTypes.string.isRequired,
+    requestTests: PropTypes.func.isRequired,
+    setTests: PropTypes.func.isRequired
   };
