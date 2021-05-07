@@ -1,15 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import TestsNavigation from '../components/TestsNavigation/TestsNavigation';
+import TestArea from '../components/TestArea/TestArea';
 import { navigateToPage} from '../actionCreators';
-
 
 export default connect(
     (state,props) => ({
-        testsList : state.testsList,
-        page: state.page,
+        page: state.page
     }),
     (dispatch,props) =>({
         onNavigateToPage: value => dispatch(navigateToPage(value))
     })
-)(TestsNavigation)
+)(TestArea)
