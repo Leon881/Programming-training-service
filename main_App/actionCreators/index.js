@@ -58,3 +58,12 @@ export const setTests = tests => ({
 export const requestTests = () => ({
     type: actionTypes.LOAD_TESTS_REQUEST
 });
+
+export const setTest = test => ({
+    type: actionTypes.LOAD_TEST_SUCCESS,
+    test
+});
+
+export const requestTest = () => ({
+    type: actionTypes.LOAD_TEST_REQUEST
+});
