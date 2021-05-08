@@ -1,4 +1,4 @@
-const testQuestions = [{
+const testQuestions = {id: 1, questions:[{
     id:1,
     question:'Выберите ваш любимый язык',
     type: 1,
@@ -17,7 +17,7 @@ const testQuestions = [{
     type: 1,
     options: ['А', 'Б', 'В', 'Г' ],
     correct: 'А'
-},
-]
+}],
+}
 
 export default testQuestions;

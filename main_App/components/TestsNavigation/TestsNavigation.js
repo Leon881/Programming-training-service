@@ -5,10 +5,32 @@ import Status from '../../constants/Status';
 import Page from "../../constants/Page";
 import Loader from "../../containers/Loader"
 import './style.css';
+import testQuestions from "../../forTests/testQuestions";
 
-export default function TestsNavigation ({onNavigateToPage, testsList, page}) {
+export default function TestsNavigation ({onNavigateToPage, testsList, page,  requestTest,  setTest}) {
   if (testsList.status === Status.loading) return <Loader fontColor='#fff'/>;
   const testForm = [];
+  const loadTest= async (event)=>{
+    let route;
+    switch (page){
+   case Page.testsSharp.text:
+       route= 'sharp';
+       break;
+   case Page.testsJS.text:
+       route='js';
+       break;
+   case Page.testsSQL.text:
+        route='sql';
+        break;
+   default:
+        break;
+    }
+    requestTest();
+    //const test=await (await fetch(`/api/tests/${route}/${event.target.id}`)).json();
+    const test=testQuestions; 
+    await setTest(test);
+  }
+
   const setRoute = (el) =>{
     let route;
     switch (page){
@@ -27,7 +49,7 @@ export default function TestsNavigation ({onNavigateToPage, testsList, page}) {
     return `${route}/${el.id}`;
   }
   for (let el of testsList.tests){
-      testForm.push (<Link className='test-ref' key={el.id} to={setRoute(el) }><div className='test-item'>
+      testForm.push (<Link className='test-ref' onClick={loadTest} key={el.id} to={setRoute(el) }><div className='test-item'>
       <div className='image'  id={el.id} style={{'backgroundImage':`url(${el.image})`}}></div>
       <div className='test-inf' id={el.id} ><div id={el.id} className='test-title'>{el.title}</div>
       <div className='test-rating' id={el.id} >Ваш прогресс - {el.rating}</div></div>     
@@ -53,4 +75,6 @@ TestsNavigation.propTypes = {
     onNavigateToPage: PropTypes.func.isRequired,
     testsList: PropTypes.object.isRequired,
     page: PropTypes.string.isRequired,
+    setTest: PropTypes.func.isRequired,
+    requestTest: PropTypes.func.isRequired
 }

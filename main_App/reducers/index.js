@@ -31,6 +31,11 @@ const testsReducer=createReducer({tests:[], status: Status.empty},
      {[actionTypes.LOAD_TESTS_SUCCESS]:(state,action)=>({...state, tests:action.tests, status: Status.loaded}),
      [actionTypes.LOAD_TESTS_REQUEST]:(state,action)=>({...state, status: Status.loading})});
 
+const testReducer=createReducer({test:[], status: Status.empty},
+    {[actionTypes.LOAD_TEST_SUCCESS]:(state,action)=>({...state, test:action.test, status: Status.loaded}),
+    [actionTypes.LOAD_TEST_REQUEST]:(state,action)=>({...state, status: Status.loading})});
+   
+
 export const rootReducer = combineReducers({
     page: pageReducer,
     accordionMenu: accordionMenuReducer,
@@ -38,5 +43,6 @@ export const rootReducer = combineReducers({
     articlesList: articlesListReducer,
     userInformation: userInformationReducer,
     notesList: notesReducer,
-    testsList: testsReducer
+    testsList: testsReducer,
+    test: testReducer
 });

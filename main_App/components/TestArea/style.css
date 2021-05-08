@@ -60,6 +60,7 @@
 .test-menu .test-input input{
     width: 50%;
     height: 35px;
+    color: black;
 }
 
 .main-test-area .end-button {
