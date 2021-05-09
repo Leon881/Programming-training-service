@@ -7,14 +7,15 @@ import Page from "../../constants/Page";
 import Loader from "../../containers/Loader";
 
 export default function TestArea ({onNavigateToPage, page, test}){
-    const checkTest = (event)=>{
+    const checkTest = async (event)=>{
         event.preventDefault();
-        //console.log(document.querySelector('input[name="1"]:checked').value);
+        let newRating=0;
         for (let el of test.test.questions){
             if (el.type === 1){
                 let selectedVar=document.querySelector(`input[name='${(el.id)}']:checked`).value;
                 if (el.correct === selectedVar){
-                 document.getElementById(`result ${el.id}`).style.backgroundImage='url(/src/img/check.png)'}
+                 document.getElementById(`result ${el.id}`).style.backgroundImage='url(/src/img/check.png)';
+                newRating++;}
                 else{
                 document.getElementById(`result ${el.id}`).style.backgroundImage='url(/src/img/cross.png)';
                  }
@@ -26,6 +27,7 @@ export default function TestArea ({onNavigateToPage, page, test}){
                 let inputVar= document.getElementById(`${el.id}`);
                 if(el.correct===String(inputVar.value)) { 
                     document.getElementById(`result ${el.id}`).style.backgroundImage='url(/src/img/check.png)';
+                    newRating++;
                 }
                 else{ 
                 document.getElementById(`result ${el.id}`).style.backgroundImage='url(/src/img/cross.png)';
@@ -34,6 +36,20 @@ export default function TestArea ({onNavigateToPage, page, test}){
                 }
             }
         }
+        newRating= (newRating / test.test.questions.length).toFixed(2); ;
+        console.log(newRating);
+          /*
+        await fetch(src, {
+            method: "PUT",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              //
+            })
+        });
+        */
 
     };
     if (test.status === Status.loading) return <Loader fontColor='#fff'/>;
