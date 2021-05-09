@@ -13,15 +13,26 @@ export default function TestArea ({onNavigateToPage, page, test}){
         for (let el of test.test.questions){
             if (el.type === 1){
                 let selectedVar=document.querySelector(`input[name='${(el.id)}']:checked`).value;
-                el.correct === selectedVar ? document.getElementById(`result ${el.id}`).style.backgroundImage='url(/src/img/check.png)': 
+                if (el.correct === selectedVar){
+                 document.getElementById(`result ${el.id}`).style.backgroundImage='url(/src/img/check.png)'}
+                else{
                 document.getElementById(`result ${el.id}`).style.backgroundImage='url(/src/img/cross.png)';
+                 }
+                 Array.from(document.querySelectorAll(`input[name='${(el.id)}']`)).map(item=> {
+                    item.value === el.correct ? item.parentElement.style.color='LightGreen': item.parentElement.style.color='LightCoral'});
             }
             else {
-                let inputVar= document.getElementById(`${el.id}`).value;
-                String(el.correct)===inputVar ? document.getElementById(`result ${el.id}`).style.backgroundImage='url(/src/img/check.png)': 
+                document.getElementById(`${el.id}`).disabled=true;
+                let inputVar= document.getElementById(`${el.id}`);
+                if(el.correct===String(inputVar.value)) { 
+                    document.getElementById(`result ${el.id}`).style.backgroundImage='url(/src/img/check.png)';
+                }
+                else{ 
                 document.getElementById(`result ${el.id}`).style.backgroundImage='url(/src/img/cross.png)';
+                inputVar.style.color='red';
+                inputVar.value=el.correct;
+                }
             }
-           // document.querySelector(`input[name='${(el.id)}']:checked > p`).style.fontColor='green'
         }
 
     };
@@ -50,7 +61,7 @@ export default function TestArea ({onNavigateToPage, page, test}){
             <div className='test-data'><div className='test-question'>{el.question}</div>
             <div className='test-answer'>{el.type===1 ? <div className='test-options'>
             <label><p><input className='input-button' name={el.id} type='radio' value={el.options[0]} required/>{el.options[0]}</p></label>
-            <label><p><input className='input-button' name={el.id} type='radio' value={el.options[1]}/>{el.options[1]}</p></label>
+            <label><p ><input className='input-button' name={el.id} type='radio' value={el.options[1]}/>{el.options[1]}</p></label>
             <label><p><input className='input-button' name={el.id} type='radio' value={el.options[2]}/>{el.options[2]}</p></label>
             <label><p><input className='input-button' name={el.id} type='radio' value={el.options[3]}/>{el.options[3]}</p></label>
             </div> : <div className='test-input'><input id={el.id} placeholder='Введите ваш ответ' required /></div> }</div>
