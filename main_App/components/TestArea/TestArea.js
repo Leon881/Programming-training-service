@@ -7,7 +7,22 @@ import Page from "../../constants/Page";
 import Loader from "../../containers/Loader";
 
 export default function TestArea ({onNavigateToPage, page, test}){
-    const checkTest = ()=>{
+    const checkTest = (event)=>{
+        event.preventDefault();
+        //console.log(document.querySelector('input[name="1"]:checked').value);
+        for (let el of test.test.questions){
+            if (el.type === 1){
+                let selectedVar=document.querySelector(`input[name='${(el.id)}']:checked`).value;
+                el.correct === selectedVar ? document.getElementById(`result ${el.id}`).style.backgroundImage='url(/src/img/check.png)': 
+                document.getElementById(`result ${el.id}`).style.backgroundImage='url(/src/img/cross.png)';
+            }
+            else {
+                let inputVar= document.getElementById(`${el.id}`).value;
+                String(el.correct)===inputVar ? document.getElementById(`result ${el.id}`).style.backgroundImage='url(/src/img/check.png)': 
+                document.getElementById(`result ${el.id}`).style.backgroundImage='url(/src/img/cross.png)';
+            }
+           // document.querySelector(`input[name='${(el.id)}']:checked > p`).style.fontColor='green'
+        }
 
     };
     if (test.status === Status.loading) return <Loader fontColor='#fff'/>;
@@ -31,7 +46,7 @@ export default function TestArea ({onNavigateToPage, page, test}){
 
     const testForm=[];
     for (let el of test.test.questions){
-        testForm.push (<div key={el.id} className='test'>
+        testForm.push (<div key={el.id} id={`question ${el.id}`} className='test'>
             <div className='test-data'><div className='test-question'>{el.question}</div>
             <div className='test-answer'>{el.type===1 ? <div className='test-options'>
             <label><p><input className='input-button' name={el.id} type='radio' value={el.options[0]} required/>{el.options[0]}</p></label>
@@ -39,7 +54,7 @@ export default function TestArea ({onNavigateToPage, page, test}){
             <label><p><input className='input-button' name={el.id} type='radio' value={el.options[2]}/>{el.options[2]}</p></label>
             <label><p><input className='input-button' name={el.id} type='radio' value={el.options[3]}/>{el.options[3]}</p></label>
             </div> : <div className='test-input'><input id={el.id} placeholder='Введите ваш ответ' required /></div> }</div>
-            </div></div>)
+            </div><div id={`result ${el.id}`} className='result'/></div>)
     }
 
     return (

@@ -105,3 +105,15 @@
 .main-test-area .nav .back-ref:hover{
     background: radial-gradient(ellipse at center top, #cce, #33a);
 }
+
+.main-test-area .result{
+    display: block;
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 40px;
+    height: 40px;
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
