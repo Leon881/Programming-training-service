@@ -6,7 +6,7 @@ import Status from '../../constants/Status';
 import Page from "../../constants/Page";
 import Loader from "../../containers/Loader";
 
-export default function TestArea ({onNavigateToPage, page, test}){
+export default function TestArea ({onNavigateToPage, page, test, setTestResult, testResult}){
     const checkTest = async (event)=>{
         event.preventDefault();
         let newRating=0;
@@ -36,8 +36,9 @@ export default function TestArea ({onNavigateToPage, page, test}){
                 }
             }
         }
-        newRating= (newRating / test.test.questions.length).toFixed(2); ;
-        console.log(newRating);
+        newRating= (newRating / test.test.questions.length).toFixed(2)*100;
+        setTestResult(String(newRating));
+        document.location.href='#modalResult';;
           /*
         await fetch(src, {
             method: "PUT",
@@ -92,9 +93,23 @@ export default function TestArea ({onNavigateToPage, page, test}){
           <div className='test-menu'>
               <form onSubmit={checkTest} className='test-list'>
                   {testForm}
-                  <input type='submit' className='end-button' value='Завершить'/>
+                  {testResult==='' ?<input type='submit' className='end-button' value='Завершить'/>: null}
               </form>
           </div>
+          <div id='modalResult' className='modal'>
+        <div className='modal-wrapper'>
+           <div className='modal-inner'>
+               <div className='modal-content'>
+                 <span className='resultTest'>{`Ваш результат - ${testResult} %  правильных ответов`}</span>
+                 <div className='buttons'>
+                     <a className='stay' href='#close'>Остаться </a>
+                     <Link className='close-test' to={navigate(true)} onClick= {()=>{onNavigateToPage(navigate(false)); setTestResult('');}}>
+                         Закрыть тест</Link>
+                 </div>
+               </div>
+           </div>
+        </div>
+    </div>
         </div>
     )
 }
@@ -102,5 +117,7 @@ export default function TestArea ({onNavigateToPage, page, test}){
 TestArea.propTypes={
     onNavigateToPage: PropTypes.func.isRequired,
     page: PropTypes.string.isRequired,
-    test: PropTypes.object.isRequired
+    test: PropTypes.object.isRequired,
+    setTestResult: PropTypes.func.isRequired,
+    testResult: PropTypes.string.isRequired
 };

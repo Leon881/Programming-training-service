@@ -34,6 +34,8 @@ const testsReducer=createReducer({tests:[], status: Status.empty},
 const testReducer=createReducer({test:[], status: Status.empty},
     {[actionTypes.LOAD_TEST_SUCCESS]:(state,action)=>({...state, test:action.test, status: Status.loaded}),
     [actionTypes.LOAD_TEST_REQUEST]:(state,action)=>({...state, status: Status.loading})});
+
+const testResultReducer = createReducer('',{[actionTypes.SET_TEST_RESULT]:(state,action)=>action.result});
    
 
 export const rootReducer = combineReducers({
@@ -44,5 +46,6 @@ export const rootReducer = combineReducers({
     userInformation: userInformationReducer,
     notesList: notesReducer,
     testsList: testsReducer,
-    test: testReducer
+    test: testReducer,
+    testResult: testResultReducer
 });

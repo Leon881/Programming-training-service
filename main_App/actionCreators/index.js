@@ -67,3 +67,8 @@ export const setTest = test => ({
 export const requestTest = () => ({
     type: actionTypes.LOAD_TEST_REQUEST
 });
+
+export const setTestResult = result => ({
+    type: actionTypes.SET_TEST_RESULT,
+    result
+});

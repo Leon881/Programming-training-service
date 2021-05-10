@@ -7,10 +7,11 @@ import Loader from "../../containers/Loader"
 import './style.css';
 import testQuestions from "../../forTests/testQuestions";
 
-export default function TestsNavigation ({onNavigateToPage, testsList, page,  requestTest,  setTest}) {
+export default function TestsNavigation ({onNavigateToPage, testsList, page,  requestTest,  setTest, setTestResult}) {
   if (testsList.status === Status.loading) return <Loader fontColor='#fff'/>;
   const testForm = [];
   const loadTest= async (event)=>{
+    setTestResult('');
     let route;
     switch (page){
    case Page.testsSharp.text:
@@ -76,5 +77,6 @@ TestsNavigation.propTypes = {
     testsList: PropTypes.object.isRequired,
     page: PropTypes.string.isRequired,
     setTest: PropTypes.func.isRequired,
-    requestTest: PropTypes.func.isRequired
+    requestTest: PropTypes.func.isRequired,
+    setTestResult: PropTypes.func.isRequired
 }
