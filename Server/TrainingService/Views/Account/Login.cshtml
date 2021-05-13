@@ -1,0 +1,46 @@
+﻿@model TrainingService.ViewModels.LoginViewModel
+@{
+	Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="google-signin-client_id" content="525960053225-gd2g1f2bh1qjoao527mracp1lgf302hj.apps.googleusercontent.com">
+	<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+	<title>Привет</title>
+	<link href="https://fonts.googleapis.com/css?family=Russo+One&display=swap" rel="stylesheet">
+	<link href="~/Site.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+	<div class="form authorization-form">
+		<h2>Вход на сайт</h2>
+		<hr />
+        <form asp-action="Login" asp-controller="Account" asp-anti-forgery="false">
+            <div class="validation" asp-validation-summary="ModelOnly" />
+            <div class="form-body">
+                <section class="form-section">
+                    <label asp-for="Email">Введите логин</label>
+                    <input class="input-field" type="text" asp-for="Email" />
+                    <span asp-validation-for="Email" />
+                </section>
+                <section class="form-section">
+                    <label asp-for="Password">Введите пароль</label>
+                    <input class="input-field" type="password" asp-for="Password" />
+                    <span asp-validation-for="Password" />
+                </section>
+                <section class="form-section">
+                    <label asp-for="RememberMe">Запомнить</label><br />
+                    <input asp-for="RememberMe" />
+                </section>
+                <section class="form-section">
+                    <input class="submit-button" type="submit" value="Войти" />
+                    <a class="registration-link" asp-action="Register" asp-controller="Account">Регистрация</a>
+                </section>
+            </div>
+            <a class="btn btn-info" asp-action="GoogleLogin" asp-controller="Account">Log In With Google</a>
+            <a class="btn btn-info" asp-action="VkontakteLogin" asp-controller="Account">Log In With VK</a>
+        </form>
+
+	</div>
+</body>
+</html>

@@ -1,17 +1,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using DBRepository.Repositories;
-using DBRepository.Interfaces;
-using DBRepository;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Routing;
+using TrainingService.DBRepository;
+using Microsoft.EntityFrameworkCore;
+using TrainingService.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace TrainingService
 {
@@ -24,15 +20,34 @@ namespace TrainingService
         }
         public void ConfigureServices(IServiceCollection services)
         {
+            string connection = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<TrainingServiceContext>(options => options.UseSqlServer(connection));
+
+            services.AddIdentity<User, IdentityRole>(options => {
+                //options.SignIn.RequireConfirmedAccount = true;
+                options.Password.RequiredLength = 5;   // минимальная длина
+                options.Password.RequireNonAlphanumeric = false;   // требуются ли не алфавитно-цифровые символы
+                options.Password.RequireLowercase = false; // требуются ли символы в нижнем регистре
+                options.Password.RequireUppercase = false; // требуются ли символы в верхнем регистре
+                options.Password.RequireDigit = false; // требуются ли цифры
+                options.User.RequireUniqueEmail = false;
+                options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyz@.1234567890 ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // допустимые символы
+            }).AddEntityFrameworkStores<TrainingServiceContext>();
+
+            services.AddAuthentication().AddGoogle(options =>
+            {
+                options.ClientId = "525960053225-gd2g1f2bh1qjoao527mracp1lgf302hj.apps.googleusercontent.com";
+                options.ClientSecret = "iRs4hQ646v9dnvDJFEEoFWGj";
+            }).AddVkontakte(options =>
+            {
+                options.ClientId = "7850272";
+                options.ClientSecret = "8zKgzfnjan2ivJu8wwgo";
+                options.Scope.Add("email");
+            });
+
             services.AddMvc(option => option.EnableEndpointRouting = false);
             services.AddControllersWithViews();
             services.AddControllers();
-            //Система на место объектов интерфейса IRepositoryContextFactory будет передавать экземпляры класса RepositoryContextFactory.
-            services.AddScoped<IRepositoryContextFactory, RepositoryContextFactory>(); // 1
-            //(ideas) Нужно чтоб получить реализацию IRepositoryContextFactory через provider(абстрагирование)                                                                            // 
-            services.AddScoped<ILessonRepository>(provider => new LessonRepository(
-                Configuration.GetConnectionString("DefaultConnection"),
-                provider.GetService<IRepositoryContextFactory>())); // 2
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,7 +60,10 @@ namespace TrainingService
             //app.UseDefaultFiles();
             app.UseStaticFiles();
 
-            //app.UseRouting();
+            app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
