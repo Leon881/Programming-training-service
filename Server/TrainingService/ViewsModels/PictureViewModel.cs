@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿//using Microsoft.AspNetCore.Http;
 
-namespace ViewModels
-{
-    public class PictureViewModel
-    {      
-        public IFormFile Data { get; set; }
-    }
-}
+//namespace ViewModels
+//{
+//    public class PictureViewModel
+//    {      
+//        public IFormFile Data { get; set; }
+//    }
+//}
