@@ -31,9 +31,9 @@ class App extends React.Component {
   }
 
   async componentDidMount() {
-  //this.authorization=await (await fetch('/account/checkout')).json();
-  this.authorization={userName:'Ivan'};
-  this.setState({auth: JSON.stringify(this.authorization) !== '{}'})
+  this.authorization=await (await fetch('/account/checkout')).json();
+  //this.authorization={userName:'Ivan'};
+  this.setState({auth: this.authorization.isAuthenticated})
   await store.dispatch(setUserInformation(this.authorization));
   }
   render() {
