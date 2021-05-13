@@ -5,8 +5,7 @@ import { navigateToPage } from '../actionCreators';
 
 export default connect(
     (state,props) => ({
-        auth: JSON.stringify(state.userInformation) === '{}'
-
+        auth: state.userInformation.isAuthenticated
     }),
     (dispatch,props) =>({
         onNavigateToPage: value => dispatch(navigateToPage(value))
