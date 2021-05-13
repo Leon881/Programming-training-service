@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using DBRepository.Interfaces;
-using Models;
+using TrainingService.DBRepository.Interfaces;
+using TrainingService.DBRepository.Repositories;
+using TrainingService.Models;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
+using TrainingService.DBRepository;
 
 
 namespace TrainingService.Controllers
@@ -18,9 +18,9 @@ namespace TrainingService.Controllers
         ILessonRepository _lessonRepository;
         IWebHostEnvironment _appEnvironment;
       
-        public LessonsController(ILessonRepository lessonRepository, IWebHostEnvironment appEnvironment)
+        public LessonsController(TrainingServiceContext dbcontext, IWebHostEnvironment appEnvironment)
         {
-            _lessonRepository = lessonRepository;
+            _lessonRepository = new SQLLessonsRepository(dbcontext);
             _appEnvironment = appEnvironment;
         }
 

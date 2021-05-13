@@ -4,7 +4,7 @@ using System.Text;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace Models
+namespace TrainingService.Models
 {
     public class Lesson
     { 

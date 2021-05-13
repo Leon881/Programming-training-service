@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using DBRepository.Interfaces;
 using System.Threading.Tasks;
-using Models;
+using TrainingService.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 

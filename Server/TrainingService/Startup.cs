@@ -7,11 +7,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DBRepository.Repositories;
-using DBRepository.Interfaces;
-using DBRepository;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Routing;
+using TrainingService.DBRepository;
+using Microsoft.EntityFrameworkCore;
 
 namespace TrainingService
 {
@@ -24,15 +23,21 @@ namespace TrainingService
         }
         public void ConfigureServices(IServiceCollection services)
         {
+            string connection = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<TrainingServiceContext>(options => options.UseSqlServer(connection));
             services.AddMvc(option => option.EnableEndpointRouting = false);
             services.AddControllersWithViews();
             services.AddControllers();
+
+
+
+
             //Система на место объектов интерфейса IRepositoryContextFactory будет передавать экземпляры класса RepositoryContextFactory.
-            services.AddScoped<IRepositoryContextFactory, RepositoryContextFactory>(); // 1
+            //services.AddScoped<IRepositoryContextFactory, RepositoryContextFactory>(); // 1
             //(ideas) Нужно чтоб получить реализацию IRepositoryContextFactory через provider(абстрагирование)                                                                            // 
-            services.AddScoped<ILessonRepository>(provider => new LessonRepository(
-                Configuration.GetConnectionString("DefaultConnection"),
-                provider.GetService<IRepositoryContextFactory>())); // 2
+            //services.AddScoped<ILessonRepository>(provider => new LessonRepository(
+            //    Configuration.GetConnectionString("DefaultConnection"),
+            //    provider.GetService<IRepositoryContextFactory>())); // 2
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

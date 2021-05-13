@@ -1520,16 +1520,6 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
-      },
-      "Models/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
-        "compile": {
-          "bin/placeholder/Models.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Models.dll": {}
-        }
       }
     }
   },
@@ -5749,11 +5739,6 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
-    },
-    "Models/1.0.0": {
-      "type": "project",
-      "path": "../Models/Models.csproj",
-      "msbuildProject": "../Models/Models.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -5761,8 +5746,7 @@
       "Microsoft.EntityFrameworkCore >= 5.0.4",
       "Microsoft.EntityFrameworkCore.Design >= 5.0.4",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.4",
-      "Microsoft.EntityFrameworkCore.Tools >= 5.0.4",
-      "Models >= 1.0.0"
+      "Microsoft.EntityFrameworkCore.Tools >= 5.0.4"
     ]
   },
   "packageFolders": {
@@ -5795,11 +5779,7 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "projectReferences": {
-            "D:\\Programming-training-service\\Server\\Models\\Models.csproj": {
-              "projectPath": "D:\\Programming-training-service\\Server\\Models\\Models.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {

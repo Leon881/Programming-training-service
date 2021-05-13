@@ -152,10 +152,6 @@ D:\Programming-training-service\Server\TrainingService\bin\Debug\netcoreapp3.1\r
 D:\Programming-training-service\Server\TrainingService\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 D:\Programming-training-service\Server\TrainingService\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\Programming-training-service\Server\TrainingService\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-D:\Programming-training-service\Server\TrainingService\bin\Debug\netcoreapp3.1\DBRepository.dll
-D:\Programming-training-service\Server\TrainingService\bin\Debug\netcoreapp3.1\Models.dll
-D:\Programming-training-service\Server\TrainingService\bin\Debug\netcoreapp3.1\DBRepository.pdb
-D:\Programming-training-service\Server\TrainingService\bin\Debug\netcoreapp3.1\Models.pdb
 D:\Programming-training-service\Server\TrainingService\obj\Debug\netcoreapp3.1\staticwebassets\TrainingService.StaticWebAssets.Manifest.cache
 D:\Programming-training-service\Server\TrainingService\obj\Debug\netcoreapp3.1\staticwebassets\TrainingService.StaticWebAssets.xml
 D:\Programming-training-service\Server\TrainingService\obj\Debug\netcoreapp3.1\scopedcss\bundle\TrainingService.styles.css
@@ -171,3 +167,9 @@ D:\Programming-training-service\Server\TrainingService\obj\Debug\netcoreapp3.1\T
 D:\Programming-training-service\Server\TrainingService\obj\Debug\netcoreapp3.1\Razor\Views\Lessons\GetLesson.cshtml.g.cs
 D:\Programming-training-service\Server\TrainingService\obj\Debug\netcoreapp3.1\Razor\Views\Lessons\AddLesson.cshtml.g.cs
 D:\Programming-training-service\Server\TrainingService\obj\Debug\netcoreapp3.1\Razor\Views\PicturesStorage\AddPicture.cshtml.g.cs
+D:\Programming-training-service\Server\TrainingService\bin\Debug\netcoreapp3.1\TrainingService.StaticWebAssets.xml
+D:\Programming-training-service\Server\TrainingService\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\Programming-training-service\Server\TrainingService\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\Programming-training-service\Server\TrainingService\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\Programming-training-service\Server\TrainingService\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+D:\Programming-training-service\Server\TrainingService\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll

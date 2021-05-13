@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 
-namespace Models
+namespace TrainingService.Models
 {
     public class ResponseLesson
     {
