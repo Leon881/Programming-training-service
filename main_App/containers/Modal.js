@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Tests from '../components/Tests/Tests';
+import Modal from '../components/Modal/Modal';
+import { } from '../actionCreators';
 
 
 export default connect(
@@ -9,4 +10,4 @@ export default connect(
     (dispatch,props) =>({
 
     })
-)(Tests)
+)(Modal)

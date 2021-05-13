@@ -6,7 +6,6 @@ import { navigateToPage, setLearningText, requestLearningText } from '../actionC
 export default connect(
     (state, props) => ({
         accordionMenu: state.accordionMenu,
-        learningArea: state.learningArea,
         page: state.page,
     }),
     (dispatch, props) => ({

@@ -4,14 +4,16 @@ import "./style.css";
 import Page from "../../constants/Page";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-export default function NavigationMenu({ onNavigateToPage }) {
+export default function NavigationMenu({ onNavigateToPage, auth }) {
   return (
     <div className="main-menu">
-      <div className="main-menu__inner" onClick={(event) => onNavigateToPage(event.target.id)}>
+      <div className="main-menu__inner" onClick={(event) => event.target.id!=='' ? onNavigateToPage(event.target.id):null}>
         <Link id={Page.articles.text} className="block-menu lefter" to={Page.articles.route}>
           <span className="menu-text">Статьи</span>
         </Link>
-        <Link id={Page.notes.text} className="block-menu left" to={Page.notes.route}>
+        <Link id={Page.notes.text} style={auth ? {'backgroundImage':'url(/src/img/lock.png)', 'backgroundColor': 'rgb(25, 50, 90)',
+         'pointerEvents': 'none'}: {'backgroundImage':'url(/src/img/notes.png)'}} 
+        className="block-menu left" to={Page.notes.route}>
           <span className="menu-text">Заметки</span>
         </Link>
         <Link id={Page.learningMenu.text} className="block-menu center" to={Page.learningMenu.route}>
@@ -20,10 +22,14 @@ export default function NavigationMenu({ onNavigateToPage }) {
           </div>
           <span className="menu-text">Обучение</span>
         </Link>
-        <Link id={Page.testsMenu.text} className="block-menu right " to={Page.testsMenu.route}>
+        <Link id={Page.testsMenu.text} style={auth ? {'backgroundImage':'url(/src/img/lock.png)', 'backgroundColor': 'rgb(25, 50, 90)',
+        'pointerEvents': 'none'}: {'backgroundImage':'url(/src/img/test.png)'}}
+         className="block-menu right " to={Page.testsMenu.route}>
           <span className="menu-text">Тесты</span>
         </Link>
-        <Link id={Page.flashCards.text} className="block-menu righter" to={Page.flashCards.route}>
+        <Link id={Page.flashCards.text} style={auth ? {'backgroundImage':'url(/src/img/lock.png)', 'backgroundColor': 'rgb(25, 50, 90)',
+         'pointerEvents': 'none'}: {'backgroundImage':'url(/src/img/cards.png)'}}
+        className="block-menu righter" to={Page.flashCards.route}>
           <span className="menu-text">Флешкарты</span>
         </Link>
       </div>
@@ -33,4 +39,5 @@ export default function NavigationMenu({ onNavigateToPage }) {
 
 NavigationMenu.propTypes = {
   onNavigateToPage: PropTypes.func.isRequired,
+  auth:PropTypes.bool.isRequired
 };

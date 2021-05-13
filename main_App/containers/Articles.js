@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Articles from '../components/Articles/Articles';
-import { navigateToPage} from '../actionCreators';
+import { navigateToPage, setLearningText, requestLearningText } from '../actionCreators';
 
 export default connect(
     (state, props) => ({
@@ -9,5 +9,7 @@ export default connect(
     }),
     (dispatch, props) => ({
         onNavigateToPage: value => dispatch(navigateToPage(value)),
+        setLearningText: text => dispatch(setLearningText(text)),
+        requestLearningText: () => dispatch(requestLearningText()),
     })
 )(Articles);

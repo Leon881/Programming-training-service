@@ -1,17 +1,16 @@
-.main-learning-page .nav{
+.article-field .nav{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     margin-bottom: 10px;
     border-bottom: 3px solid #fff ;
     box-shadow: 0 0 20px 5px rgb(100 100 255 / 40%);
-    margin-bottom: 10px;
 }
 
-.main-learning-page a{
+.article-field a{
     text-decoration: none;
 }
-.main-learning-page .nav .back-ref{
+.article-field .nav .back-ref{
     font-size: 20px;
     background: radial-gradient(ellipse at bottom, #1b2735, #090a0f);
     padding-left: 10px;
@@ -23,6 +22,6 @@
     cursor: pointer;
 }
 
-.main-learning-page .nav .back-ref:hover{
+.article-field .nav .back-ref:hover{
     background: radial-gradient(ellipse at center top, #cce, #33a);
 }
