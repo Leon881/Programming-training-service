@@ -48,16 +48,6 @@ namespace TrainingService
             services.AddMvc(option => option.EnableEndpointRouting = false);
             services.AddControllersWithViews();
             services.AddControllers();
-
-
-
-
-            //Система на место объектов интерфейса IRepositoryContextFactory будет передавать экземпляры класса RepositoryContextFactory.
-            //services.AddScoped<IRepositoryContextFactory, RepositoryContextFactory>(); // 1
-            //(ideas) Нужно чтоб получить реализацию IRepositoryContextFactory через provider(абстрагирование)                                                                            // 
-            //services.AddScoped<ILessonRepository>(provider => new LessonRepository(
-            //    Configuration.GetConnectionString("DefaultConnection"),
-            //    provider.GetService<IRepositoryContextFactory>())); // 2
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

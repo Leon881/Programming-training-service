@@ -40,4 +40,14 @@ namespace TrainingService.Models
         public List<Section> Sections { get; set; }
     }
 
+    public class Note
+    {
+        public string UserId { get; set; }
+        public User User { get; set; }
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+        public string Text { get; set; }
+    }
+
 }

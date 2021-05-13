@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TrainingService.DBRepository;
 
 namespace TrainingService.Migrations
 {
     [DbContext(typeof(TrainingServiceContext))]
-    partial class TrainingServiceContextModelSnapshot : ModelSnapshot
+    [Migration("20210513123800_NotesCreate")]
+    partial class NotesCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -190,8 +192,6 @@ namespace TrainingService.Migrations
 
                     b.HasKey("Id", "UserId");
 
-                    b.HasIndex("UserId");
-
                     b.ToTable("Notes");
                 });
 
@@ -353,17 +353,6 @@ namespace TrainingService.Migrations
                         .HasForeignKey("SectionId", "SectionTopicId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("TrainingService.Models.Note", b =>
-                {
-                    b.HasOne("TrainingService.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("TrainingService.Models.Section", b =>

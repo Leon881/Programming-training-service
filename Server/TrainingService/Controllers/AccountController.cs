@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Identity;
 using TrainingService.Models;
 using TrainingService.ViewModels;
 using TrainingService.DBRepository;
-using TrainingService.Models.ForResponses;
 
 namespace TrainingService.Controllers
 {

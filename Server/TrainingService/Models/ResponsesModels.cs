@@ -20,4 +20,14 @@ namespace TrainingService.Models
 
         public List<Lesson> Lessons { get; set; }
     }
+
+    public class UserCheckOut
+    {
+        public bool IsAuthenticated { get; set; }
+        public bool IsAdmin { get; set; }
+        public string UserId { get; set; }
+
+        public string UserName { get; set; }
+
+    }
 }
