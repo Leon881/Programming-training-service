@@ -1,21 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Page from "../../constants/Page";
 import Status from '../../constants/Status';
 import Loader from "../../containers/Loader";
 import LearningArea from "../../containers/LearningArea";
 import './style.css';
 
-export default function ArticlePage ({onNavigateToPage}){
+export default function ArticlePage({ onNavigateToPage }) {
     return (
         <div className='article-field'> <div className='nav'>
-           <Link to={Page.articles.route}> <div  onClick= {()=>{onNavigateToPage(Page.articles.text)}}
-            className='back-ref'>&#11013; Вернуться</div></Link></div> 
+            <Link to={Page.articles.route}> <div onClick={() => { onNavigateToPage(Page.articles.text) }}
+                className='back-ref'>&#11013; Вернуться</div></Link></div>
             <LearningArea pageIndication={false} /></div>
     )
 }
 
-ArticlePage.propTypes={
+ArticlePage.propTypes = {
     onNavigateToPage: PropTypes.func.isRequired
 };

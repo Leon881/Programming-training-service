@@ -1,7 +1,7 @@
 const Page = {
     mainMenu: {text: 'mainMenu', route: '/'},
     articles: {text: 'articles', route: '/articles'},
-    flashCards: {text: 'flashCards', route: '/flashcards'},
+    authors: {text: 'authors', route: '/authors'},
     notes: {text: 'notes', route: '/notes'},
     learningMenu: {text: 'learningMenu', route: '/learning'},
     testsMenu: {text: 'testsMenu', route: '/tests'},
