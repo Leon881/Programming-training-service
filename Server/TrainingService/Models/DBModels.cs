@@ -35,7 +35,6 @@ namespace TrainingService.Models
         public int Id { get; set; }
         [MaxLength(50)]
         public string Name { get; set; }
-
         public List<Section> Sections { get; set; }
     }
 
@@ -55,12 +54,8 @@ namespace TrainingService.Models
         public int Id { get; set; }
         public string UserId { get; set; }
         public User User { get; set; }
-        [MaxLength(50)]
-        public string Author { get; set; }
 
-        [MaxLength(100)]
         public string Title { get; set; }
-        [MaxLength(300)]
         public string Description { get; set; }
         [MaxLength(100)]
         public string Path { get; set; }
@@ -68,4 +63,31 @@ namespace TrainingService.Models
         public string ImagePath { get; set; }
     }
 
+    public class Test
+    {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string ImagePath { get; set; }
+        public List<Question> Questions { get; set; }
+    }
+    public class Question
+    {
+        public int Id { get; set; }
+        public int TestId { get; set; }
+        public Test Test { get; set; }
+        public string QuestionText { get; set; }
+        public bool Type { get; set; }
+        public string Options { get; set; }
+        public string Correct { get; set; }
+    }
+
+    public class UserTest
+    {
+        public string UserId { get; set; }
+        public User User { get; set; }
+        public int TestId { get; set; }
+        public Test Test { get; set; }
+        public int Rating { get; set; }
+    }
 }

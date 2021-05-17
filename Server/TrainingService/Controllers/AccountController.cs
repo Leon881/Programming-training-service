@@ -4,6 +4,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using TrainingService.Models;
+using TrainingService.Models.ResponsesModels;
 using TrainingService.ViewModels;
 using TrainingService.DBRepository;
 
@@ -28,7 +29,7 @@ namespace TrainingService.Controllers
             {
                 var user = await _userManager.GetUserAsync(User);
                 //var user = await _userManager.FindByNameAsync(User.Identity.Name);                
-                return new JsonResult(new UserCheckOut
+                return new JsonResult(new UserCheckOutResponse
                 {
                     IsAuthenticated = true,
                     IsAdmin = User.IsInRole("admin"),
@@ -38,7 +39,7 @@ namespace TrainingService.Controllers
             }
             else
             {
-                return new JsonResult(new UserCheckOut
+                return new JsonResult(new UserCheckOutResponse
                 {
                     IsAuthenticated = false,
                     IsAdmin = false,

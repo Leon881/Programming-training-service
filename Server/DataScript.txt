@@ -1,0 +1,11 @@
+insert into Tests values ('Test 1','/Files/PicturesStorage/238999233.jpg'),
+('Test 2','/Files/PicturesStorage/238999233.jpg'),
+('Test 3','/Files/PicturesStorage/238999233.jpg'),
+('Test 4','/Files/PicturesStorage/238999233.jpg')
+
+insert into UsersTests values ('7f14453c-cfcd-48ce-bc89-93da77daa5df',1,0)
+
+insert into Questions values (1,1,1,'1 вариант&&&2 вариант&&&3 вариант&&&4 вариант','2 вариант','1 Вопрос 1 Теста')
+insert into Questions values (2,1,1,'1 вариант&&&2 вариант&&&3 вариант&&&4 вариант','3 вариант','2 Вопрос 1 Теста')
+insert into Questions values (3,1,0,'','correct','3 Вопрос 1 Теста')
+insert into Questions values (4,1,1,'1 вариант&&&2 вариант&&&3 вариант&&&4 вариант','4 вариант','4 Вопрос 1 Теста')

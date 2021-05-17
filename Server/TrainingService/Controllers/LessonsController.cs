@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using TrainingService.DBRepository.Interfaces;
 using TrainingService.DBRepository.Repositories;
 using TrainingService.Models;
+using TrainingService.Models.ResponsesModels;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
@@ -15,12 +16,12 @@ namespace TrainingService.Controllers
     [Route("api/[controller]")]
     public class LessonsController : Controller
     {
-        ILessonRepository _lessonRepository;
+        ILessonRepository _lessonsRepository;
         IWebHostEnvironment _appEnvironment;
       
         public LessonsController(TrainingServiceContext dbcontext, IWebHostEnvironment appEnvironment)
         {
-            _lessonRepository = new SQLLessonsRepository(dbcontext);
+            _lessonsRepository = new SQLLessonsRepository(dbcontext);
             _appEnvironment = appEnvironment;
         }
 
@@ -33,13 +34,13 @@ namespace TrainingService.Controllers
             switch (topicString)
             {
                 case "sharp":
-                    result=_lessonRepository.GetLessonsList(1);
+                    result=_lessonsRepository.GetLessonsList(1);
                     break;
                 case "js":
-                    result = _lessonRepository.GetLessonsList(2);
+                    result = _lessonsRepository.GetLessonsList(2);
                     break;
                 case "sql":
-                    result = _lessonRepository.GetLessonsList(3);
+                    result = _lessonsRepository.GetLessonsList(3);
                     break;
             }
             return new JsonResult(result);
@@ -53,13 +54,13 @@ namespace TrainingService.Controllers
             switch (topicString)
             {
                 case "sharp":
-                    result = _lessonRepository.GetLesson(1, sectionId, lessonId);
+                    result = _lessonsRepository.GetLesson(1, sectionId, lessonId);
                     break;
                 case "js":
-                    result = _lessonRepository.GetLesson(2, sectionId, lessonId);
+                    result = _lessonsRepository.GetLesson(2, sectionId, lessonId);
                     break;
                 case "sql":
-                    result = _lessonRepository.GetLesson(3, sectionId, lessonId);
+                    result = _lessonsRepository.GetLesson(3, sectionId, lessonId);
                     break;
             }          
             string file_type = "text/html";
@@ -82,7 +83,7 @@ namespace TrainingService.Controllers
         {
             if (uploadedNewLessonHTML != null)
             {
-                int newId = _lessonRepository.GetNewLessonId(topicId, sectionId);
+                int newId = _lessonsRepository.GetNewLessonId(topicId, sectionId);
                 ////формируем путь к папке с уроками
                 string newLessonFolderPath = _appEnvironment.WebRootPath + "/Files/Lessons";
                 ////создаем папку с id нового урока
@@ -96,7 +97,7 @@ namespace TrainingService.Controllers
                 }
 
                 Lesson newLesson = new Lesson { Id=newId, Name = newLessonName, Path = "/Files/Lessons/" + uploadedNewLessonHTML.FileName,SectionId=sectionId,SectionTopicId=topicId };
-                _lessonRepository.AddLesson(newLesson);
+                _lessonsRepository.AddLesson(newLesson);
             }
 
             return Redirect("~/");

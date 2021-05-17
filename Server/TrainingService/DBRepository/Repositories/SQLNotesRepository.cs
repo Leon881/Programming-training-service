@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TrainingService.Models;
+using TrainingService.Models.ResponsesModels;
 using TrainingService.DBRepository.Interfaces;
 
 namespace TrainingService.DBRepository.Repositories
@@ -15,9 +16,11 @@ namespace TrainingService.DBRepository.Repositories
             context = _db;
         }
 
-        public List<Note> GetUserNotes(string userId)
+        public List<NoteResponse> GetUserNotes(string userId)
         {
-            return context.Notes.Where(note => note.UserId==userId).ToList();
+            return context.Notes.Where(note => note.UserId==userId)
+                                .Select(note => new NoteResponse { Id=note.Id,Title=note.Title,Text=note.Text})
+                                .ToList();
         }
 
         public void AddNote(Note newNote)

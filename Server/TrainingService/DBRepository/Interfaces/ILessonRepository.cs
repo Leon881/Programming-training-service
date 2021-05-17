@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using TrainingService.Models;
+using TrainingService.Models.ResponsesModels;
 
 namespace TrainingService.DBRepository.Interfaces
 {

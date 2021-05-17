@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TrainingService.Models;
+using TrainingService.Models.ResponsesModels;
 using Microsoft.EntityFrameworkCore;
 using TrainingService.DBRepository.Interfaces;
 
@@ -24,7 +25,9 @@ namespace TrainingService.DBRepository.Repositories
 
 		public List<ResponseSection> GetLessonsList(int topicId)
 		{
-			return context.Sections.Select(c => new ResponseSection { TopicId = c.TopicId, Id = c.Id, SectionName = c.Name, Lessons = c.Lessons }).ToList();
+			return context.Sections.Where(section => section.TopicId == topicId)
+								   .Select(section => new ResponseSection { TopicId = section.TopicId, Id = section.Id, SectionName = section.Name, Lessons = section.Lessons })
+								   .ToList();
 		}
 
 		public int GetNewLessonId(int topicId, int sectionId)

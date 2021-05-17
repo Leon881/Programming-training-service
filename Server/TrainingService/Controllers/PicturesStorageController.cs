@@ -33,6 +33,7 @@ namespace TrainingService.Controllers
             {
                 int pictureId = uploadedPicture.OpenReadStream().GetHashCode();
                 string CommonPicturePath = "/Files/PicturesStorage/" + pictureId.ToString() + new Random().Next(0, 100).ToString() + ".jpg";
+                //string CommonPicturePath = "/Files/PicturesStorage/" + DateTime.Now.ToString() + pictureId.ToString() + ".jpg";
                 string LocalPicturePath = _appEnvironment.WebRootPath + CommonPicturePath;
                 using (var fileStream = new FileStream(LocalPicturePath, FileMode.Create))
                 {

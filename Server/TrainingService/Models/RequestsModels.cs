@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
-namespace TrainingService.Models
+namespace TrainingService.Models.RequestsModels
 {
-    public class NewNote : IValidatableObject
+    public class NewNoteRequest : IValidatableObject
     {
         [Required]
         public string Title { get; set; }

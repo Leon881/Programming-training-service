@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TrainingService.DBRepository;
 
 namespace TrainingService.Migrations
 {
     [DbContext(typeof(TrainingServiceContext))]
-    partial class TrainingServiceContextModelSnapshot : ModelSnapshot
+    [Migration("20210517121919_AddTests")]
+    partial class AddTests
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -209,9 +211,6 @@ namespace TrainingService.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Options")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("QuestionText")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Type")
