@@ -4,9 +4,11 @@ using TrainingService.Models;
 
 namespace TrainingService.DBRepository.Interfaces
 {
-	public interface INoteRepository //: IDisposable
+	public interface INoteRepository 
 	{
 		List<Note> GetUserNotes(string userId);
-		void AddNote(string userId, string text);
+		void DeleteNote(string userId, int noteId);
+		void AddNote(Note newNote);
+		int GetNewUserNoteId(string userId);
 	}
 }

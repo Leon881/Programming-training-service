@@ -10,8 +10,7 @@ namespace TrainingService.DBRepository.Interfaces
 	{
 			Lesson GetLesson(int lessonId, int sectionId, int topicId);
 			void AddLesson(Lesson newLesson);
-			int GetLastLessonId(int sectionId, int topicId);
-
+			int GetNewLessonId(int sectionId, int topicId);
 			public List<ResponseSection> GetLessonsList(int topicId);
 	}
 }

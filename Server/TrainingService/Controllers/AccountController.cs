@@ -14,21 +14,20 @@ namespace TrainingService.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-        private TrainingServiceContext _db;
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, TrainingServiceContext context)
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _db = context;
         }
 
         [HttpGet]
         public async Task<IActionResult> CheckOut()
         {
+            
             if (User.Identity.IsAuthenticated)
             {
-
-                var user = await _userManager.FindByNameAsync(User.Identity.Name);                
+                var user = await _userManager.GetUserAsync(User);
+                //var user = await _userManager.FindByNameAsync(User.Identity.Name);                
                 return new JsonResult(new UserCheckOut
                 {
                     IsAuthenticated = true,
@@ -56,7 +55,7 @@ namespace TrainingService.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (ModelState.IsValid)

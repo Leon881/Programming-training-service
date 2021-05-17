@@ -27,10 +27,10 @@ namespace TrainingService.DBRepository.Repositories
 			return context.Sections.Select(c => new ResponseSection { TopicId = c.TopicId, Id = c.Id, SectionName = c.Name, Lessons = c.Lessons }).ToList();
 		}
 
-		public int GetLastLessonId(int topicId, int sectionId)
+		public int GetNewLessonId(int topicId, int sectionId)
 		{
 			var lessonsList = context.Lessons.Where(Lesson => Lesson.SectionId == sectionId && Lesson.SectionTopicId == topicId).ToList();
-			return (lessonsList.Count() == 0) ? 0 : lessonsList.Last().Id;
+			return (lessonsList.Count() == 0) ? 1 : lessonsList.Last().Id+1;
 		}
 
 		public void AddLesson(Lesson newLesson)

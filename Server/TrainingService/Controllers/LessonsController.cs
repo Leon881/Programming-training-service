@@ -82,7 +82,7 @@ namespace TrainingService.Controllers
         {
             if (uploadedNewLessonHTML != null)
             {
-                int newId = _lessonRepository.GetLastLessonId(topicId, sectionId) + 1;
+                int newId = _lessonRepository.GetNewLessonId(topicId, sectionId);
                 ////формируем путь к папке с уроками
                 string newLessonFolderPath = _appEnvironment.WebRootPath + "/Files/Lessons";
                 ////создаем папку с id нового урока

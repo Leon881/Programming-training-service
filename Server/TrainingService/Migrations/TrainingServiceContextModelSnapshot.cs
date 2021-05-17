@@ -178,15 +178,17 @@ namespace TrainingService.Migrations
             modelBuilder.Entity("TrainingService.Models.Note", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Text")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id", "UserId");
 
@@ -201,7 +203,6 @@ namespace TrainingService.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("TopicId")
-                        .HasMaxLength(50)
                         .HasColumnType("int");
 
                     b.Property<string>("Name")

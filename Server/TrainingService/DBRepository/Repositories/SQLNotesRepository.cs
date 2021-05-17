@@ -20,11 +20,24 @@ namespace TrainingService.DBRepository.Repositories
             return context.Notes.Where(note => note.UserId==userId).ToList();
         }
 
-        public void AddNote(string userId,string text)
+        public void AddNote(Note newNote)
         {
-
-            context.Notes.Add(new Note {UserId=userId,Text=text } );
+            context.Notes.Add(newNote);
             Save();
+        }
+        public void DeleteNote(string userId, int noteId)
+        {
+            Note  noteToRemove = context.Notes
+                    .Where(note => note.Id == noteId && note.UserId == userId)
+                    .FirstOrDefault();
+            if (noteToRemove == null) return;
+            context.Notes.Remove(noteToRemove);
+            Save();
+        }
+        public int GetNewUserNoteId(string userId)
+        {
+            var userNotesList = context.Notes.Where(Note => Note.UserId==userId).ToList();
+            return (userNotesList.Count() == 0) ? 1 : userNotesList.Last().Id+1;
         }
         public void Save()
         {
