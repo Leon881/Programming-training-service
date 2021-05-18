@@ -61,6 +61,7 @@ namespace TrainingService.Models
         public string Path { get; set; }
         [MaxLength(100)]
         public string ImagePath { get; set; }
+        public string Date { get; set; }
     }
 
     public class Test

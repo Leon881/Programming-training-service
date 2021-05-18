@@ -64,6 +64,7 @@ namespace TrainingService.Controllers
                     break;
             }          
             string file_type = "text/html";
+            if (result == null) return File("/Files/Error.html", file_type);
             return File(result.Path, file_type);
             //return Redirect(result.Path);
             //return View(result);
@@ -86,20 +87,15 @@ namespace TrainingService.Controllers
                 int newId = _lessonsRepository.GetNewLessonId(topicId, sectionId);
                 ////формируем путь к папке с уроками
                 string newLessonFolderPath = _appEnvironment.WebRootPath + "/Files/Lessons";
-                ////создаем папку с id нового урока
-                //if (!Directory.Exists(newLessonFolderPath)) Directory.CreateDirectory(newLessonFolderPath);
-                //// путь к файлу урока в папке Files
                 string htmlPath = newLessonFolderPath + "/" + uploadedNewLessonHTML.FileName;
                 // сохраняем файл в папку Files в каталоге wwwroot
                 using (var fileStream = new FileStream(htmlPath, FileMode.Create))
                 {
                     await uploadedNewLessonHTML.CopyToAsync(fileStream);
                 }
-
                 Lesson newLesson = new Lesson { Id=newId, Name = newLessonName, Path = "/Files/Lessons/" + uploadedNewLessonHTML.FileName,SectionId=sectionId,SectionTopicId=topicId };
                 _lessonsRepository.AddLesson(newLesson);
             }
-
             return Redirect("~/");
         }
     }

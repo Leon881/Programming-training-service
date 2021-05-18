@@ -19,7 +19,7 @@ namespace TrainingService.DBRepository.Repositories
 		public Lesson GetLesson(int topicId, int sectionId, int lessonId)
 		{
 			var result = new Lesson();
-			result = context.Lessons.Where(Lesson => Lesson.Id == lessonId && Lesson.SectionId == sectionId && Lesson.SectionTopicId == topicId).ToList()[0];
+			result = context.Lessons.FirstOrDefault(Lesson => Lesson.Id == lessonId && Lesson.SectionId == sectionId && Lesson.SectionTopicId == topicId);
 			return result;
 		}
 

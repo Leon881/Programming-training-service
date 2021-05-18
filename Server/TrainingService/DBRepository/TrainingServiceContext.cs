@@ -22,6 +22,7 @@ namespace TrainingService.DBRepository
 		public DbSet<Test> Tests { get; set; }
 		public DbSet<Question> Questions { get; set; }
 		public DbSet<UserTest> UsersTests { get; set; }
+		public DbSet<Article> Articles { get; set; }
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			base.OnModelCreating(modelBuilder);
@@ -32,6 +33,7 @@ namespace TrainingService.DBRepository
 			modelBuilder.Entity<Test>().HasKey(u => new { u.Id });
 			modelBuilder.Entity<Question>().HasKey(u => new { u.Id, u.TestId });
 			modelBuilder.Entity<UserTest>().HasKey(u => new { u.UserId, u.TestId });
+			modelBuilder.Entity<Article>().HasKey(u => new { u.Id });
 		}
 	}
 }

@@ -58,4 +58,14 @@ namespace TrainingService.Models.ResponsesModels
         public List<string> Options { get; set; }
         public string Correct { get; set; }
     }
+
+    public class ArticleResponse
+    {
+        public int Id { get; set; }
+        public string Image { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string Date { get; set; }
+        public string Author { get; set; }
+    }
 }
