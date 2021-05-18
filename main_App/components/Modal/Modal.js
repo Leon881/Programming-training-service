@@ -21,9 +21,9 @@ export default function Modal({page, requestNotes, setNotes}) {
             })
         });
         if (page === Page.notes.text){
-            store.dispatch(requestNotes());
+            requestNotes();
             let notes=await (await fetch('/api/notes')).json();
-            store.dispatch(setNotes(notes));
+            setNotes(notes);
         }
         document.location.href = '#close';
         document.getElementById('note-title').value = '';

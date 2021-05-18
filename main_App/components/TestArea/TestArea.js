@@ -40,8 +40,8 @@ export default function TestArea({ onNavigateToPage, page, test, setTestResult, 
         }
         newRating = (newRating / test.test.questions.length).toFixed(2) * 100;
         setTestResult(String(newRating));
-        document.location.href = '#modalResult';;
-      await fetch(/api/tests/updaterating, {
+        document.location.href = '#modalResult';
+      await fetch('/api/tests/updaterating', {
           method: "PUT",
           headers: {
               'Accept': 'application/json',

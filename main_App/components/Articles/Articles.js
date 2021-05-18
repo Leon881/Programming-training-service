@@ -16,8 +16,8 @@ export default function Articles({ articlesList, onNavigateToPage, setLearningTe
   };
   const articlesForm = [];
   for (let el of articlesList.articles) {
-    articlesForm.push(<Link className='article-ref' key={el.id} to={`${Page.articles.route}/${el.id}`}>
-      <article onClick={openArticle} className='article-item'>
+    articlesForm.push(<Link className='article-ref'  onClick={openArticle} key={el.id} to={`${Page.articles.route}/${el.id}`}>
+      <article className='article-item'>
       <div className='image' id={el.id} style={{ 'backgroundImage': `url(${el.image})` }}></div>
       <div id={el.id} className='article-data'>
         <div className='title' id={el.id}>{el.title}</div>
