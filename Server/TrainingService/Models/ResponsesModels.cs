@@ -54,7 +54,7 @@ namespace TrainingService.Models.ResponsesModels
     {
         public int Id { get; set; }
         public string Question { get; set; }
-        public bool Type { get; set; }
+        public int Type { get; set; }
         public List<string> Options { get; set; }
         public string Correct { get; set; }
     }

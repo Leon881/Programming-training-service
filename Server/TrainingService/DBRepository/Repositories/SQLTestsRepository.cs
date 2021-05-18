@@ -4,6 +4,7 @@ using System.Linq;
 using TrainingService.Models;
 using TrainingService.Models.ResponsesModels;
 using TrainingService.DBRepository.Interfaces;
+using System;
 
 namespace TrainingService.DBRepository.Repositories
 {
@@ -32,7 +33,7 @@ namespace TrainingService.DBRepository.Repositories
             var questions = db.Questions.Where(question => question.TestId==testId)
                                         .Select(question => new QuestionResponse { 
                                             Id = question.Id, Question= question.QuestionText, 
-                                            Type= question.Type, 
+                                            Type= Convert.ToInt32(question.Type), 
                                             Correct= question.Correct,
                                             Options = question.Options.Split(questionSeparator, System.StringSplitOptions.RemoveEmptyEntries).ToList()})
                                         .ToList();
