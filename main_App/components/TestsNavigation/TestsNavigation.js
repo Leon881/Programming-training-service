@@ -11,6 +11,7 @@ export default function TestsNavigation({ onNavigateToPage, testsList, page, req
   if (testsList.status === Status.loading) return <Loader fontColor='#fff' />;
   const testForm = [];
   const loadTest = async (event) => {
+    console.log(event.target.id)
     setTestResult('');
     let route;
     switch (page) {
@@ -27,8 +28,8 @@ export default function TestsNavigation({ onNavigateToPage, testsList, page, req
         break;
     }
     requestTest();
-    const test=await (await fetch(`/api/tests/${route}/${event.target.id}`)).json();
-    //const test = testQuestions;
+    //const test=await (await fetch(`/api/tests/${route}/${event.target.id}`)).json();
+    const test = testQuestions;
     await setTest(test);
   }
 
