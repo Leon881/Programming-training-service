@@ -27,8 +27,8 @@ export default function TestsNavigation({ onNavigateToPage, testsList, page, req
         break;
     }
     requestTest();
-    //const test=await (await fetch(`/api/tests/${route}/${event.target.id}`)).json();
-    const test = testQuestions;
+    const test=await (await fetch(`/api/tests/${route}/${event.target.id}`)).json();
+    //const test = testQuestions;
     await setTest(test);
   }
 

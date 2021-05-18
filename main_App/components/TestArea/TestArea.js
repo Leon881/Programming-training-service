@@ -41,18 +41,18 @@ export default function TestArea({ onNavigateToPage, page, test, setTestResult, 
         newRating = (newRating / test.test.questions.length).toFixed(2) * 100;
         setTestResult(String(newRating));
         document.location.href = '#modalResult';;
-        /*
-      await fetch(src, {
+      await fetch(/api/tests/updaterating, {
           method: "PUT",
           headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            //
+            Testid: test.test.id,
+            rating: newRating,
           })
       });
-      */
+
 
     };
     if (test.status === Status.loading) return <Loader fontColor='#fff' />;

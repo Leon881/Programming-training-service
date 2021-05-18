@@ -33,8 +33,8 @@ class App extends React.Component {
   }
 
   async componentDidMount() {
-    //this.authorization=await (await fetch('/account/checkout')).json();
-    this.authorization = { userName: 'Vadim', isAuthenticated: true, isAdmin: true };
+    this.authorization=await (await fetch('/account/checkout')).json();
+    //this.authorization = { userName: 'Vadim', isAuthenticated: true, isAdmin: true };
     this.setState({ auth: this.authorization })
     await store.dispatch(setUserInformation(this.authorization));
   }
@@ -105,9 +105,9 @@ class NavigationMenuPage extends React.Component {
 class ArticlesPage extends React.Component {
   async componentDidMount() {
     store.dispatch(requestArticles());
-    //this.articles=await (await fetch('/api/articles')).json();
-    //store.dispatch(setArticles(this.articles));
-    store.dispatch(setArticles(testArticle));
+    this.articles=await (await fetch('/api/articles')).json();
+    store.dispatch(setArticles(this.articles));
+    //store.dispatch(setArticles(testArticle));
   }
   render() {
     return (
@@ -134,12 +134,11 @@ class AuthorsPage extends React.Component {
 
 class NotesPage extends React.Component {
   async componentDidMount() {
-    const notes = [{ id: 1, title: 'Заметка 1', text: 'Текст 1' }, { id: 2, title: 'Заметка 2', text: 'Текст 2' },
-    { id: 3, title: 'Заметка 3', text: 'Текст 3' }, { id: 4, title: 'Заметка 4', text: 'Текст 4' }];
+    //const notes = [{ id: 1, title: 'Заметка 1', text: 'Текст 1' }, { id: 2, title: 'Заметка 2', text: 'Текст 2' },
+    //{ id: 3, title: 'Заметка 3', text: 'Текст 3' }, { id: 4, title: 'Заметка 4', text: 'Текст 4' }];
     store.dispatch(requestNotes());
-    //this.notes=await (await fetch('/api/notes')).json();
-    //store.dispatch(setArticles(this.notes));
-    store.dispatch(setNotes(notes));
+    this.notes=await (await fetch('/api/notes')).json();
+    store.dispatch(setNotes(this.notes));
   }
   render() {
     return (

@@ -2,24 +2,29 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import './style.css';
+import Page from "../../constants/Page"; 
 
-export default function Modal() {
+export default function Modal({page, requestNotes, setNotes}) {
     const submit = async (event) => {
         event.preventDefault();
         console.log(document.getElementById('note-title').value);
         console.log(document.getElementById('note-text').value);
-        /*
-        await fetch(src, {
+        await fetch('/api/notes/addnote', {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              //
+              title: document.getElementById('note-title').value,
+              text: document.getElementById('note-text').value
             })
         });
-        */
+        if (page === Page.notes.text){
+            store.dispatch(requestNotes());
+            let notes=await (await fetch('/api/notes')).json();
+            store.dispatch(setNotes(notes));
+        }
         document.location.href = '#close';
         document.getElementById('note-title').value = '';
         document.getElementById('note-text').value = '';
@@ -43,5 +48,7 @@ export default function Modal() {
 }
 
 Modal.propTypes = {
-
+page: PropTypes.string.isRequired,
+setNotes: PropTypes.func.isRequired,
+requestNotes: PropTypes.func.isRequired
 };
