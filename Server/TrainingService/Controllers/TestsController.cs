@@ -35,10 +35,23 @@ namespace TrainingService.Controllers
             return new JsonResult(_testRepository.GetTestWithQuestions(testId));
         }
         [Route("updaterating")]
-        [HttpGet]
-        public JsonResult UpdateRating(int testId, int newRating)
+        [HttpPut]
+        public JsonResult UpdateRating()
         {
-            _testRepository.UpdateRating(_userManager.GetUserId(User), testId, newRating);
+
+            var stream = new StreamReader(Request.Body);
+            var body = stream.ReadToEndAsync().Result;
+            NewRatingRequest newRating;
+            try
+            {
+                newRating = JsonConvert.DeserializeObject<NewRatingRequest>(body);
+            }
+            catch (JsonReaderException e)
+            {
+                return new JsonResult(e.ToString());
+            }
+            if (TryValidateModel(newRating)==false) return new JsonResult("Note Content Error!");
+            _testRepository.UpdateRating(_userManager.GetUserId(User), newRating.TestId, newRating.Rating);
             return new JsonResult("success");
         }
     }

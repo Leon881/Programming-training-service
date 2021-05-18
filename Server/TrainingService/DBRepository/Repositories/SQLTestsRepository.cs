@@ -43,7 +43,12 @@ namespace TrainingService.DBRepository.Repositories
         public void UpdateRating (string userId, int testId, int newRating)
         {
             var userTest = db.UsersTests.FirstOrDefault(userTest => userTest.UserId == userId && userTest.TestId == testId);
-            if (userTest == null) return;
+            if (userTest == null)
+            {
+                db.UsersTests.Add(new UserTest { UserId = userId, TestId = testId, Rating = newRating });
+                Save();
+                return;
+            }
             userTest.Rating = newRating; 
             db.UsersTests.Update(userTest);
             Save();

@@ -28,4 +28,12 @@ namespace TrainingService.Models.RequestsModels
             return errors;
         }
     }
+
+    public class NewRatingRequest 
+    {
+        [Required]
+        public int TestId { get; set; }
+        [Required]
+        public int Rating { get; set; }     
+    }
 }
