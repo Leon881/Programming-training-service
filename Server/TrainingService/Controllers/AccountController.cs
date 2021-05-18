@@ -4,6 +4,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using TrainingService.Models;
+using TrainingService.Models.ResponsesModels;
 using TrainingService.ViewModels;
 using TrainingService.DBRepository;
 
@@ -14,22 +15,21 @@ namespace TrainingService.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-        private TrainingServiceContext _db;
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, TrainingServiceContext context)
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _db = context;
         }
 
         [HttpGet]
         public async Task<IActionResult> CheckOut()
         {
+            
             if (User.Identity.IsAuthenticated)
             {
-
-                var user = await _userManager.FindByNameAsync(User.Identity.Name);                
-                return new JsonResult(new UserCheckOut
+                var user = await _userManager.GetUserAsync(User);
+                //var user = await _userManager.FindByNameAsync(User.Identity.Name);                
+                return new JsonResult(new UserCheckOutResponse
                 {
                     IsAuthenticated = true,
                     IsAdmin = User.IsInRole("admin"),
@@ -39,7 +39,7 @@ namespace TrainingService.Controllers
             }
             else
             {
-                return new JsonResult(new UserCheckOut
+                return new JsonResult(new UserCheckOutResponse
                 {
                     IsAuthenticated = false,
                     IsAdmin = false,
@@ -56,7 +56,7 @@ namespace TrainingService.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (ModelState.IsValid)

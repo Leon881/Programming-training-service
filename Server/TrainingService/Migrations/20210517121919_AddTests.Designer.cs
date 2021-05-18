@@ -10,8 +10,8 @@ using TrainingService.DBRepository;
 namespace TrainingService.Migrations
 {
     [DbContext(typeof(TrainingServiceContext))]
-    [Migration("20210513123800_NotesCreate")]
-    partial class NotesCreate
+    [Migration("20210517121919_AddTests")]
+    partial class AddTests
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -180,9 +180,7 @@ namespace TrainingService.Migrations
             modelBuilder.Entity("TrainingService.Models.Note", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -190,9 +188,39 @@ namespace TrainingService.Migrations
                     b.Property<string>("Text")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Title")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
                     b.HasKey("Id", "UserId");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Notes");
+                });
+
+            modelBuilder.Entity("TrainingService.Models.Question", b =>
+                {
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TestId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Correct")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Options")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Type")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id", "TestId");
+
+                    b.HasIndex("TestId");
+
+                    b.ToTable("Questions");
                 });
 
             modelBuilder.Entity("TrainingService.Models.Section", b =>
@@ -201,7 +229,6 @@ namespace TrainingService.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("TopicId")
-                        .HasMaxLength(50)
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -212,6 +239,24 @@ namespace TrainingService.Migrations
                     b.HasIndex("TopicId");
 
                     b.ToTable("Sections");
+                });
+
+            modelBuilder.Entity("TrainingService.Models.Test", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tests");
                 });
 
             modelBuilder.Entity("TrainingService.Models.Topic", b =>
@@ -295,6 +340,24 @@ namespace TrainingService.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("TrainingService.Models.UserTest", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("TestId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserId", "TestId");
+
+                    b.HasIndex("TestId");
+
+                    b.ToTable("UsersTests");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -355,6 +418,28 @@ namespace TrainingService.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("TrainingService.Models.Note", b =>
+                {
+                    b.HasOne("TrainingService.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("TrainingService.Models.Question", b =>
+                {
+                    b.HasOne("TrainingService.Models.Test", "Test")
+                        .WithMany("Questions")
+                        .HasForeignKey("TestId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Test");
+                });
+
             modelBuilder.Entity("TrainingService.Models.Section", b =>
                 {
                     b.HasOne("TrainingService.Models.Topic", "Topic")
@@ -366,9 +451,33 @@ namespace TrainingService.Migrations
                     b.Navigation("Topic");
                 });
 
+            modelBuilder.Entity("TrainingService.Models.UserTest", b =>
+                {
+                    b.HasOne("TrainingService.Models.Test", "Test")
+                        .WithMany()
+                        .HasForeignKey("TestId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TrainingService.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Test");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("TrainingService.Models.Section", b =>
                 {
                     b.Navigation("Lessons");
+                });
+
+            modelBuilder.Entity("TrainingService.Models.Test", b =>
+                {
+                    b.Navigation("Questions");
                 });
 
             modelBuilder.Entity("TrainingService.Models.Topic", b =>

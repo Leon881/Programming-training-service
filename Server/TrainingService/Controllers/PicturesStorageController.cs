@@ -31,16 +31,30 @@ namespace TrainingService.Controllers
         {
             if (uploadedPicture != null)
             {
+                string PicturePath = await PicturesStorageLogic.AddPicture(uploadedPicture, _appEnvironment);
+                return Content(HttpContext.Request.Host + PicturePath);
+            }
+            return Content("Error");
+        }
+    }
+    public static class PicturesStorageLogic
+    {
+        public static async Task<String> AddPicture(IFormFile uploadedPicture, IWebHostEnvironment appEnvironment)
+        {
+            if (uploadedPicture != null)
+            {
                 int pictureId = uploadedPicture.OpenReadStream().GetHashCode();
                 string CommonPicturePath = "/Files/PicturesStorage/" + pictureId.ToString() + new Random().Next(0, 100).ToString() + ".jpg";
-                string LocalPicturePath = _appEnvironment.WebRootPath + CommonPicturePath;
+                //string CommonPicturePath = "/Files/PicturesStorage/" + DateTime.Now.ToString() + pictureId.ToString() + ".jpg";
+                string LocalPicturePath = appEnvironment.WebRootPath + CommonPicturePath;
                 using (var fileStream = new FileStream(LocalPicturePath, FileMode.Create))
                 {
                     await uploadedPicture.CopyToAsync(fileStream);
                 }
-                return Content(HttpContext.Request.Host + CommonPicturePath);
+                return  CommonPicturePath;
             }
-            return Content("Error");
+            return "error";
         }
+
     }
 }
