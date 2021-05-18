@@ -16,57 +16,60 @@ import TestArea from "../containers/TestArea";
 import LanguageNavigation from "../containers/LanguageNavigation";
 import TestsNavigation from "../containers/TestsNavigation";
 import Learning from "../containers/Learning";
-import FlashCardsDecks from "../containers/FlashCardsDecks";
+import Authors from "../containers/Authors";
 import NotFound from "../containers/NotFound";
 import "./style.css";
-import { navigateToPage, setArticles, requestArticles, setLearningTextDefault, requestNotes, setNotes,
-   setUserInformation } from "../actionCreators/index";
+import {
+  navigateToPage, setArticles, requestArticles, setLearningTextDefault, requestNotes, setNotes,
+  setUserInformation
+} from "../actionCreators/index";
 
 const store = createStore(rootReducer, applyMiddleware(logger));
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state={auth:false};
+    this.state = { auth: false };
   }
 
   async componentDidMount() {
-  this.authorization=await (await fetch('/account/checkout')).json();
-  //this.authorization={userName:'Ivan'};
-  this.setState({auth: this.authorization.isAuthenticated})
-  await store.dispatch(setUserInformation(this.authorization));
+    this.authorization=await (await fetch('/account/checkout')).json();
+    //this.authorization = { userName: 'Vadim', isAuthenticated: true, isAdmin: true };
+    this.setState({ auth: this.authorization })
+    await store.dispatch(setUserInformation(this.authorization));
   }
   render() {
     return (
       <Provider store={store}>
         <div className="page">
           <header id="header" className="header">
-            <Link className='title-ref' to ='/'><div onClick= {()=>{store.dispatch(navigateToPage(Page.mainMenu.text)); store.dispatch(setLearningTextDefault()); }}
-             className="header__logo">Programming-training service</div></Link>
+            <Link className='title-ref' to='/'><div onClick={() => { store.dispatch(navigateToPage(Page.mainMenu.text)); store.dispatch(setLearningTextDefault()); }}
+              className="header__logo">Programming-training service</div></Link>
             <div className="profile flex-block">
-              {this.state.auth || <div className="link auth">
-                  <a href="/account/login">Вход</a>
+              {this.state.auth.isAuthenticated || <div className="link auth">
+                <a href="/account/login">Вход</a>
               </div>}
-              {this.state.auth || <div className="link regist">
-                 <a href="/account/register">Регистрация</a>
-             </div>}
-             {this.state.auth && <span>{this.authorization.userName}</span>}
-             {this.state.auth && <div className="link logout">
-                     <a href="/account/logout">Выход</a> </div>}
-             </div>
+              {this.state.auth.isAuthenticated || <div className="link regist">
+                <a href="/account/register">Регистрация</a>
+              </div>}
+              {this.state.auth.isAuthenticated && <span>{this.authorization.userName}</span>}
+              {this.state.auth.isAdmin && <a href='/admin' className='setting-button'></a>}
+              {this.state.auth.isAuthenticated && <div className="link logout">
+                <a href="/account/logout">Выход</a> </div>}
+            </div>
           </header>
           <main className="content">
             <Switch>
               <Route exact path={Page.mainMenu.route} component={NavigationMenuPage} />
               <Route exact path={Page.articles.route} component={ArticlesPage} />
-              <Route  path={`${Page.articles.route}/:id`} component={LearningArticlePage } />
-              <Route exact path={Page.testsJS.route} component={TestsNavigationPage}/>
-              <Route exact path={Page.testsSharp.route} component={TestsNavigationPage}/>
-              <Route exact path={Page.testsSQL.route} component={TestsNavigationPage}/>
-              <Route  path={ `${Page.testsJS.route}/:id`} component={TestPage}/>
-              <Route  path={ `${Page.testsSharp.route}/:id`} component={TestPage}/>
-              <Route  path={ `${Page.testsSQL.route}/:id`} component={TestPage}/>
-              <Route exact path={Page.flashCards.route} component={FlashCardsPage} />
+              <Route path={`${Page.articles.route}/:id`} component={LearningArticlePage} />
+              <Route exact path={Page.testsJS.route} component={TestsNavigationPage} />
+              <Route exact path={Page.testsSharp.route} component={TestsNavigationPage} />
+              <Route exact path={Page.testsSQL.route} component={TestsNavigationPage} />
+              <Route path={`${Page.testsJS.route}/:id`} component={TestPage} />
+              <Route path={`${Page.testsSharp.route}/:id`} component={TestPage} />
+              <Route path={`${Page.testsSQL.route}/:id`} component={TestPage} />
+              <Route exact path={Page.authors.route} component={AuthorsPage} />
               <Route exact path={Page.notes.route} component={NotesPage} />
               <Route exact path={Page.testsMenu.route} component={LanguageNavigationPage} />
               <Route exact path={Page.learningMenu.route} component={LanguageNavigationPage} />
@@ -78,9 +81,9 @@ class App extends React.Component {
           </main>
           <footer id="footer" className="footer">
             <div className="copyright-info">
-                <a href="#header" className="copyright-info__logo"> 
-                  <img src="src/img/vamLogo.jpg" alt="CompanyLogo" />
-                </a>
+              <a href="#header" className="copyright-info__logo">
+                <img src="src/img/vamLogo.jpg" alt="CompanyLogo" />
+              </a>
             </div>
           </footer>
         </div>
@@ -94,21 +97,21 @@ App.propTypes = {};
 class NavigationMenuPage extends React.Component {
   render() {
     return (
-        <NavigationMenu />
+      <NavigationMenu />
     );
   }
 }
 
 class ArticlesPage extends React.Component {
   async componentDidMount() {
-     store.dispatch(requestArticles());
-     //this.articles=await (await fetch('/api/articles')).json();
-     //store.dispatch(setArticles(this.articles));
-     store.dispatch(setArticles(testArticle));
+    store.dispatch(requestArticles());
+    this.articles=await (await fetch('/api/articles')).json();
+    store.dispatch(setArticles(this.articles));
+    //store.dispatch(setArticles(testArticle));
   }
   render() {
     return (
-        <Articles />
+      <Articles />
     );
   }
 }
@@ -116,31 +119,30 @@ class ArticlesPage extends React.Component {
 class LearningArticlePage extends React.Component {
   render() {
     return (
-        <ArticlePage />
+      <ArticlePage />
     );
   }
 }
 
-class FlashCardsPage extends React.Component {
+class AuthorsPage extends React.Component {
   render() {
     return (
-        <FlashCardsDecks />
+      <Authors />
     );
   }
 }
 
 class NotesPage extends React.Component {
   async componentDidMount() {
-    const notes=[{id:1, title:'Заметка 1', text:'Текст 1'},{id:2, title:'Заметка 2', text:'Текст 2'},
-    {id:3, title:'Заметка 3', text:'Текст 3'}, {id:4, title:'Заметка 4', text:'Текст 4'}];
+    //const notes = [{ id: 1, title: 'Заметка 1', text: 'Текст 1' }, { id: 2, title: 'Заметка 2', text: 'Текст 2' },
+    //{ id: 3, title: 'Заметка 3', text: 'Текст 3' }, { id: 4, title: 'Заметка 4', text: 'Текст 4' }];
     store.dispatch(requestNotes());
-     //this.notes=await (await fetch('/api/notes')).json();
-     //store.dispatch(setArticles(this.notes));
-     store.dispatch(setNotes(notes));
+    this.notes=await (await fetch('/api/notes')).json();
+    store.dispatch(setNotes(this.notes));
   }
   render() {
     return (
-        <Notes />
+      <Notes />
     );
   }
 }
@@ -148,7 +150,7 @@ class NotesPage extends React.Component {
 class LanguageNavigationPage extends React.Component {
   render() {
     return (
-        <LanguageNavigation />
+      <LanguageNavigation />
     );
   }
 }
@@ -156,7 +158,7 @@ class LanguageNavigationPage extends React.Component {
 class TestsNavigationPage extends React.Component {
   render() {
     return (
-        <TestsNavigation />
+      <TestsNavigation />
     );
   }
 }
@@ -164,7 +166,7 @@ class TestsNavigationPage extends React.Component {
 class TestPage extends React.Component {
   render() {
     return (
-        <TestArea />
+      <TestArea />
     );
   }
 }
@@ -172,7 +174,7 @@ class TestPage extends React.Component {
 class LearningPage extends React.Component {
   render() {
     return (
-        <Learning/>
+      <Learning />
     );
   }
 }

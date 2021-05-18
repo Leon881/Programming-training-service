@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import FlashCardsDecks from '../components/FlashCardsDecks/FlashCardsDecks';
+import Authors from '../components/Authors/Authors';
 
 
 export default connect(
@@ -9,4 +9,4 @@ export default connect(
     (dispatch,props) =>({
 
     })
-)(FlashCardsDecks)
+)(Authors)

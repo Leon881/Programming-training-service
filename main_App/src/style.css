@@ -129,7 +129,7 @@ img {
 }
 
 .logout {
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 .profile span{
@@ -144,4 +144,21 @@ img {
 .title-ref{
   text-decoration: none;
   cursor: pointer;
+}
+
+.setting-button{
+  width: 33px;
+  height: 33px;
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: radial-gradient(circle at center top, #cce, #33a), url(/src/img/settings.png);
+  box-shadow: 0 0 20px 5px rgba(100, 100, 255, .3);
+  margin-left: 10px;
+  cursor: pointer;
+  background-blend-mode: color-burn;
+}
+
+.setting-button:hover{
+  box-shadow: 0 0 20px 5px rgba(100, 100, 255, .7);
 }
