@@ -32,6 +32,7 @@ namespace TrainingService.Controllers
         [HttpGet]
         public JsonResult GetTestWithQuestions(int testId)
         {
+            if (testId == 0) return new JsonResult("Error");
             return new JsonResult(_testRepository.GetTestWithQuestions(testId));
         }
         [Route("updaterating")]
