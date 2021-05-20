@@ -36,7 +36,7 @@ class App extends React.Component {
     this.authorization=await (await fetch('/account/checkout')).json();
     //this.authorization = { userName: 'Vadim', isAuthenticated: true, isAdmin: true };
     this.setState({ auth: this.authorization })
-    await store.dispatch(setUserInformation(this.authorization));
+    store.dispatch(setUserInformation(this.authorization));
   }
   render() {
     return (
@@ -139,6 +139,7 @@ class NotesPage extends React.Component {
     store.dispatch(requestNotes());
     this.notes=await (await fetch('/api/notes')).json();
     store.dispatch(setNotes(this.notes));
+    //store.dispatch(setNotes(notes));
   }
   render() {
     return (

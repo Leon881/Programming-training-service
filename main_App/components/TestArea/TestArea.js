@@ -6,7 +6,7 @@ import Status from '../../constants/Status';
 import Page from "../../constants/Page";
 import Loader from "../../containers/Loader";
 
-export default function TestArea({ onNavigateToPage, page, test, setTestResult, testResult }) {
+export default function TestArea({ onNavigateToPage, setTests, requestTests, page, test, setTestResult, testResult }) {
     const checkTest = async (event) => {
         event.preventDefault();
         let newRating = 0;
@@ -53,9 +53,17 @@ export default function TestArea({ onNavigateToPage, page, test, setTestResult, 
           })
       });
 
-
     };
-    if (test.status === Status.loading) return <Loader fontColor='#fff' />;
+    const backAndLoadTests = async() =>{
+        let route = navigate(true);
+        onNavigateToPage(navigate(false)); 
+        setTestResult('');
+        requestTests();
+        const test = await (await fetch (`/api/${route}`)).json();
+        setTests(test);
+      }
+
+    if (test.status === Status.loaded) return <Loader fontColor='#fff' />;
     const navigate = (indicate) => {
         let route;
         switch (page.split(' ')[0]) {
@@ -90,7 +98,7 @@ export default function TestArea({ onNavigateToPage, page, test, setTestResult, 
     return (
         <div className='main-test-area'>
             <div className='nav'>
-                <Link to={navigate(true)}> <div onClick={() => { onNavigateToPage(navigate(false)) }}
+                <Link to={navigate(true)}> <div onClick={backAndLoadTests}
                     className='back-ref'>&#11013; Вернуться</div></Link></div>
             <div className='test-menu'>
                 <form onSubmit={checkTest} className='test-list'>
@@ -105,7 +113,7 @@ export default function TestArea({ onNavigateToPage, page, test, setTestResult, 
                             <span className='resultTest'>{`Ваш результат - ${testResult} %  правильных ответов`}</span>
                             <div className='buttons'>
                                 <a className='stay' href='#close'>Остаться </a>
-                                <Link className='close-test' to={navigate(true)} onClick={() => { onNavigateToPage(navigate(false)); setTestResult(''); }}>
+                                <Link className='close-test' to={navigate(true)} onClick={backAndLoadTests}>
                                     Закрыть тест</Link>
                             </div>
                         </div>
@@ -121,5 +129,7 @@ TestArea.propTypes = {
     page: PropTypes.string.isRequired,
     test: PropTypes.object.isRequired,
     setTestResult: PropTypes.func.isRequired,
-    testResult: PropTypes.string.isRequired
+    testResult: PropTypes.string.isRequired,
+    requestTests: PropTypes.func.isRequired,
+    setTests: PropTypes.func.isRequired
 };

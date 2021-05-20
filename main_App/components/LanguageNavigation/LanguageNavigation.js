@@ -28,16 +28,16 @@ export default function LanguageNavigation({ onNavigateToPage, setAccordionMenu,
         break;
     }
     if (page === Page.learningMenu.text) {
-      await requestAccordionMenu();
+      requestAccordionMenu();
       const menu=await (await fetch(`/api/lessons/${route}`)).json();
-      //const menu = testAccordionMenu;
-      await setAccordionMenu(menu);
+     //const menu = testAccordionMenu;
+      setAccordionMenu(menu);
     }
     else {
-      await requestTests();
+      requestTests();
       const test = await (await fetch (`/api/tests/${route}`)).json();
       //const test = testTests;
-      await setTests(test);
+      setTests(test);
 
     }
   };

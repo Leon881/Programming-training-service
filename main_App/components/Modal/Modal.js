@@ -7,8 +7,6 @@ import Page from "../../constants/Page";
 export default function Modal({page, requestNotes, setNotes}) {
     const submit = async (event) => {
         event.preventDefault();
-        console.log(document.getElementById('note-title').value);
-        console.log(document.getElementById('note-text').value);
         await fetch('/api/notes/addnote', {
             method: "POST",
             headers: {
