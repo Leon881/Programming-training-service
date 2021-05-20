@@ -30,11 +30,19 @@ module.exports = {
         historyApiFallback: true,
         proxy: {
             '/api': {
-            target: 'https://localhost:44385',
+            target: 'https://localhost:44318',
             secure: false              
             },
             '/Files': {
-                target: 'https://localhost:44385',
+                target: 'https://localhost:44318',
+                secure: false              
+                },
+            '/account': {
+                target: 'https://localhost:44318',
+                secure: false              
+                },
+            '/Account': {
+                target: 'https://localhost:44318',
                 secure: false              
                 },
         }

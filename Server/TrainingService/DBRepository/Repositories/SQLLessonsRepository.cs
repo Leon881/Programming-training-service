@@ -22,6 +22,10 @@ namespace TrainingService.DBRepository.Repositories
 			result = context.Lessons.FirstOrDefault(Lesson => Lesson.Id == lessonId && Lesson.SectionId == sectionId && Lesson.SectionTopicId == topicId);
 			return result;
 		}
+		public List<Topic> GetTopics()
+		{
+			return context.Topics.Include(topic => topic.Sections).ToList();
+		}
 
 		public List<ResponseSection> GetLessonsList(int topicId)
 		{

@@ -6,7 +6,7 @@ namespace TrainingService.DBRepository.Interfaces
 {
     public interface ITestRepository
     {
-        List<TestResponse> GetTestsWithUserRating(string userId);
+        List<TestResponse> GetTestsWithUserRating(string userId, string topicName);
         TestWithQuestionsResponse GetTestWithQuestions(int testId);
         void UpdateRating(string userId, int testId, int newRating);
     }

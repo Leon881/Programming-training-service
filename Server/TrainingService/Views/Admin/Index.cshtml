@@ -4,19 +4,36 @@
 }
 <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 <link rel="stylesheet" href="~/css/site.css" />
+<h2>Управление контентом</h2>
+<table class="table">	
+	<tr>
+		<td>
+			<a class="btn btn-sm btn-primary" asp-action="AddLesson">Добавить урок</a>
+			<a class="btn btn-sm btn-primary" asp-action="AddArticle">Добавить статью</a>
+			<a class="btn btn-sm btn-primary" asp-action="AddPicture">Добавить изображение</a>
+		</td>
+		@*<td>
+			<form asp-action="DeleteRole" asp-route-id="@role.Id" method="post">
+				<button type="submit" class="btn btn-sm btn-danger">
+					Удалить
+				</button>
+			</form>
+		</td>*@
+	</tr>
+</table>
 <h2>Список ролей</h2>
 <table class="table">
 	@foreach (var role in Model.Roles)
 	{
 		<tr>
 			<td>@role.Name</td>
-			<td>
-				<form asp-action="DeleteRole" asp-route-id="@role.Id" method="post">
-					<button type="submit" class="btn btn-sm btn-danger">
-						Удалить
-					</button>
-				</form>
-			</td>
+			@*<td>
+					<form asp-action="DeleteRole" asp-route-id="@role.Id" method="post">
+						<button type="submit" class="btn btn-sm btn-danger">
+							Удалить
+						</button>
+					</form>
+				</td>*@
 		</tr>
 	}
 </table>

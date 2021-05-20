@@ -9,9 +9,10 @@ namespace TrainingService.DBRepository.Interfaces
 {
 	public interface ILessonRepository //: IDisposable
 	{
-			Lesson GetLesson(int lessonId, int sectionId, int topicId);
-			void AddLesson(Lesson newLesson);
-			int GetNewLessonId(int sectionId, int topicId);
-			public List<ResponseSection> GetLessonsList(int topicId);
+		Lesson GetLesson(int lessonId, int sectionId, int topicId);
+		void AddLesson(Lesson newLesson);
+		List<Topic> GetTopics();
+		int GetNewLessonId(int sectionId, int topicId);
+		public List<ResponseSection> GetLessonsList(int topicId);
 	}
 }

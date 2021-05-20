@@ -22,15 +22,15 @@ namespace TrainingService.Controllers
             _testRepository = new SQLTestsRepository(dbcontext);
         }
 
-        [Route("sharp")]
+        [Route("{topicName:maxlength(10)}")]
         [HttpGet]
-        public JsonResult GetTestsWithUserRating()
+        public JsonResult GetTestsWithUserRating(string topicName)
         {
-            return new JsonResult(_testRepository.GetTestsWithUserRating(_userManager.GetUserId(User)));
+            return new JsonResult(_testRepository.GetTestsWithUserRating(_userManager.GetUserId(User), topicName));
         }
-        [Route("sharp/{testId:int}")]
+        [Route("{topicString:maxlength(10)}/{testId:int}")]
         [HttpGet]
-        public JsonResult GetTestsWithQuestions(int testId)
+        public JsonResult GetTestWithQuestions(int testId)
         {
             return new JsonResult(_testRepository.GetTestWithQuestions(testId));
         }

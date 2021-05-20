@@ -45,6 +45,12 @@ namespace TrainingService.Controllers
             }
             return new JsonResult(result);
         }
+        [Route("topics")]
+        [HttpGet]
+        public JsonResult GetTopics()
+        {           
+            return new JsonResult(_lessonsRepository.GetTopics());
+        }
 
         [Route("{topicString:maxlength(10)}/{sectionId:int}/{lessonId:int}")]
         [HttpGet]
@@ -66,8 +72,6 @@ namespace TrainingService.Controllers
             string file_type = "text/html";
             if (result == null) return File("/Files/Error.html", file_type);
             return File(result.Path, file_type);
-            //return Redirect(result.Path);
-            //return View(result);
         }
 
         

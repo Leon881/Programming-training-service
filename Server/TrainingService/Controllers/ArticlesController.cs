@@ -77,7 +77,7 @@ namespace TrainingService.Controllers
                     Description=description, 
                     Path = "/Files/Articles/" + uploadedNewArticleHTML.FileName, 
                     ImagePath = await PicturesStorageLogic.AddPicture(uploadedArticlePicture, _appEnvironment), 
-                    Date = DateTime.Now.Date.ToString()
+                    Date = DateTime.Now.Date.ToString().Split(' ')[0]
                 };
                 _articlesRepository.AddArticle(newArticle);
             }

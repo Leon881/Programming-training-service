@@ -1,13 +1,12 @@
-﻿@model TrainingService.Models.Lesson
-@{
+﻿@{
 	ViewData["Title"] = "Добавление урока";
 }
 @*<script>
-	function addInput() {
-		var str = '<p><input type="file" name="uploadedLessonPictures" /></p>';
-		document.getElementById('inputPictures').innerHTML = document.getElementById('inputPictures').innerHTML + str;
-	}
-</script>*@
+		function addInput() {
+			var str = '<p><input type="file" name="uploadedLessonPictures" /></p>';
+			document.getElementById('inputPictures').innerHTML = document.getElementById('inputPictures').innerHTML + str;
+		}
+	</script>*@
 
 
 <h3>Выберите файл для загрузки</h3>
@@ -32,3 +31,19 @@
 		<input type="submit" value="Загрузить" />
 	</p>
 </form>
+
+@*<script type="text/javascript">
+		var model = await(await fetch('/lessons/topics')).json();
+		var topicSelect = addLessonForm.topicSelect;
+		var topics =
+		topicSelect.options=
+		function changeOption() {
+			var sectionSelect = document.getElementById("sectionSelect");
+			var selectedOption = topicSelect.options[topicSelect.selectedIndex];
+
+			sectionSelect.options = model[selectedOption];
+		}
+
+		languagesSelect.addEventListener("change", topicSelect);
+	</script>*@
+

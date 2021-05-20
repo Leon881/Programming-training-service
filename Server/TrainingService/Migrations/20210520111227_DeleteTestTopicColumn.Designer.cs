@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TrainingService.DBRepository;
 
 namespace TrainingService.Migrations
 {
     [DbContext(typeof(TrainingServiceContext))]
-    partial class TrainingServiceContextModelSnapshot : ModelSnapshot
+    [Migration("20210520111227_DeleteTestTopicColumn")]
+    partial class DeleteTestTopicColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -294,8 +296,6 @@ namespace TrainingService.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TopicId");
-
                     b.ToTable("Tests");
                 });
 
@@ -493,17 +493,6 @@ namespace TrainingService.Migrations
                 {
                     b.HasOne("TrainingService.Models.Topic", "Topic")
                         .WithMany("Sections")
-                        .HasForeignKey("TopicId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Topic");
-                });
-
-            modelBuilder.Entity("TrainingService.Models.Test", b =>
-                {
-                    b.HasOne("TrainingService.Models.Topic", "Topic")
-                        .WithMany()
                         .HasForeignKey("TopicId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

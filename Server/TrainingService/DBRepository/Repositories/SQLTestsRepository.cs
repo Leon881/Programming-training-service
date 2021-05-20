@@ -16,13 +16,17 @@ namespace TrainingService.DBRepository.Repositories
         {
             db = _db;
         }
-        public List<TestResponse> GetTestsWithUserRating(string userId)
+        public List<TestResponse> GetTestsWithUserRating(string userId, string topicName)
         {
-            List<TestResponse> result = db.Tests.Select(test => new TestResponse { Id = test.Id, Image = test.ImagePath, Title = test.Title, Rating = 0 }).ToList();
+            int topicId = db.Topics.FirstOrDefault(topic => topic.Name == topicName).Id;
+            List<TestResponse> result = db.Tests.Where(test => test.TopicId== topicId).Select(test => new TestResponse { Id = test.Id, Image = test.ImagePath, Title = test.Title, Rating = 0 }).ToList();
+            if (result == null) return result;
             List<UserTest> usersTestsList = db.UsersTests.Where(userTest => userTest.UserId==userId).ToList();
             foreach (var usertest in usersTestsList)
             {
-                result.Find(testResp => testResp.Id==usertest.TestId).Rating = usertest.Rating;
+                var test = result.Find(testResp => testResp.Id == usertest.TestId);
+                if (test == null) continue;
+                else test.Rating = usertest.Rating;
             }
             return result;              
         }

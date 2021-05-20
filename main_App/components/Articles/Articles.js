@@ -10,20 +10,24 @@ export default function Articles({ articlesList, onNavigateToPage, setLearningTe
   if (articlesList.status === Status.loading) return <Loader fontColor='#fff' />
   const openArticle = async (event) => {
     await requestLearningText();
+    debugger;
+    console.log(event.target.id);
     const text =await (await fetch(`/api/articles/${event.target.id}`)).text();
+    debugger;
     //const text = 'dsfd';
     await setLearningText(text);
   };
   const articlesForm = [];
   for (let el of articlesList.articles) {
-    articlesForm.push(<Link className='article-ref'  onClick={openArticle} key={el.id} to={`${Page.articles.route}/${el.id}`}>
-      <article className='article-item'>
+    articlesForm.push(<Link className='article-ref' id={el.id}  onClick={openArticle} key={el.id} to={`${Page.articles.route}/${el.id}`}>
+      <article id={el.id} className='article-item'>
       <div className='image' id={el.id} style={{ 'backgroundImage': `url(${el.image})` }}></div>
       <div id={el.id} className='article-data'>
         <div className='title' id={el.id}>{el.title}</div>
         <div id={el.id} className className='description'>{el.description}</div>
         <div id={el.id} className='info'>{el.date} / {el.author}</div>
       </div></article></Link>)
+      debugger;
   }
   return (
     <div className='main-articles-menu'>

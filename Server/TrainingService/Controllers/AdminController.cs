@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Identity;
 using TrainingService.Models;
 using TrainingService.DBRepository;
 using TrainingService.ViewModels;
+using TrainingService.DBRepository.Interfaces;
+using TrainingService.DBRepository.Repositories;
 
 namespace TrainingService.Controllers
 {
@@ -16,10 +18,10 @@ namespace TrainingService.Controllers
     {
         UserManager<User> _userManager;
         RoleManager<IdentityRole> _roleManager;
-        public AdminController(RoleManager<IdentityRole> roleManager, UserManager<User> userManager)
+        public AdminController(TrainingServiceContext dbcontext, RoleManager<IdentityRole> roleManager, UserManager<User> userManager)
         {
             _userManager = userManager;
-            _roleManager = roleManager;        
+            _roleManager = roleManager;            
         }
         [Route("")]
         public async Task<IActionResult> Index()
@@ -210,6 +212,25 @@ namespace TrainingService.Controllers
                 }
             }
             return View(model);
+        }
+
+        [Route("[action]")]
+        [HttpGet]
+        public IActionResult AddPicture()
+        {
+            return View("~/Views/PicturesStorage/AddPicture.cshtml");
+        }
+        [Route("[action]")]
+        [HttpGet]
+        public IActionResult AddLesson()
+        {               
+            return View("~/Views/Lessons/AddLesson.cshtml");
+        }
+        [Route("[action]")]
+        [HttpGet]
+        public IActionResult AddArticle()
+        {
+            return View("~/Views/Articles/AddArticle.cshtml");
         }
     }
 }

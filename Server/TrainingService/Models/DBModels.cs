@@ -70,6 +70,8 @@ namespace TrainingService.Models
         public int Id { get; set; }
         public string Title { get; set; }
         public string ImagePath { get; set; }
+        public int TopicId{ get; set; }
+        public Topic Topic { get; set; }
         public List<Question> Questions { get; set; }
     }
     public class Question
