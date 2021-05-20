@@ -59,7 +59,7 @@ export default function TestArea({ onNavigateToPage, setTests, requestTests, pag
         onNavigateToPage(navigate(false)); 
         setTestResult('');
         requestTests();
-        const test = await (await fetch (`/api/${route}`)).json();
+        const test = await (await fetch (`/api${route}`)).json();
         setTests(test);
       }
 

@@ -10,8 +10,8 @@ export default function Articles({ articlesList, onNavigateToPage, setLearningTe
   if (articlesList.status !== Status.loaded) return <Loader fontColor='#fff' />;
   const openArticle = async (event) => {
     requestLearningText();
-    const text =await (await fetch(`/api/articles/${event.target.id}`)).text();
-    //const text = 'dsfd';
+    //const text =await (await fetch(`/api/articles/${event.target.id}`)).text();
+    const text = 'Статьи';
     setLearningText(text);
   };
 

@@ -11,10 +11,10 @@ const accordionMenuReducer=createReducer({inf:[], status: Status.empty},
      {[actionTypes.LOAD_ACCORDION_MENU_INF_SUCCESS]:(state,action)=>({...state, inf:action.value, status: Status.loaded}),
      [actionTypes.LOAD_ACCORDION_MENU_INF_REQUEST]:(state,action)=>({...state, status: Status.loading})});
 
- const learningAreaReducer=createReducer({text:[], status: Status.empty},
+ const learningAreaReducer=createReducer({text:'Выберите интересующий вас раздел для обучения', status: Status.empty},
      {[actionTypes.LOAD_LEARNING_TEXT_SUCCESS]:(state,action)=>({...state, text:action.text, status: Status.loaded}),
      [actionTypes.LOAD_LEARNING_TEXT_REQUEST]:(state,action)=>({...state, status: Status.loading}),
-    [actionTypes.SET_LEARNING_TEXT_DEFAULT]:(state,action)=>({text:[], status: Status.empty})});
+    [actionTypes.SET_LEARNING_TEXT_DEFAULT]:(state,action)=>({text:'Выберите интересующий вас раздел для обучения', status: Status.empty})});
 
      
  const articlesListReducer=createReducer({articles:[], status: Status.empty},

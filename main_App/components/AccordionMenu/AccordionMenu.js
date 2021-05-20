@@ -27,8 +27,8 @@ export default function AccordionMenu({ onNavigateToPage, accordionMenu, setLear
       default:
         break;
     }
-    const text =await (await fetch(`/api/lessons/${route}/${ids[0]}/${ids[1]}`)).text();
-    //const text = 'dsfd';
+    //const text =await (await fetch(`/api/lessons/${route}/${ids[0]}/${ids[1]}`)).text();
+    const text = 'dsfd';
     setLearningText(text);
 
   };
