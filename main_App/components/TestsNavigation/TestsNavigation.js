@@ -8,7 +8,7 @@ import './style.css';
 import testQuestions from "../../forTests/testQuestions";
 
 export default function TestsNavigation({ onNavigateToPage, testsList, page, requestTest, setTest, setTestResult }) {
-  if (testsList.status === Status.loaded) return <Loader fontColor='#fff' />;
+  if (testsList.status !== Status.loaded) return <Loader fontColor='#fff' />;
   const testForm = [];
   const loadTest = async (event) => {
     setTestResult('');
