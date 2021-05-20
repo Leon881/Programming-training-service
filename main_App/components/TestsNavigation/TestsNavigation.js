@@ -8,10 +8,9 @@ import './style.css';
 import testQuestions from "../../forTests/testQuestions";
 
 export default function TestsNavigation({ onNavigateToPage, testsList, page, requestTest, setTest, setTestResult }) {
-  if (testsList.status === Status.loading) return <Loader fontColor='#fff' />;
+  if (testsList.status === Status.loaded) return <Loader fontColor='#fff' />;
   const testForm = [];
   const loadTest = async (event) => {
-    console.log(event.target.id)
     setTestResult('');
     let route;
     switch (page) {
@@ -28,9 +27,9 @@ export default function TestsNavigation({ onNavigateToPage, testsList, page, req
         break;
     }
     requestTest();
-    //const test=await (await fetch(`/api/tests/${route}/${event.target.id}`)).json();
-    const test = testQuestions;
-    await setTest(test);
+    const test=await (await fetch(`/api/tests/${route}/${event.target.id}`)).json();
+    //const test = testQuestions;
+    setTest(test);
   }
 
   const setRoute = (el) => {

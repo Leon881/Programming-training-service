@@ -58,12 +58,12 @@ export default function TestArea({ onNavigateToPage, setTests, requestTests, pag
         let route = navigate(true);
         onNavigateToPage(navigate(false)); 
         setTestResult('');
-        await requestTests();
+        requestTests();
         const test = await (await fetch (`/api/${route}`)).json();
-        await setTests(test);
+        setTests(test);
       }
 
-    if (test.status === Status.loading) return <Loader fontColor='#fff' />;
+    if (test.status === Status.loaded) return <Loader fontColor='#fff' />;
     const navigate = (indicate) => {
         let route;
         switch (page.split(' ')[0]) {

@@ -8,11 +8,11 @@ import './style.css';
 import LearningArea from '../../containers/LearningArea';
 
 export default function AccordionMenu({ onNavigateToPage, accordionMenu, setLearningText, requestLearningText, page }) {
-  if (accordionMenu.status === Status.loading) return <Loader fontColor='#fff' />
+  if (accordionMenu.status !== Status.loaded) return <Loader fontColor='#fff' />
   const loadText = async (event) => {
     event.stopPropagation()
     const ids = event.target.id.split(',');
-    await requestLearningText();
+    requestLearningText();
     let route;
     switch (page) {
       case Page.learningSharp.text:
@@ -29,7 +29,7 @@ export default function AccordionMenu({ onNavigateToPage, accordionMenu, setLear
     }
     const text =await (await fetch(`/api/lessons/${route}/${ids[0]}/${ids[1]}`)).text();
     //const text = 'dsfd';
-    await setLearningText(text);
+    setLearningText(text);
 
   };
   const menu = [];

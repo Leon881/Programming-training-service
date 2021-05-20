@@ -7,12 +7,12 @@ import Loader from "../../containers/Loader"
 import './style.css';
 
 export default function Articles({ articlesList, onNavigateToPage, setLearningText, requestLearningText }) {
-  if (articlesList.status === Status.loading) return <Loader fontColor='#fff' />;
+  if (articlesList.status !== Status.loaded) return <Loader fontColor='#fff' />;
   const openArticle = async (event) => {
     requestLearningText();
-    //const text =await (await fetch(`/api/articles/${event.target.id}`)).text();
-    const text = 'dsfd';
-    await setLearningText(text);
+    const text =await (await fetch(`/api/articles/${event.target.id}`)).text();
+    //const text = 'dsfd';
+    setLearningText(text);
   };
 
   const articlesForm = [];
