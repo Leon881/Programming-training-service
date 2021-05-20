@@ -8,7 +8,7 @@ import Page from "../../constants/Page";
 import Modal from "../../containers/Modal"
 
 export default function Notes({ notesList, onNavigateToPage }) {
-    if (notesList.status === Status.loaded) return <Loader fontColor='#fff' />
+    if (notesList.status !== Status.loaded) return <Loader fontColor='#fff' />
     const notesForm = [];
     for (let note of notesList.notes) {
         notesForm.push(<div key={note.id} className='note-form'><div className='note-title'>{note.title}</div>
