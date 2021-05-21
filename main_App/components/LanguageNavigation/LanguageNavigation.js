@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import LearningNavigationText from '../../constants/LearningNavigationText'
 import TestingNavigationText from '../../constants/TestingNavigationText'
 
-export default function LanguageNavigation({ onNavigateToPage, setAccordionMenu, requestAccordionMenu, page, setTests, requestTests }) {
+export default function LanguageNavigation({ onNavigateToPage, setAccordionMenu, requestAccordionMenu, page, setTests, requestTests, setLearningTextDefault }) {
   const openMenu = async (event) => {
     let route;
     switch (event.target.id) {
@@ -28,9 +28,10 @@ export default function LanguageNavigation({ onNavigateToPage, setAccordionMenu,
         break;
     }
     if (page === Page.learningMenu.text) {
+      setLearningTextDefault();
       requestAccordionMenu();
       const menu=await (await fetch(`/api/lessons/${route}`)).json();
-     //const menu = testAccordionMenu;
+      //const menu = testAccordionMenu;
       setAccordionMenu(menu);
     }
     else {
@@ -68,5 +69,6 @@ LanguageNavigation.propTypes = {
   requestAccordionMenu: PropTypes.func.isRequired,
   page: PropTypes.string.isRequired,
   requestTests: PropTypes.func.isRequired,
-  setTests: PropTypes.func.isRequired
+  setTests: PropTypes.func.isRequired,
+  setLearningTextDefault: PropTypes.func.isRequired
 };

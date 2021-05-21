@@ -11,8 +11,6 @@ export default function TestsNavigation({ onNavigateToPage, testsList, page, req
   if (testsList.status !== Status.loaded) return <Loader fontColor='#fff' />;
   const testForm = [];
   const loadTest = async (event) => {
-    console.log(event.target.id);
-    let id = event.target.id;
     setTestResult('');
     let route;
     switch (page) {
@@ -29,8 +27,7 @@ export default function TestsNavigation({ onNavigateToPage, testsList, page, req
         break;
     }
     requestTest();
-    debugger;
-    const test=await (await fetch(`/api/tests/${route}/${id}`)).json();
+    const test=await (await fetch(`/api/tests/${route}/${event.target.id}`)).json();
     //const test = testQuestions;
     setTest(test);
   }
@@ -53,7 +50,7 @@ export default function TestsNavigation({ onNavigateToPage, testsList, page, req
     return `${route}/${el.id}`;
   }
   for (let el of testsList.tests) {
-    testForm.push(<Link className='test-ref' onClick={loadTest} key={el.id} to={setRoute(el)}><div id={el.id} className='test-item'>
+    testForm.push(<Link className='test-ref' onClick={loadTest} key={el.id} to={setRoute(el)}><div d={el.id} className='test-item'>
       <div className='image' id={el.id} style={{ 'backgroundImage': `url(${el.image})` }}></div>
       <div className='test-inf' id={el.id} ><div id={el.id} className='test-title'>{el.title}</div>
         <div className='test-rating' id={el.id} >Ваш прогресс - {el.rating}</div></div>

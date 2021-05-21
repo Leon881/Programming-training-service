@@ -11,7 +11,7 @@ export default function Articles({ articlesList, onNavigateToPage, setLearningTe
   const openArticle = async (event) => {
     requestLearningText();
     const text =await (await fetch(`/api/articles/${event.target.id}`)).text();
-    //const text = 'dsfd';
+    //const text = 'Статьи';
     setLearningText(text);
   };
 

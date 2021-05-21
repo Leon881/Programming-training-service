@@ -138,7 +138,7 @@ class NotesPage extends React.Component {
     //const notes = [{ id: 1, title: 'Заметка 1', text: 'Текст 1' }, { id: 2, title: 'Заметка 2', text: 'Текст 2' },
     //{ id: 3, title: 'Заметка 3', text: 'Текст 3' }, { id: 4, title: 'Заметка 4', text: 'Текст 4' }];
     store.dispatch(requestNotes());
-    this.notes=await (await fetch('/api/notes')).json();
+     this.notes=await (await fetch('/api/notes')).json();
     store.dispatch(setNotes(this.notes));
     //store.dispatch(setNotes(notes));
   }
