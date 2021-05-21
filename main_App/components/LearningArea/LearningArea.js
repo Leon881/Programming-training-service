@@ -10,7 +10,7 @@ import './style.css';
 export default function LearningArea({ learningArea, pageIndication }) {
     return (
         <div className='learning-content'>
-            <div className='learning-text' style={pageIndication ? { 'maxWidth': '85%' } : { 'maxWidth': '65%' }} >
+            <div className='learning-text' style={pageIndication ? { 'minWidth': '85%' } : { 'minWidth': '65%' }} >
                 <a title='Добавить заметку' href='#modal' className='button-note'></a>
                 {learningArea.status === Status.loading ? <Loader fontColor='black' /> :
                     <div className='text' dangerouslySetInnerHTML={{ __html: learningArea.text }} ></div>}</div>
