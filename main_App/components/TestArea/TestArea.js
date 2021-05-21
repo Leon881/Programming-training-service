@@ -27,7 +27,7 @@ export default function TestArea({ onNavigateToPage, setTests, requestTests, pag
             else {
                 document.getElementById(`${el.id}`).disabled = true;
                 let inputVar = document.getElementById(`${el.id}`);
-                if (el.correct === String(inputVar.value)) {
+                if (el.correct.toLowerCase() === String(inputVar.value.toLowerCase())) {
                     document.getElementById(`result ${el.id}`).style.backgroundImage = 'url(/src/img/check.png)';
                     newRating++;
                 }

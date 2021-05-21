@@ -9,7 +9,7 @@ const testQuestions = {id: 1, questions:[{
     id:2,
     question:'Введите правильный ответ',
     type: 0,
-    correct: '12'
+    correct: 'а'
 },
 {
     id:3,
