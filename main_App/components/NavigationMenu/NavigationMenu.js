@@ -18,7 +18,7 @@ export default function NavigationMenu({ onNavigateToPage, auth }) {
           className="block-menu left" to={Page.notes.route}>
           <span className="menu-text">Заметки</span>
         </Link>
-        <Link id={Page.learningMenu.text} className="block-menu center" to={Page.learningMenu.route}>
+        <Link id={Page.learningMenu.text} className="block-menu center" to={'/sf'}>
           <div className="explainer">
             <span id={Page.learningMenu.text}> Наведи на меня</span>
           </div>

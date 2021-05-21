@@ -30,14 +30,14 @@ export default function LanguageNavigation({ onNavigateToPage, setAccordionMenu,
     if (page === Page.learningMenu.text) {
       setLearningTextDefault();
       requestAccordionMenu();
-      //const menu=await (await fetch(`/api/lessons/${route}`)).json();
-     const menu = testAccordionMenu;
+      const menu=await (await fetch(`/api/lessons/${route}`)).json();
+      //const menu = testAccordionMenu;
       setAccordionMenu(menu);
     }
     else {
       requestTests();
-      //const test = await (await fetch (`/api/tests/${route}`)).json();
-      const test = testTests;
+      const test = await (await fetch (`/api/tests/${route}`)).json();
+      //const test = testTests;
       setTests(test);
 
     }
