@@ -24,7 +24,7 @@ import {
   setUserInformation
 } from "../actionCreators/index";
 
-const store = createStore(rootReducer, applyMiddleware(logger));
+const store = createStore(rootReducer, /*applyMiddleware(logger)*/);
 
 class App extends React.Component {
   constructor(props) {
