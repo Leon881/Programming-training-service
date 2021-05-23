@@ -53,7 +53,7 @@ export default function TestsNavigation({ onNavigateToPage, testsList, page, req
     testForm.push(<Link className='test-ref' onClick={loadTest} key={el.id} to={setRoute(el)}><div id={el.id} className='test-item'>
       <div className='image' id={el.id} style={{ 'backgroundImage': `url(${el.image})` }}></div>
       <div className='test-inf' id={el.id} ><div id={el.id} className='test-title'>{el.title}</div>
-        <div className='test-rating' id={el.id} >Ваш прогресс - {el.rating}</div></div>
+        <div className='test-rating' id={el.id} >Ваш прогресс - {el.rating} %</div></div>
     </div></Link>)
   }
 
